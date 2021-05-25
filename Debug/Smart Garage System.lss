@@ -1,0 +1,3813 @@
+
+Smart Garage System.elf:     file format elf32-avr
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .text         00001204  00000000  00000000  00000094  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  1 .data         000000a4  00800060  00001204  00001298  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+  2 .bss          0000000f  00800104  00800104  0000133c  2**0
+                  ALLOC
+  3 .stab         000018e4  00000000  00000000  0000133c  2**2
+                  CONTENTS, READONLY, DEBUGGING
+  4 .stabstr      000005ea  00000000  00000000  00002c20  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  5 .debug_aranges 000001e0  00000000  00000000  00003210  2**3
+                  CONTENTS, READONLY, DEBUGGING
+  6 .debug_info   000023a0  00000000  00000000  000033f0  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  7 .debug_abbrev 00000bcb  00000000  00000000  00005790  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  8 .debug_line   00001251  00000000  00000000  0000635b  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  9 .debug_frame  00000474  00000000  00000000  000075ac  2**2
+                  CONTENTS, READONLY, DEBUGGING
+ 10 .debug_str    00000c4d  00000000  00000000  00007a20  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 11 .debug_loc    0000100c  00000000  00000000  0000866d  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 12 .debug_ranges 00000010  00000000  00000000  00009679  2**0
+                  CONTENTS, READONLY, DEBUGGING
+
+Disassembly of section .text:
+
+00000000 <__vectors>:
+       0:	0c 94 2a 00 	jmp	0x54	; 0x54 <__ctors_end>
+       4:	0c 94 1f 01 	jmp	0x23e	; 0x23e <__vector_1>
+       8:	0c 94 48 01 	jmp	0x290	; 0x290 <__vector_2>
+       c:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+      10:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+      14:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+      18:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+      1c:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+      20:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+      24:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+      28:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+      2c:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+      30:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+      34:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+      38:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+      3c:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+      40:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+      44:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+      48:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+      4c:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+      50:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+
+00000054 <__ctors_end>:
+      54:	11 24       	eor	r1, r1
+      56:	1f be       	out	0x3f, r1	; 63
+      58:	cf e5       	ldi	r28, 0x5F	; 95
+      5a:	d8 e0       	ldi	r29, 0x08	; 8
+      5c:	de bf       	out	0x3e, r29	; 62
+      5e:	cd bf       	out	0x3d, r28	; 61
+
+00000060 <__do_copy_data>:
+      60:	11 e0       	ldi	r17, 0x01	; 1
+      62:	a0 e6       	ldi	r26, 0x60	; 96
+      64:	b0 e0       	ldi	r27, 0x00	; 0
+      66:	e4 e0       	ldi	r30, 0x04	; 4
+      68:	f2 e1       	ldi	r31, 0x12	; 18
+      6a:	02 c0       	rjmp	.+4      	; 0x70 <__do_copy_data+0x10>
+      6c:	05 90       	lpm	r0, Z+
+      6e:	0d 92       	st	X+, r0
+      70:	a4 30       	cpi	r26, 0x04	; 4
+      72:	b1 07       	cpc	r27, r17
+      74:	d9 f7       	brne	.-10     	; 0x6c <__do_copy_data+0xc>
+
+00000076 <__do_clear_bss>:
+      76:	11 e0       	ldi	r17, 0x01	; 1
+      78:	a4 e0       	ldi	r26, 0x04	; 4
+      7a:	b1 e0       	ldi	r27, 0x01	; 1
+      7c:	01 c0       	rjmp	.+2      	; 0x80 <.do_clear_bss_start>
+
+0000007e <.do_clear_bss_loop>:
+      7e:	1d 92       	st	X+, r1
+
+00000080 <.do_clear_bss_start>:
+      80:	a3 31       	cpi	r26, 0x13	; 19
+      82:	b1 07       	cpc	r27, r17
+      84:	e1 f7       	brne	.-8      	; 0x7e <.do_clear_bss_loop>
+      86:	0e 94 9f 07 	call	0xf3e	; 0xf3e <main>
+      8a:	0c 94 00 09 	jmp	0x1200	; 0x1200 <_exit>
+
+0000008e <__bad_interrupt>:
+      8e:	0c 94 00 00 	jmp	0	; 0x0 <__vectors>
+
+00000092 <ADC_INTIATE>:
+
+#define LEVEL_NUM    (1024)
+
+
+void ADC_INTIATE(ANALOG_DATATYPE ADC_signal)
+{
+      92:	0f 93       	push	r16
+      94:	1f 93       	push	r17
+      96:	cf 93       	push	r28
+      98:	df 93       	push	r29
+      9a:	00 d0       	rcall	.+0      	; 0x9c <ADC_INTIATE+0xa>
+      9c:	00 d0       	rcall	.+0      	; 0x9e <ADC_INTIATE+0xc>
+      9e:	00 d0       	rcall	.+0      	; 0xa0 <ADC_INTIATE+0xe>
+      a0:	cd b7       	in	r28, 0x3d	; 61
+      a2:	de b7       	in	r29, 0x3e	; 62
+      a4:	14 2f       	mov	r17, r20
+      a6:	49 83       	std	Y+1, r20	; 0x01
+      a8:	5a 83       	std	Y+2, r21	; 0x02
+      aa:	6b 83       	std	Y+3, r22	; 0x03
+      ac:	7c 83       	std	Y+4, r23	; 0x04
+      ae:	8d 83       	std	Y+5, r24	; 0x05
+      b0:	9e 83       	std	Y+6, r25	; 0x06
+	char ADCSRA_temp = 0x00;
+	char ADCMUX_temp = 0x00;
+	
+	/* Set The Clock input Frequency */
+	switch(ADC_signal.ADC_CLK_In)
+      b2:	76 30       	cpi	r23, 0x06	; 6
+      b4:	98 f5       	brcc	.+102    	; 0x11c <ADC_INTIATE+0x8a>
+      b6:	a7 2f       	mov	r26, r23
+      b8:	b0 e0       	ldi	r27, 0x00	; 0
+      ba:	a0 5a       	subi	r26, 0xA0	; 160
+      bc:	bf 4f       	sbci	r27, 0xFF	; 255
+      be:	0c 91       	ld	r16, X
+		     SET_Bit(ADCSRA_temp,ADPS2);
+		break;
+	}
+	
+	/* Set The Configuration of The Pin As An Input Pin */
+	DIO_pinConfiguration(GPIOA, ADC_signal.ADC_PIN, InputFloat);
+      c0:	89 e3       	ldi	r24, 0x39	; 57
+      c2:	90 e0       	ldi	r25, 0x00	; 0
+      c4:	61 2f       	mov	r22, r17
+      c6:	40 e0       	ldi	r20, 0x00	; 0
+      c8:	0e 94 b0 00 	call	0x160	; 0x160 <DIO_pinConfiguration>
+      cc:	11 50       	subi	r17, 0x01	; 1
+      ce:	17 30       	cpi	r17, 0x07	; 7
+      d0:	18 f5       	brcc	.+70     	; 0x118 <ADC_INTIATE+0x86>
+      d2:	e1 2f       	mov	r30, r17
+      d4:	f0 e0       	ldi	r31, 0x00	; 0
+      d6:	ea 59       	subi	r30, 0x9A	; 154
+      d8:	ff 4f       	sbci	r31, 0xFF	; 255
+      da:	80 81       	ld	r24, Z
+			 SET_Bit(ADCMUX_temp,MUX2);
+		break;
+	}
+	
+	/* Interrupt State */
+	switch(ADC_signal.INT)
+      dc:	9b 81       	ldd	r25, Y+3	; 0x03
+      de:	91 30       	cpi	r25, 0x01	; 1
+      e0:	09 f4       	brne	.+2      	; 0xe4 <ADC_INTIATE+0x52>
+	{
+	   case ADC_INT_DISABLE:
+	        /* It The Default State */
+	   break;
+	   case ADC_INT_ENABLE:
+	        SET_Bit(ADCSRA_temp, ADIE);
+      e2:	08 60       	ori	r16, 0x08	; 8
+	   break;
+	}
+	
+	/* Set The Voltage Reference Of The ADC */
+	switch(ADC_signal.REF_Voltage)
+      e4:	9a 81       	ldd	r25, Y+2	; 0x02
+      e6:	99 23       	and	r25, r25
+      e8:	99 f4       	brne	.+38     	; 0x110 <ADC_INTIATE+0x7e>
+		case AREF:
+		     /* it The Default State The 2 Bits Is 0 */
+		break;
+		case AVCC:
+		/* Note at This Case the AREF Connect With a capacitor to Ground */
+		     SET_Bit(ADCMUX_temp,REF0);
+      ea:	80 64       	ori	r24, 0x40	; 64
+			SET_Bit(ADCMUX_temp,REF1);
+		break;
+	}
+	
+	/* The Data Sort In The ADCL , ADCH Register State */
+	switch(ADC_signal.ADC_SORT)
+      ec:	9e 81       	ldd	r25, Y+6	; 0x06
+      ee:	91 30       	cpi	r25, 0x01	; 1
+      f0:	09 f4       	brne	.+2      	; 0xf4 <ADC_INTIATE+0x62>
+	{
+		case ADJUST_RIGHT:
+		/* it The Default State The 2 Bits Is 0 */
+		break;
+		case ADJUST_LEFT:
+		     SET_Bit(ADCMUX_temp,ADLAR);
+      f2:	80 62       	ori	r24, 0x20	; 32
+		case TIMERCO0_CAPEVENT:
+		break;
+		/* it Will Handle When it Needed */
+	}
+	
+	ADCMUX = ADCMUX_temp;
+      f4:	87 b9       	out	0x07, r24	; 7
+	ADCSRA = ADCSRA_temp;
+      f6:	06 b9       	out	0x06, r16	; 6
+	/* Enable The ADC Bit */
+	SET_Bit(ADCSRA, ADEN);
+      f8:	37 9a       	sbi	0x06, 7	; 6
+}
+      fa:	26 96       	adiw	r28, 0x06	; 6
+      fc:	0f b6       	in	r0, 0x3f	; 63
+      fe:	f8 94       	cli
+     100:	de bf       	out	0x3e, r29	; 62
+     102:	0f be       	out	0x3f, r0	; 63
+     104:	cd bf       	out	0x3d, r28	; 61
+     106:	df 91       	pop	r29
+     108:	cf 91       	pop	r28
+     10a:	1f 91       	pop	r17
+     10c:	0f 91       	pop	r16
+     10e:	08 95       	ret
+	        SET_Bit(ADCSRA_temp, ADIE);
+	   break;
+	}
+	
+	/* Set The Voltage Reference Of The ADC */
+	switch(ADC_signal.REF_Voltage)
+     110:	92 30       	cpi	r25, 0x02	; 2
+     112:	61 f7       	brne	.-40     	; 0xec <ADC_INTIATE+0x5a>
+		     SET_Bit(ADCMUX_temp,REF0);
+		break;
+		case INTERNV:
+		/* The Value Of The iternal Voltage is 2.56 V */
+		    SET_Bit(ADCMUX_temp,REF0);
+			SET_Bit(ADCMUX_temp,REF1);
+     114:	80 6c       	ori	r24, 0xC0	; 192
+		break;
+     116:	ea cf       	rjmp	.-44     	; 0xec <ADC_INTIATE+0x5a>
+		     SET_Bit(ADCSRA_temp,ADPS2);
+		break;
+	}
+	
+	/* Set The Configuration of The Pin As An Input Pin */
+	DIO_pinConfiguration(GPIOA, ADC_signal.ADC_PIN, InputFloat);
+     118:	80 e0       	ldi	r24, 0x00	; 0
+     11a:	e0 cf       	rjmp	.-64     	; 0xdc <ADC_INTIATE+0x4a>
+{
+	char ADCSRA_temp = 0x00;
+	char ADCMUX_temp = 0x00;
+	
+	/* Set The Clock input Frequency */
+	switch(ADC_signal.ADC_CLK_In)
+     11c:	00 e0       	ldi	r16, 0x00	; 0
+     11e:	d0 cf       	rjmp	.-96     	; 0xc0 <ADC_INTIATE+0x2e>
+
+00000120 <analogRead>:
+
+
+
+
+int analogRead(ANALOG_DATATYPE signal)
+{
+     120:	cf 93       	push	r28
+     122:	df 93       	push	r29
+     124:	00 d0       	rcall	.+0      	; 0x126 <analogRead+0x6>
+     126:	00 d0       	rcall	.+0      	; 0x128 <analogRead+0x8>
+     128:	00 d0       	rcall	.+0      	; 0x12a <analogRead+0xa>
+     12a:	cd b7       	in	r28, 0x3d	; 61
+     12c:	de b7       	in	r29, 0x3e	; 62
+     12e:	49 83       	std	Y+1, r20	; 0x01
+     130:	5a 83       	std	Y+2, r21	; 0x02
+     132:	6b 83       	std	Y+3, r22	; 0x03
+     134:	7c 83       	std	Y+4, r23	; 0x04
+     136:	8d 83       	std	Y+5, r24	; 0x05
+     138:	9e 83       	std	Y+6, r25	; 0x06
+	unsigned int DataRead = 0x00;
+	/*  as A default We in the Single Conversion Mode */
+	/* Set Bit ADSC to Start The Conversion */
+	SET_Bit(ADCSRA, ADSC); 
+     13a:	36 9a       	sbi	0x06, 6	; 6
+	while (READ_Bit(ADCSRA,ADSC) == 0);
+     13c:	36 9b       	sbis	0x06, 6	; 6
+     13e:	fe cf       	rjmp	.-4      	; 0x13c <analogRead+0x1c>
+	/* it Must in THe Right Adjust Mode Read The ADCL register Before The ADCH */
+	DataRead = ADCL; 
+     140:	84 b1       	in	r24, 0x04	; 4
+     142:	90 e0       	ldi	r25, 0x00	; 0
+	DataRead |= (ADCH << 8);
+     144:	45 b1       	in	r20, 0x05	; 5
+     146:	34 2f       	mov	r19, r20
+     148:	20 e0       	ldi	r18, 0x00	; 0
+     14a:	82 2b       	or	r24, r18
+     14c:	93 2b       	or	r25, r19
+	
+	return DataRead;
+	
+     14e:	26 96       	adiw	r28, 0x06	; 6
+     150:	0f b6       	in	r0, 0x3f	; 63
+     152:	f8 94       	cli
+     154:	de bf       	out	0x3e, r29	; 62
+     156:	0f be       	out	0x3f, r0	; 63
+     158:	cd bf       	out	0x3d, r28	; 61
+     15a:	df 91       	pop	r29
+     15c:	cf 91       	pop	r28
+     15e:	08 95       	ret
+
+00000160 <DIO_pinConfiguration>:
+
+
+
+
+void DIO_pinConfiguration(GPIO * pinC, pinNumber pin_num, pinMode pin_M)
+{
+     160:	fc 01       	movw	r30, r24
+	switch (pin_M)
+     162:	41 30       	cpi	r20, 0x01	; 1
+     164:	19 f1       	breq	.+70     	; 0x1ac <DIO_pinConfiguration+0x4c>
+     166:	41 30       	cpi	r20, 0x01	; 1
+     168:	78 f4       	brcc	.+30     	; 0x188 <DIO_pinConfiguration+0x28>
+		RESET_Bit(pinC -> DDR, pin_num);
+		SET_Bit(pinC -> PORT, pin_num);
+		break;
+		case InputFloat:
+		/* In This Case We Make The Pin Input By Get Low in The DDR And Make It Default State (idle) LOW By RESET The Port And Make A Pull down Resistance  */
+		RESET_Bit(pinC -> DDR,pin_num);
+     16a:	21 81       	ldd	r18, Z+1	; 0x01
+     16c:	81 e0       	ldi	r24, 0x01	; 1
+     16e:	90 e0       	ldi	r25, 0x00	; 0
+     170:	02 c0       	rjmp	.+4      	; 0x176 <DIO_pinConfiguration+0x16>
+     172:	88 0f       	add	r24, r24
+     174:	99 1f       	adc	r25, r25
+     176:	6a 95       	dec	r22
+     178:	e2 f7       	brpl	.-8      	; 0x172 <DIO_pinConfiguration+0x12>
+     17a:	80 95       	com	r24
+     17c:	28 23       	and	r18, r24
+     17e:	21 83       	std	Z+1, r18	; 0x01
+		RESET_Bit(pinC -> PORT,pin_num);
+     180:	92 81       	ldd	r25, Z+2	; 0x02
+     182:	98 23       	and	r25, r24
+     184:	92 83       	std	Z+2, r25	; 0x02
+		break;
+     186:	08 95       	ret
+
+
+
+void DIO_pinConfiguration(GPIO * pinC, pinNumber pin_num, pinMode pin_M)
+{
+	switch (pin_M)
+     188:	42 30       	cpi	r20, 0x02	; 2
+     18a:	09 f0       	breq	.+2      	; 0x18e <DIO_pinConfiguration+0x2e>
+     18c:	08 95       	ret
+		RESET_Bit(pinC -> DDR,pin_num);
+		RESET_Bit(pinC -> PORT,pin_num);
+		break;
+		case Output:
+		/* In This Case We Make The Pin Output By  SET The DDR And Make It Default State (idle) LOW By Set The Port TO Make It reverse Connection Sink Source to Avoid Error Value When The Number Of The Output Increace */
+		SET_Bit(pinC -> DDR, pin_num);
+     18e:	21 81       	ldd	r18, Z+1	; 0x01
+     190:	81 e0       	ldi	r24, 0x01	; 1
+     192:	90 e0       	ldi	r25, 0x00	; 0
+     194:	02 c0       	rjmp	.+4      	; 0x19a <DIO_pinConfiguration+0x3a>
+     196:	88 0f       	add	r24, r24
+     198:	99 1f       	adc	r25, r25
+     19a:	6a 95       	dec	r22
+     19c:	e2 f7       	brpl	.-8      	; 0x196 <DIO_pinConfiguration+0x36>
+     19e:	28 2b       	or	r18, r24
+     1a0:	21 83       	std	Z+1, r18	; 0x01
+		RESET_Bit(pinC -> PORT,pin_num);
+     1a2:	92 81       	ldd	r25, Z+2	; 0x02
+     1a4:	80 95       	com	r24
+     1a6:	89 23       	and	r24, r25
+     1a8:	82 83       	std	Z+2, r24	; 0x02
+     1aa:	08 95       	ret
+{
+	switch (pin_M)
+	{
+		case InputPullup:
+		/* In This Case We Make The Pin Input By Get Low in The DDR And Make It Default State (idle) HIgh By Set The Port */
+		RESET_Bit(pinC -> DDR, pin_num);
+     1ac:	21 81       	ldd	r18, Z+1	; 0x01
+     1ae:	81 e0       	ldi	r24, 0x01	; 1
+     1b0:	90 e0       	ldi	r25, 0x00	; 0
+     1b2:	02 c0       	rjmp	.+4      	; 0x1b8 <DIO_pinConfiguration+0x58>
+     1b4:	88 0f       	add	r24, r24
+     1b6:	99 1f       	adc	r25, r25
+     1b8:	6a 95       	dec	r22
+     1ba:	e2 f7       	brpl	.-8      	; 0x1b4 <DIO_pinConfiguration+0x54>
+     1bc:	98 2f       	mov	r25, r24
+     1be:	90 95       	com	r25
+     1c0:	92 23       	and	r25, r18
+     1c2:	91 83       	std	Z+1, r25	; 0x01
+		SET_Bit(pinC -> PORT, pin_num);
+     1c4:	92 81       	ldd	r25, Z+2	; 0x02
+     1c6:	98 2b       	or	r25, r24
+     1c8:	92 83       	std	Z+2, r25	; 0x02
+		break;
+     1ca:	08 95       	ret
+
+000001cc <DIO_pinWrite>:
+
+
+
+
+ void DIO_pinWrite(GPIO * pinC, pinNumber pin_num, DigitalValue state)
+ {
+     1cc:	fc 01       	movw	r30, r24
+	 switch(state)
+     1ce:	44 23       	and	r20, r20
+     1d0:	61 f4       	brne	.+24     	; 0x1ea <DIO_pinWrite+0x1e>
+		 /* The Pin Get Output High State */
+		 SET_Bit(pinC -> PORT, pin_num);
+		 break;
+		 case LOW:
+		 /* The Pin Get Output Low State */
+		 RESET_Bit(pinC -> PORT, pin_num);
+     1d2:	22 81       	ldd	r18, Z+2	; 0x02
+     1d4:	81 e0       	ldi	r24, 0x01	; 1
+     1d6:	90 e0       	ldi	r25, 0x00	; 0
+     1d8:	02 c0       	rjmp	.+4      	; 0x1de <DIO_pinWrite+0x12>
+     1da:	88 0f       	add	r24, r24
+     1dc:	99 1f       	adc	r25, r25
+     1de:	6a 95       	dec	r22
+     1e0:	e2 f7       	brpl	.-8      	; 0x1da <DIO_pinWrite+0xe>
+     1e2:	80 95       	com	r24
+     1e4:	82 23       	and	r24, r18
+     1e6:	82 83       	std	Z+2, r24	; 0x02
+     1e8:	08 95       	ret
+
+
+
+ void DIO_pinWrite(GPIO * pinC, pinNumber pin_num, DigitalValue state)
+ {
+	 switch(state)
+     1ea:	41 30       	cpi	r20, 0x01	; 1
+     1ec:	e9 f7       	brne	.-6      	; 0x1e8 <DIO_pinWrite+0x1c>
+	 {
+		 case HIGH:
+		 /* The Pin Get Output High State */
+		 SET_Bit(pinC -> PORT, pin_num);
+     1ee:	22 81       	ldd	r18, Z+2	; 0x02
+     1f0:	81 e0       	ldi	r24, 0x01	; 1
+     1f2:	90 e0       	ldi	r25, 0x00	; 0
+     1f4:	02 c0       	rjmp	.+4      	; 0x1fa <DIO_pinWrite+0x2e>
+     1f6:	88 0f       	add	r24, r24
+     1f8:	99 1f       	adc	r25, r25
+     1fa:	6a 95       	dec	r22
+     1fc:	e2 f7       	brpl	.-8      	; 0x1f6 <DIO_pinWrite+0x2a>
+     1fe:	28 2b       	or	r18, r24
+     200:	22 83       	std	Z+2, r18	; 0x02
+		 break;
+     202:	08 95       	ret
+
+00000204 <DIO_pinRead>:
+ 
+ 
+ DigitalValue DIO_pinRead(GPIO * pinC, pinNumber pin_num)
+ {
+	 /* This Function Return The Current State Of The Pin by Use The READ_Bit Definition In The Macro Header */
+	 return (READ_Bit(pinC -> PIN, pin_num));
+     204:	fc 01       	movw	r30, r24
+     206:	20 81       	ld	r18, Z
+     208:	81 e0       	ldi	r24, 0x01	; 1
+     20a:	90 e0       	ldi	r25, 0x00	; 0
+     20c:	06 2e       	mov	r0, r22
+     20e:	02 c0       	rjmp	.+4      	; 0x214 <DIO_pinRead+0x10>
+     210:	88 0f       	add	r24, r24
+     212:	99 1f       	adc	r25, r25
+     214:	0a 94       	dec	r0
+     216:	e2 f7       	brpl	.-8      	; 0x210 <DIO_pinRead+0xc>
+     218:	30 e0       	ldi	r19, 0x00	; 0
+     21a:	82 23       	and	r24, r18
+     21c:	93 23       	and	r25, r19
+     21e:	02 c0       	rjmp	.+4      	; 0x224 <DIO_pinRead+0x20>
+     220:	95 95       	asr	r25
+     222:	87 95       	ror	r24
+     224:	6a 95       	dec	r22
+     226:	e2 f7       	brpl	.-8      	; 0x220 <DIO_pinRead+0x1c>
+ }
+     228:	08 95       	ret
+
+0000022a <DIO_portConfiguration>:
+	  
+	  if (portValue <= MAX_uint8_VALUE && portValue >= MIN_uint8_VALUE)
+	  {
+		  /* The Value On The 8 bit DDR To Define Each Pin From The 8 Pins Of The Port As input Or Output */
+		  /* equal the port to the 0xFF to get the output */
+		  portC->DDR = portValue;
+     22a:	fc 01       	movw	r30, r24
+     22c:	61 83       	std	Z+1, r22	; 0x01
+	  }
+	  else
+	  {
+		  //DIO_ErrorIndication()
+	  }
+  } 
+     22e:	08 95       	ret
+
+00000230 <DIO_portWrite>:
+ {
+	  /* We Must Check That THe Value Of The configuration Of The Port Does Not exceed The 8 bit (0 <-> 255) */
+	 if (portValue <= MAX_uint8_VALUE && portValue >= MIN_uint8_VALUE)
+	 {
+		 /* Get Out The 8bit Value On The * Pins Of The Port */
+		 portC->PORT = portValue;
+     230:	fc 01       	movw	r30, r24
+     232:	62 83       	std	Z+2, r22	; 0x02
+	 }
+	 else if (portValue < MIN_uint8_VALUE)
+	 {
+		 portC->PORT = 0x00;
+	 }
+ }
+     234:	08 95       	ret
+
+00000236 <DIO_portRead>:
+ 
+ 
+ uint8 DIO_portRead(GPIO * portC)
+ {
+	 /* we And THe Value Of The Port With 1111 1111 And return the result To Get Port State */
+	 return (READ_Bit(portC->PORT,ANDINGV_to_readPORT));
+     236:	fc 01       	movw	r30, r24
+     238:	82 81       	ldd	r24, Z+2	; 0x02
+	 
+ }
+     23a:	80 e0       	ldi	r24, 0x00	; 0
+     23c:	08 95       	ret
+
+0000023e <__vector_1>:
+  
+  
+  
+
+  ISR (INT0_vect,ISR_NESTED_ENABLE)
+     {
+     23e:	1f 92       	push	r1
+     240:	0f 92       	push	r0
+     242:	0f b6       	in	r0, 0x3f	; 63
+     244:	0f 92       	push	r0
+     246:	11 24       	eor	r1, r1
+     248:	2f 93       	push	r18
+     24a:	3f 93       	push	r19
+     24c:	4f 93       	push	r20
+     24e:	5f 93       	push	r21
+     250:	6f 93       	push	r22
+     252:	7f 93       	push	r23
+     254:	8f 93       	push	r24
+     256:	9f 93       	push	r25
+     258:	af 93       	push	r26
+     25a:	bf 93       	push	r27
+     25c:	ef 93       	push	r30
+     25e:	ff 93       	push	r31
+		 if (EXTINT0_ISR != NULL)
+     260:	e0 91 08 01 	lds	r30, 0x0108
+     264:	f0 91 09 01 	lds	r31, 0x0109
+     268:	30 97       	sbiw	r30, 0x00	; 0
+     26a:	09 f0       	breq	.+2      	; 0x26e <__vector_1+0x30>
+		 {
+			 EXTINT0_ISR();
+     26c:	09 95       	icall
+		 }
+	 }
+     26e:	ff 91       	pop	r31
+     270:	ef 91       	pop	r30
+     272:	bf 91       	pop	r27
+     274:	af 91       	pop	r26
+     276:	9f 91       	pop	r25
+     278:	8f 91       	pop	r24
+     27a:	7f 91       	pop	r23
+     27c:	6f 91       	pop	r22
+     27e:	5f 91       	pop	r21
+     280:	4f 91       	pop	r20
+     282:	3f 91       	pop	r19
+     284:	2f 91       	pop	r18
+     286:	0f 90       	pop	r0
+     288:	0f be       	out	0x3f, r0	; 63
+     28a:	0f 90       	pop	r0
+     28c:	1f 90       	pop	r1
+     28e:	18 95       	reti
+
+00000290 <__vector_2>:
+	 
+	ISR (INT1_vect,ISR_NESTED_ENABLE)
+	{
+     290:	1f 92       	push	r1
+     292:	0f 92       	push	r0
+     294:	0f b6       	in	r0, 0x3f	; 63
+     296:	0f 92       	push	r0
+     298:	11 24       	eor	r1, r1
+     29a:	2f 93       	push	r18
+     29c:	3f 93       	push	r19
+     29e:	4f 93       	push	r20
+     2a0:	5f 93       	push	r21
+     2a2:	6f 93       	push	r22
+     2a4:	7f 93       	push	r23
+     2a6:	8f 93       	push	r24
+     2a8:	9f 93       	push	r25
+     2aa:	af 93       	push	r26
+     2ac:	bf 93       	push	r27
+     2ae:	ef 93       	push	r30
+     2b0:	ff 93       	push	r31
+		if (EXTINT1_ISR != NULL)
+     2b2:	e0 91 06 01 	lds	r30, 0x0106
+     2b6:	f0 91 07 01 	lds	r31, 0x0107
+     2ba:	30 97       	sbiw	r30, 0x00	; 0
+     2bc:	09 f0       	breq	.+2      	; 0x2c0 <__vector_2+0x30>
+		{
+			EXTINT1_ISR();
+     2be:	09 95       	icall
+		}
+	}
+     2c0:	ff 91       	pop	r31
+     2c2:	ef 91       	pop	r30
+     2c4:	bf 91       	pop	r27
+     2c6:	af 91       	pop	r26
+     2c8:	9f 91       	pop	r25
+     2ca:	8f 91       	pop	r24
+     2cc:	7f 91       	pop	r23
+     2ce:	6f 91       	pop	r22
+     2d0:	5f 91       	pop	r21
+     2d2:	4f 91       	pop	r20
+     2d4:	3f 91       	pop	r19
+     2d6:	2f 91       	pop	r18
+     2d8:	0f 90       	pop	r0
+     2da:	0f be       	out	0x3f, r0	; 63
+     2dc:	0f 90       	pop	r0
+     2de:	1f 90       	pop	r1
+     2e0:	18 95       	reti
+
+000002e2 <EXTINT_InterruptInit>:
+
+
+
+	void EXTINT_InterruptInit(EXInterrupt_Source source,ExInterrupt_Modes Mode)
+	{
+		switch (source)
+     2e2:	81 30       	cpi	r24, 0x01	; 1
+     2e4:	f9 f0       	breq	.+62     	; 0x324 <EXTINT_InterruptInit+0x42>
+     2e6:	81 30       	cpi	r24, 0x01	; 1
+     2e8:	78 f4       	brcc	.+30     	; 0x308 <EXTINT_InterruptInit+0x26>
+		{
+			case EXINT_INT0 :
+				 switch (Mode)
+     2ea:	61 30       	cpi	r22, 0x01	; 1
+     2ec:	a1 f1       	breq	.+104    	; 0x356 <EXTINT_InterruptInit+0x74>
+     2ee:	61 30       	cpi	r22, 0x01	; 1
+     2f0:	08 f0       	brcs	.+2      	; 0x2f4 <EXTINT_InterruptInit+0x12>
+     2f2:	43 c0       	rjmp	.+134    	; 0x37a <EXTINT_InterruptInit+0x98>
+				 {
+					 case EXINT_LowLevel :
+						  RESET_Bit(MCUCR,ISC00);
+     2f4:	85 b7       	in	r24, 0x35	; 53
+     2f6:	8e 7f       	andi	r24, 0xFE	; 254
+     2f8:	85 bf       	out	0x35, r24	; 53
+						  RESET_Bit(MCUCR,ISC01);
+     2fa:	85 b7       	in	r24, 0x35	; 53
+     2fc:	8d 7f       	andi	r24, 0xFD	; 253
+     2fe:	85 bf       	out	0x35, r24	; 53
+						  SET_Bit(MCUCR,ISC00);
+						  SET_Bit(MCUCR,ISC01);
+						  break;
+				  }
+				/* Enable THe InT 0 */
+				SET_Bit(GICR,INT0);	
+     300:	8b b7       	in	r24, 0x3b	; 59
+     302:	80 64       	ori	r24, 0x40	; 64
+     304:	8b bf       	out	0x3b, r24	; 59
+				break;
+     306:	08 95       	ret
+
+
+
+	void EXTINT_InterruptInit(EXInterrupt_Source source,ExInterrupt_Modes Mode)
+	{
+		switch (source)
+     308:	82 30       	cpi	r24, 0x02	; 2
+     30a:	09 f0       	breq	.+2      	; 0x30e <EXTINT_InterruptInit+0x2c>
+     30c:	08 95       	ret
+				 }
+				 /* Enable THe InT 0 */
+				 SET_Bit(GICR,INT1);
+				 break;
+		  case EXINT_INT2 :
+			   switch (Mode)
+     30e:	62 30       	cpi	r22, 0x02	; 2
+     310:	b9 f0       	breq	.+46     	; 0x340 <EXTINT_InterruptInit+0x5e>
+     312:	63 30       	cpi	r22, 0x03	; 3
+     314:	19 f4       	brne	.+6      	; 0x31c <EXTINT_InterruptInit+0x3a>
+			   {
+				   case EXINT_FallingEdge :
+						RESET_Bit(MCUCSR,ISC2);
+						break;
+				   case EXINT_RisingEdge :
+						SET_Bit(MCUCSR,ISC2);
+     316:	84 b7       	in	r24, 0x34	; 52
+     318:	80 64       	ori	r24, 0x40	; 64
+     31a:	84 bf       	out	0x34, r24	; 52
+				  case EXINT_LowLevel :
+				  case EXINT_Toggle :
+				  break;
+			   }
+			   /* Enable THe InT 0 */
+			   SET_Bit(GICR,INT2);
+     31c:	8b b7       	in	r24, 0x3b	; 59
+     31e:	80 62       	ori	r24, 0x20	; 32
+     320:	8b bf       	out	0x3b, r24	; 59
+     322:	08 95       	ret
+				  }
+				/* Enable THe InT 0 */
+				SET_Bit(GICR,INT0);	
+				break;
+		  case EXINT_INT1 :
+				 switch (Mode)
+     324:	61 30       	cpi	r22, 0x01	; 1
+     326:	81 f0       	breq	.+32     	; 0x348 <EXTINT_InterruptInit+0x66>
+     328:	61 30       	cpi	r22, 0x01	; 1
+     32a:	e0 f4       	brcc	.+56     	; 0x364 <EXTINT_InterruptInit+0x82>
+				 {
+					 case EXINT_LowLevel :
+						  RESET_Bit(MCUCR,ISC10);
+     32c:	85 b7       	in	r24, 0x35	; 53
+     32e:	8b 7f       	andi	r24, 0xFB	; 251
+     330:	85 bf       	out	0x35, r24	; 53
+						  RESET_Bit(MCUCR,ISC11);
+     332:	85 b7       	in	r24, 0x35	; 53
+     334:	87 7f       	andi	r24, 0xF7	; 247
+     336:	85 bf       	out	0x35, r24	; 53
+						  SET_Bit(MCUCR,ISC11);
+						  SET_Bit(MCUCR,ISC10);
+					break;
+				 }
+				 /* Enable THe InT 0 */
+				 SET_Bit(GICR,INT1);
+     338:	8b b7       	in	r24, 0x3b	; 59
+     33a:	80 68       	ori	r24, 0x80	; 128
+     33c:	8b bf       	out	0x3b, r24	; 59
+				 break;
+     33e:	08 95       	ret
+		  case EXINT_INT2 :
+			   switch (Mode)
+			   {
+				   case EXINT_FallingEdge :
+						RESET_Bit(MCUCSR,ISC2);
+     340:	84 b7       	in	r24, 0x34	; 52
+     342:	8f 7b       	andi	r24, 0xBF	; 191
+     344:	84 bf       	out	0x34, r24	; 52
+						break;
+     346:	ea cf       	rjmp	.-44     	; 0x31c <EXTINT_InterruptInit+0x3a>
+					 case EXINT_LowLevel :
+						  RESET_Bit(MCUCR,ISC10);
+						  RESET_Bit(MCUCR,ISC11);
+						  break;
+					 case EXINT_Toggle :
+						  SET_Bit(MCUCR,ISC11);
+     348:	85 b7       	in	r24, 0x35	; 53
+     34a:	88 60       	ori	r24, 0x08	; 8
+     34c:	85 bf       	out	0x35, r24	; 53
+						  RESET_Bit(MCUCR,ISC10);
+     34e:	85 b7       	in	r24, 0x35	; 53
+     350:	8b 7f       	andi	r24, 0xFB	; 251
+     352:	85 bf       	out	0x35, r24	; 53
+						  break;
+     354:	f1 cf       	rjmp	.-30     	; 0x338 <EXTINT_InterruptInit+0x56>
+					 case EXINT_LowLevel :
+						  RESET_Bit(MCUCR,ISC00);
+						  RESET_Bit(MCUCR,ISC01);
+						  break;
+					 case EXINT_Toggle :
+						  SET_Bit(MCUCR,ISC00);
+     356:	85 b7       	in	r24, 0x35	; 53
+     358:	81 60       	ori	r24, 0x01	; 1
+     35a:	85 bf       	out	0x35, r24	; 53
+						  RESET_Bit(MCUCR,ISC01);
+     35c:	85 b7       	in	r24, 0x35	; 53
+     35e:	8d 7f       	andi	r24, 0xFD	; 253
+     360:	85 bf       	out	0x35, r24	; 53
+						  break;
+     362:	ce cf       	rjmp	.-100    	; 0x300 <EXTINT_InterruptInit+0x1e>
+				  }
+				/* Enable THe InT 0 */
+				SET_Bit(GICR,INT0);	
+				break;
+		  case EXINT_INT1 :
+				 switch (Mode)
+     364:	62 30       	cpi	r22, 0x02	; 2
+     366:	e1 f0       	breq	.+56     	; 0x3a0 <EXTINT_InterruptInit+0xbe>
+     368:	63 30       	cpi	r22, 0x03	; 3
+     36a:	31 f7       	brne	.-52     	; 0x338 <EXTINT_InterruptInit+0x56>
+					 case EXINT_FallingEdge :
+						  RESET_Bit(MCUCR,ISC11);
+						  SET_Bit(MCUCR,ISC10);
+						  break;
+					 case EXINT_RisingEdge :
+						  SET_Bit(MCUCR,ISC11);
+     36c:	85 b7       	in	r24, 0x35	; 53
+     36e:	88 60       	ori	r24, 0x08	; 8
+     370:	85 bf       	out	0x35, r24	; 53
+						  SET_Bit(MCUCR,ISC10);
+     372:	85 b7       	in	r24, 0x35	; 53
+     374:	84 60       	ori	r24, 0x04	; 4
+     376:	85 bf       	out	0x35, r24	; 53
+					break;
+     378:	df cf       	rjmp	.-66     	; 0x338 <EXTINT_InterruptInit+0x56>
+	void EXTINT_InterruptInit(EXInterrupt_Source source,ExInterrupt_Modes Mode)
+	{
+		switch (source)
+		{
+			case EXINT_INT0 :
+				 switch (Mode)
+     37a:	62 30       	cpi	r22, 0x02	; 2
+     37c:	51 f0       	breq	.+20     	; 0x392 <EXTINT_InterruptInit+0xb0>
+     37e:	63 30       	cpi	r22, 0x03	; 3
+     380:	09 f0       	breq	.+2      	; 0x384 <EXTINT_InterruptInit+0xa2>
+     382:	be cf       	rjmp	.-132    	; 0x300 <EXTINT_InterruptInit+0x1e>
+					 case EXINT_FallingEdge :
+						  RESET_Bit(MCUCR,ISC00);
+						  SET_Bit(MCUCR,ISC01);
+						  break;
+					 case EXINT_RisingEdge :
+						  SET_Bit(MCUCR,ISC00);
+     384:	85 b7       	in	r24, 0x35	; 53
+     386:	81 60       	ori	r24, 0x01	; 1
+     388:	85 bf       	out	0x35, r24	; 53
+						  SET_Bit(MCUCR,ISC01);
+     38a:	85 b7       	in	r24, 0x35	; 53
+     38c:	82 60       	ori	r24, 0x02	; 2
+     38e:	85 bf       	out	0x35, r24	; 53
+						  break;
+     390:	b7 cf       	rjmp	.-146    	; 0x300 <EXTINT_InterruptInit+0x1e>
+					 case EXINT_Toggle :
+						  SET_Bit(MCUCR,ISC00);
+						  RESET_Bit(MCUCR,ISC01);
+						  break;
+					 case EXINT_FallingEdge :
+						  RESET_Bit(MCUCR,ISC00);
+     392:	85 b7       	in	r24, 0x35	; 53
+     394:	8e 7f       	andi	r24, 0xFE	; 254
+     396:	85 bf       	out	0x35, r24	; 53
+						  SET_Bit(MCUCR,ISC01);
+     398:	85 b7       	in	r24, 0x35	; 53
+     39a:	82 60       	ori	r24, 0x02	; 2
+     39c:	85 bf       	out	0x35, r24	; 53
+						  break;
+     39e:	b0 cf       	rjmp	.-160    	; 0x300 <EXTINT_InterruptInit+0x1e>
+					 case EXINT_Toggle :
+						  SET_Bit(MCUCR,ISC11);
+						  RESET_Bit(MCUCR,ISC10);
+						  break;
+					 case EXINT_FallingEdge :
+						  RESET_Bit(MCUCR,ISC11);
+     3a0:	85 b7       	in	r24, 0x35	; 53
+     3a2:	87 7f       	andi	r24, 0xF7	; 247
+     3a4:	85 bf       	out	0x35, r24	; 53
+						  SET_Bit(MCUCR,ISC10);
+     3a6:	85 b7       	in	r24, 0x35	; 53
+     3a8:	84 60       	ori	r24, 0x04	; 4
+     3aa:	85 bf       	out	0x35, r24	; 53
+						  break;
+     3ac:	c5 cf       	rjmp	.-118    	; 0x338 <EXTINT_InterruptInit+0x56>
+
+000003ae <TIMER_INTIATE>:
+		/* make temporary Register To Hold The Initiate Value */
+		unsigned char TCCR_Temp = 0x00;
+		unsigned char TIMASK_Temp = 0x00;
+		
+		/* Set up the Timer The User Select */
+		switch(T.timer_Number)
+     3ae:	66 23       	and	r22, r22
+     3b0:	e9 f4       	brne	.+58     	; 0x3ec <TIMER_INTIATE+0x3e>
+     3b2:	71 50       	subi	r23, 0x01	; 1
+     3b4:	74 30       	cpi	r23, 0x04	; 4
+     3b6:	80 f1       	brcs	.+96     	; 0x418 <TIMER_INTIATE+0x6a>
+     3b8:	20 e0       	ldi	r18, 0x00	; 0
+					default:
+					break;
+				}
+		
+				/* Set Up The Timer Clock Frequency By The Bit CS00, CS01 , CS02 In The TCCR */
+				switch(T.timer_CLK)
+     3ba:	87 30       	cpi	r24, 0x07	; 7
+     3bc:	09 f4       	brne	.+2      	; 0x3c0 <TIMER_INTIATE+0x12>
+     3be:	7d c0       	rjmp	.+250    	; 0x4ba <TIMER_INTIATE+0x10c>
+     3c0:	88 30       	cpi	r24, 0x08	; 8
+     3c2:	08 f0       	brcs	.+2      	; 0x3c6 <TIMER_INTIATE+0x18>
+     3c4:	4d c0       	rjmp	.+154    	; 0x460 <TIMER_INTIATE+0xb2>
+     3c6:	83 30       	cpi	r24, 0x03	; 3
+     3c8:	09 f4       	brne	.+2      	; 0x3cc <TIMER_INTIATE+0x1e>
+     3ca:	71 c0       	rjmp	.+226    	; 0x4ae <TIMER_INTIATE+0x100>
+     3cc:	84 30       	cpi	r24, 0x04	; 4
+     3ce:	09 f4       	brne	.+2      	; 0x3d2 <TIMER_INTIATE+0x24>
+     3d0:	6b c0       	rjmp	.+214    	; 0x4a8 <TIMER_INTIATE+0xfa>
+     3d2:	81 30       	cpi	r24, 0x01	; 1
+     3d4:	09 f4       	brne	.+2      	; 0x3d8 <TIMER_INTIATE+0x2a>
+     3d6:	60 c0       	rjmp	.+192    	; 0x498 <TIMER_INTIATE+0xea>
+				   default:
+				   break;
+				}
+		
+				/* Set Up The Interrupt Source By Set The Bit referee To The That Source InThe TIMASK */
+				switch(T.TimerINT_Source)
+     3d8:	91 30       	cpi	r25, 0x01	; 1
+     3da:	09 f4       	brne	.+2      	; 0x3de <TIMER_INTIATE+0x30>
+     3dc:	4a c0       	rjmp	.+148    	; 0x472 <TIMER_INTIATE+0xc4>
+     3de:	92 30       	cpi	r25, 0x02	; 2
+     3e0:	39 f1       	breq	.+78     	; 0x430 <TIMER_INTIATE+0x82>
+					break;
+					default:
+					break;
+			
+				}
+				TCCR0 = TCCR_Temp;
+     3e2:	23 bf       	out	0x33, r18	; 51
+			 break;
+		}
+			
+		
+		/* Set The I Bit In The Statues Register To Enable The General Interrupt */
+		SET_Bit(SREG, 7);
+     3e4:	8f b7       	in	r24, 0x3f	; 63
+     3e6:	80 68       	ori	r24, 0x80	; 128
+     3e8:	8f bf       	out	0x3f, r24	; 63
+	}					 
+     3ea:	08 95       	ret
+		/* make temporary Register To Hold The Initiate Value */
+		unsigned char TCCR_Temp = 0x00;
+		unsigned char TIMASK_Temp = 0x00;
+		
+		/* Set up the Timer The User Select */
+		switch(T.timer_Number)
+     3ec:	61 30       	cpi	r22, 0x01	; 1
+     3ee:	d1 f7       	brne	.-12     	; 0x3e4 <TIMER_INTIATE+0x36>
+					default:
+					break;
+			
+				}
+				TCCR0 = TCCR_Temp;
+		break;
+     3f0:	71 50       	subi	r23, 0x01	; 1
+     3f2:	74 30       	cpi	r23, 0x04	; 4
+     3f4:	b8 f0       	brcs	.+46     	; 0x424 <TIMER_INTIATE+0x76>
+     3f6:	20 e0       	ldi	r18, 0x00	; 0
+			     default:
+			     break;
+		     }
+		     
+		     /* Set Up The Timer Clock Frequency By The Bit CS20, CS21 , CS22 In The TCCR2 */
+		     switch(T.timer_CLK)
+     3f8:	84 30       	cpi	r24, 0x04	; 4
+     3fa:	09 f4       	brne	.+2      	; 0x3fe <TIMER_INTIATE+0x50>
+     3fc:	64 c0       	rjmp	.+200    	; 0x4c6 <TIMER_INTIATE+0x118>
+     3fe:	85 30       	cpi	r24, 0x05	; 5
+     400:	e0 f4       	brcc	.+56     	; 0x43a <TIMER_INTIATE+0x8c>
+     402:	82 30       	cpi	r24, 0x02	; 2
+     404:	09 f4       	brne	.+2      	; 0x408 <TIMER_INTIATE+0x5a>
+     406:	65 c0       	rjmp	.+202    	; 0x4d2 <TIMER_INTIATE+0x124>
+     408:	83 30       	cpi	r24, 0x03	; 3
+     40a:	08 f0       	brcs	.+2      	; 0x40e <TIMER_INTIATE+0x60>
+     40c:	42 c0       	rjmp	.+132    	; 0x492 <TIMER_INTIATE+0xe4>
+     40e:	81 30       	cpi	r24, 0x01	; 1
+     410:	f1 f4       	brne	.+60     	; 0x44e <TIMER_INTIATE+0xa0>
+		     {
+			     case Timer_NoCLK_Source:
+			     /* It SI The Default State At All Bit Equal 0 */
+			     break;
+			     case Timer_Fcpu:
+			     SET_Bit(TCCR_Temp,CS20);
+     412:	21 60       	ori	r18, 0x01	; 1
+			     RESET_Bit(TCCR_Temp,CS21);
+			     RESET_Bit(TCCR_Temp,CS22);
+     414:	29 7f       	andi	r18, 0xF9	; 249
+			     break;
+     416:	1b c0       	rjmp	.+54     	; 0x44e <TIMER_INTIATE+0xa0>
+		/* make temporary Register To Hold The Initiate Value */
+		unsigned char TCCR_Temp = 0x00;
+		unsigned char TIMASK_Temp = 0x00;
+		
+		/* Set up the Timer The User Select */
+		switch(T.timer_Number)
+     418:	e7 2f       	mov	r30, r23
+     41a:	f0 e0       	ldi	r31, 0x00	; 0
+     41c:	e3 59       	subi	r30, 0x93	; 147
+     41e:	ff 4f       	sbci	r31, 0xFF	; 255
+     420:	20 81       	ld	r18, Z
+     422:	cb cf       	rjmp	.-106    	; 0x3ba <TIMER_INTIATE+0xc>
+					default:
+					break;
+			
+				}
+				TCCR0 = TCCR_Temp;
+		break;
+     424:	e7 2f       	mov	r30, r23
+     426:	f0 e0       	ldi	r31, 0x00	; 0
+     428:	ef 58       	subi	r30, 0x8F	; 143
+     42a:	ff 4f       	sbci	r31, 0xFF	; 255
+     42c:	20 81       	ld	r18, Z
+     42e:	e4 cf       	rjmp	.-56     	; 0x3f8 <TIMER_INTIATE+0x4a>
+						 /* This Interrupt happened when the TCNT reach its Max then return to zero again */ 
+						 SET_Bit(TIMSK,TOIE0);
+					break;
+					case Timer_TopCTC_Interrupt:
+						 /* This Interrupt happened When The TCNT Reach The Value Equal The Value OnThe OCR and Return To Zero */
+						 SET_Bit(TIMSK,OCIE0);
+     430:	89 b7       	in	r24, 0x39	; 57
+     432:	82 60       	ori	r24, 0x02	; 2
+     434:	89 bf       	out	0x39, r24	; 57
+					break;
+					default:
+					break;
+			
+				}
+				TCCR0 = TCCR_Temp;
+     436:	23 bf       	out	0x33, r18	; 51
+     438:	d5 cf       	rjmp	.-86     	; 0x3e4 <TIMER_INTIATE+0x36>
+			     default:
+			     break;
+		     }
+		     
+		     /* Set Up The Timer Clock Frequency By The Bit CS20, CS21 , CS22 In The TCCR2 */
+		     switch(T.timer_CLK)
+     43a:	86 30       	cpi	r24, 0x06	; 6
+     43c:	09 f4       	brne	.+2      	; 0x440 <TIMER_INTIATE+0x92>
+     43e:	46 c0       	rjmp	.+140    	; 0x4cc <TIMER_INTIATE+0x11e>
+     440:	86 30       	cpi	r24, 0x06	; 6
+     442:	20 f1       	brcs	.+72     	; 0x48c <TIMER_INTIATE+0xde>
+     444:	87 30       	cpi	r24, 0x07	; 7
+     446:	e1 f1       	breq	.+120    	; 0x4c0 <TIMER_INTIATE+0x112>
+     448:	88 30       	cpi	r24, 0x08	; 8
+     44a:	09 f4       	brne	.+2      	; 0x44e <TIMER_INTIATE+0xa0>
+			     SET_Bit(TCCR_Temp,CS22);
+			     break;
+			     case Timer_Fcpu_Div1024:
+			     SET_Bit(TCCR_Temp,CS20);
+			     SET_Bit(TCCR_Temp,CS21);
+			     SET_Bit(TCCR_Temp,CS22);
+     44c:	27 60       	ori	r18, 0x07	; 7
+				 /* If The User Select Else This Cases Handle An Error Massage */
+			     break;
+		     }
+		     
+		     /* Set Up The Interrupt Source By Set The Bit referee To The That Source InThe TIMASK */
+		     switch(T.TimerINT_Source)
+     44e:	91 30       	cpi	r25, 0x01	; 1
+     450:	31 f1       	breq	.+76     	; 0x49e <TIMER_INTIATE+0xf0>
+     452:	92 30       	cpi	r25, 0x02	; 2
+     454:	99 f0       	breq	.+38     	; 0x47c <TIMER_INTIATE+0xce>
+			     break;
+			     default:
+			     break;
+			     
+		     }
+			 TCCR2 = TCCR_Temp;
+     456:	25 bd       	out	0x25, r18	; 37
+			 break;
+		}
+			
+		
+		/* Set The I Bit In The Statues Register To Enable The General Interrupt */
+		SET_Bit(SREG, 7);
+     458:	8f b7       	in	r24, 0x3f	; 63
+     45a:	80 68       	ori	r24, 0x80	; 128
+     45c:	8f bf       	out	0x3f, r24	; 63
+	}					 
+     45e:	08 95       	ret
+					default:
+					break;
+				}
+		
+				/* Set Up The Timer Clock Frequency By The Bit CS00, CS01 , CS02 In The TCCR */
+				switch(T.timer_CLK)
+     460:	89 30       	cpi	r24, 0x09	; 9
+     462:	41 f1       	breq	.+80     	; 0x4b4 <TIMER_INTIATE+0x106>
+     464:	89 30       	cpi	r24, 0x09	; 9
+     466:	78 f0       	brcs	.+30     	; 0x486 <TIMER_INTIATE+0xd8>
+     468:	8a 30       	cpi	r24, 0x0A	; 10
+     46a:	09 f0       	breq	.+2      	; 0x46e <TIMER_INTIATE+0xc0>
+     46c:	b5 cf       	rjmp	.-150    	; 0x3d8 <TIMER_INTIATE+0x2a>
+						 SET_Bit(TCCR_Temp,CS02);
+					break;
+					case Timer_RisingEdge:
+						 SET_Bit(TCCR_Temp,CS00);
+						 SET_Bit(TCCR_Temp,CS01);
+						 SET_Bit(TCCR_Temp,CS02);
+     46e:	27 60       	ori	r18, 0x07	; 7
+				   break;
+     470:	b3 cf       	rjmp	.-154    	; 0x3d8 <TIMER_INTIATE+0x2a>
+				/* Set Up The Interrupt Source By Set The Bit referee To The That Source InThe TIMASK */
+				switch(T.TimerINT_Source)
+				{
+					case Timer_Overflow_Interrupt:
+						 /* This Interrupt happened when the TCNT reach its Max then return to zero again */ 
+						 SET_Bit(TIMSK,TOIE0);
+     472:	89 b7       	in	r24, 0x39	; 57
+     474:	81 60       	ori	r24, 0x01	; 1
+     476:	89 bf       	out	0x39, r24	; 57
+					break;
+					default:
+					break;
+			
+				}
+				TCCR0 = TCCR_Temp;
+     478:	23 bf       	out	0x33, r18	; 51
+     47a:	b4 cf       	rjmp	.-152    	; 0x3e4 <TIMER_INTIATE+0x36>
+			     /* This Interrupt happened when the TCNT reach its Max then return to zero again */
+			     SET_Bit(TIMSK,TOIE2);
+			     break;
+			     case Timer_TopCTC_Interrupt:
+			     /* This Interrupt happened When The TCNT Reach The Value Equal The Value OnThe OCR and Return To Zero */
+			     SET_Bit(TIMSK,OCIE2);
+     47c:	89 b7       	in	r24, 0x39	; 57
+     47e:	80 68       	ori	r24, 0x80	; 128
+     480:	89 bf       	out	0x39, r24	; 57
+			     break;
+			     default:
+			     break;
+			     
+		     }
+			 TCCR2 = TCCR_Temp;
+     482:	25 bd       	out	0x25, r18	; 37
+     484:	e9 cf       	rjmp	.-46     	; 0x458 <TIMER_INTIATE+0xaa>
+						 RESET_Bit(TCCR_Temp,CS01);
+						 SET_Bit(TCCR_Temp,CS02);
+					break;
+					case Timer_Fcpu_Div1024:
+						 SET_Bit(TCCR_Temp,CS00);
+						 RESET_Bit(TCCR_Temp,CS01);
+     486:	28 7f       	andi	r18, 0xF8	; 248
+						 SET_Bit(TCCR_Temp,CS02);
+     488:	25 60       	ori	r18, 0x05	; 5
+					break;
+     48a:	a6 cf       	rjmp	.-180    	; 0x3d8 <TIMER_INTIATE+0x2a>
+			     SET_Bit(TCCR_Temp,CS21);
+			     RESET_Bit(TCCR_Temp,CS22);
+			     break;
+			     case Timer_Fcpu_Div32:
+			     SET_Bit(TCCR_Temp,CS20);
+			     SET_Bit(TCCR_Temp,CS21);
+     48c:	23 60       	ori	r18, 0x03	; 3
+			     RESET_Bit(TCCR_Temp,CS22);
+     48e:	2b 7f       	andi	r18, 0xFB	; 251
+			     break;
+     490:	de cf       	rjmp	.-68     	; 0x44e <TIMER_INTIATE+0xa0>
+					  RESET_Bit(TCCR_Temp,CS21);
+					  SET_Bit(TCCR_Temp,CS22);
+				 break;
+			     case Timer_Fcpu_Div8:
+			     RESET_Bit(TCCR_Temp,CS20);
+			     SET_Bit(TCCR_Temp,CS21);
+     492:	28 7f       	andi	r18, 0xF8	; 248
+			     RESET_Bit(TCCR_Temp,CS22);
+     494:	22 60       	ori	r18, 0x02	; 2
+			     break;
+     496:	db cf       	rjmp	.-74     	; 0x44e <TIMER_INTIATE+0xa0>
+					case Timer_NoCLK_Source:
+						/* It SI The Default State At All Bit Equal 0 */
+						/* In This Case The Timer Gets Its Clock From External Device */
+					break;
+					case Timer_Fcpu:
+						 SET_Bit(TCCR_Temp,CS00);
+     498:	21 60       	ori	r18, 0x01	; 1
+						 RESET_Bit(TCCR_Temp,CS01);
+						 RESET_Bit(TCCR_Temp,CS02);
+     49a:	29 7f       	andi	r18, 0xF9	; 249
+					break;
+     49c:	9d cf       	rjmp	.-198    	; 0x3d8 <TIMER_INTIATE+0x2a>
+		     /* Set Up The Interrupt Source By Set The Bit referee To The That Source InThe TIMASK */
+		     switch(T.TimerINT_Source)
+		     {
+			     case Timer_Overflow_Interrupt:
+			     /* This Interrupt happened when the TCNT reach its Max then return to zero again */
+			     SET_Bit(TIMSK,TOIE2);
+     49e:	89 b7       	in	r24, 0x39	; 57
+     4a0:	80 64       	ori	r24, 0x40	; 64
+     4a2:	89 bf       	out	0x39, r24	; 57
+			     break;
+			     default:
+			     break;
+			     
+		     }
+			 TCCR2 = TCCR_Temp;
+     4a4:	25 bd       	out	0x25, r18	; 37
+     4a6:	d8 cf       	rjmp	.-80     	; 0x458 <TIMER_INTIATE+0xaa>
+						 SET_Bit(TCCR_Temp,CS01);
+						 RESET_Bit(TCCR_Temp,CS02);
+					break;
+					case Timer_Fcpu_Div64:
+						 SET_Bit(TCCR_Temp,CS00);
+						 SET_Bit(TCCR_Temp,CS01);
+     4a8:	23 60       	ori	r18, 0x03	; 3
+						 RESET_Bit(TCCR_Temp,CS02);
+     4aa:	2b 7f       	andi	r18, 0xFB	; 251
+					break;
+     4ac:	95 cf       	rjmp	.-214    	; 0x3d8 <TIMER_INTIATE+0x2a>
+						 RESET_Bit(TCCR_Temp,CS01);
+						 RESET_Bit(TCCR_Temp,CS02);
+					break;
+					case Timer_Fcpu_Div8:
+						 RESET_Bit(TCCR_Temp,CS00);
+						 SET_Bit(TCCR_Temp,CS01);
+     4ae:	28 7f       	andi	r18, 0xF8	; 248
+						 RESET_Bit(TCCR_Temp,CS02);
+     4b0:	22 60       	ori	r18, 0x02	; 2
+					break;
+     4b2:	92 cf       	rjmp	.-220    	; 0x3d8 <TIMER_INTIATE+0x2a>
+						 SET_Bit(TCCR_Temp,CS00);
+						 RESET_Bit(TCCR_Temp,CS01);
+						 SET_Bit(TCCR_Temp,CS02);
+					break;
+					case Timer_FallingEdge:
+						 RESET_Bit(TCCR_Temp,CS00);
+     4b4:	2e 7f       	andi	r18, 0xFE	; 254
+						 SET_Bit(TCCR_Temp,CS01);
+						 SET_Bit(TCCR_Temp,CS02);
+     4b6:	26 60       	ori	r18, 0x06	; 6
+					break;
+     4b8:	8f cf       	rjmp	.-226    	; 0x3d8 <TIMER_INTIATE+0x2a>
+						 SET_Bit(TCCR_Temp,CS01);
+						 RESET_Bit(TCCR_Temp,CS02);
+					break;
+					case Timer_Fcpu_Div256:
+						 RESET_Bit(TCCR_Temp,CS00);
+						 RESET_Bit(TCCR_Temp,CS01);
+     4ba:	2c 7f       	andi	r18, 0xFC	; 252
+						 SET_Bit(TCCR_Temp,CS02);
+     4bc:	24 60       	ori	r18, 0x04	; 4
+					break;
+     4be:	8c cf       	rjmp	.-232    	; 0x3d8 <TIMER_INTIATE+0x2a>
+			     SET_Bit(TCCR_Temp,CS20);
+			     RESET_Bit(TCCR_Temp,CS21);
+			     SET_Bit(TCCR_Temp,CS22);
+			     break;
+			     case Timer_Fcpu_Div256:
+			     RESET_Bit(TCCR_Temp,CS20);
+     4c0:	2e 7f       	andi	r18, 0xFE	; 254
+			     SET_Bit(TCCR_Temp,CS21);
+			     SET_Bit(TCCR_Temp,CS22);
+     4c2:	26 60       	ori	r18, 0x06	; 6
+			     break;
+     4c4:	c4 cf       	rjmp	.-120    	; 0x44e <TIMER_INTIATE+0xa0>
+			     SET_Bit(TCCR_Temp,CS21);
+			     RESET_Bit(TCCR_Temp,CS22);
+			     break;
+			     case Timer_Fcpu_Div64:
+			     RESET_Bit(TCCR_Temp,CS20);
+			     RESET_Bit(TCCR_Temp,CS21);
+     4c6:	2c 7f       	andi	r18, 0xFC	; 252
+			     SET_Bit(TCCR_Temp,CS22);
+     4c8:	24 60       	ori	r18, 0x04	; 4
+			     break;
+     4ca:	c1 cf       	rjmp	.-126    	; 0x44e <TIMER_INTIATE+0xa0>
+			     case Timer_Fcpu_Div128:
+			     SET_Bit(TCCR_Temp,CS20);
+			     RESET_Bit(TCCR_Temp,CS21);
+     4cc:	28 7f       	andi	r18, 0xF8	; 248
+			     SET_Bit(TCCR_Temp,CS22);
+     4ce:	25 60       	ori	r18, 0x05	; 5
+			     break;
+     4d0:	be cf       	rjmp	.-132    	; 0x44e <TIMER_INTIATE+0xa0>
+				 case Timer2_OneSec_CLK:
+				      /* In This Case To Get The Clock Exactly At One Sec We Used An External Clock With Value 32768Hz At Timer 2 Only Connect To the Pin 6 & 7 at Port C 
+					   * Set the Pin AS2 At The Register ASSR To Make The Clock Source From The External Crystal 
+					   *  Prescaler Value Will Used is 128 So 
+					   */
+					  ASSR = 0x08;
+     4d2:	88 e0       	ldi	r24, 0x08	; 8
+     4d4:	82 bd       	out	0x22, r24	; 34
+					  SET_Bit(TCCR_Temp,CS20);
+					  RESET_Bit(TCCR_Temp,CS21);
+     4d6:	28 7f       	andi	r18, 0xF8	; 248
+					  SET_Bit(TCCR_Temp,CS22);
+     4d8:	25 60       	ori	r18, 0x05	; 5
+				 break;
+     4da:	b9 cf       	rjmp	.-142    	; 0x44e <TIMER_INTIATE+0xa0>
+
+000004dc <TIMER_DELAY>:
+
+	
+		
+    void TIMER_DELAY(TIMER_DATATYPE t, unsigned char Top_Value)
+	{
+		switch(t.timer_Number)
+     4dc:	66 23       	and	r22, r22
+     4de:	11 f4       	brne	.+4      	; 0x4e4 <TIMER_DELAY+0x8>
+		{
+			case Timer0: 
+			     OCR0 = Top_Value;
+     4e0:	4c bf       	out	0x3c, r20	; 60
+			break;
+     4e2:	08 95       	ret
+
+	
+		
+    void TIMER_DELAY(TIMER_DATATYPE t, unsigned char Top_Value)
+	{
+		switch(t.timer_Number)
+     4e4:	61 30       	cpi	r22, 0x01	; 1
+     4e6:	09 f0       	breq	.+2      	; 0x4ea <TIMER_DELAY+0xe>
+     4e8:	08 95       	ret
+		{
+			case Timer0: 
+			     OCR0 = Top_Value;
+			break;
+			case Timer2:
+			     OCR2 = Top_Value;
+     4ea:	43 bd       	out	0x23, r20	; 35
+     4ec:	08 95       	ret
+
+000004ee <TIMER_WAVEGEN_NPWM>:
+		}
+	}
+	
+	
+	void TIMER_WAVEGEN_NPWM(TIMER_DATATYPE t, Wave_Gen_OP wave, unsigned char Top_Value)
+	{
+     4ee:	cf 93       	push	r28
+     4f0:	c4 2f       	mov	r28, r20
+		switch (t.timer_Number)
+     4f2:	66 23       	and	r22, r22
+     4f4:	79 f4       	brne	.+30     	; 0x514 <TIMER_WAVEGEN_NPWM+0x26>
+		{
+			case Timer0 :
+				/* Set The Value Of OCR0 That will Wave Change after it */
+				OCR0 = Top_Value;
+     4f6:	2c bf       	out	0x3c, r18	; 60
+				/* at the first we set up the pin of the wave output in the Mc as output state */
+				DIO_pinConfiguration(GPIOB,PIN3, Output);
+     4f8:	86 e3       	ldi	r24, 0x36	; 54
+     4fa:	90 e0       	ldi	r25, 0x00	; 0
+     4fc:	63 e0       	ldi	r22, 0x03	; 3
+     4fe:	42 e0       	ldi	r20, 0x02	; 2
+     500:	0e 94 b0 00 	call	0x160	; 0x160 <DIO_pinConfiguration>
+				/* Switch on the form we want the signal get out after each compare match */
+				switch(wave)
+     504:	c2 30       	cpi	r28, 0x02	; 2
+     506:	e1 f0       	breq	.+56     	; 0x540 <TIMER_WAVEGEN_NPWM+0x52>
+     508:	c3 30       	cpi	r28, 0x03	; 3
+     50a:	41 f1       	breq	.+80     	; 0x55c <TIMER_WAVEGEN_NPWM+0x6e>
+     50c:	c1 30       	cpi	r28, 0x01	; 1
+     50e:	69 f1       	breq	.+90     	; 0x56a <TIMER_WAVEGEN_NPWM+0x7c>
+			break;
+			default:
+			break;
+		}
+	
+	}	
+     510:	cf 91       	pop	r28
+     512:	08 95       	ret
+	}
+	
+	
+	void TIMER_WAVEGEN_NPWM(TIMER_DATATYPE t, Wave_Gen_OP wave, unsigned char Top_Value)
+	{
+		switch (t.timer_Number)
+     514:	61 30       	cpi	r22, 0x01	; 1
+     516:	e1 f7       	brne	.-8      	; 0x510 <TIMER_WAVEGEN_NPWM+0x22>
+					break;
+				}
+			break;
+			case Timer2: 
+				    /* Set The Value Of OCR2 That will Wave Change after it */
+					OCR2 = Top_Value;
+     518:	23 bd       	out	0x23, r18	; 35
+					/* at the first we set up the pin of the wave output in the Mc as output state OC2 pin */
+					DIO_pinConfiguration(GPIOD,PIN7, Output);
+     51a:	80 e3       	ldi	r24, 0x30	; 48
+     51c:	90 e0       	ldi	r25, 0x00	; 0
+     51e:	67 e0       	ldi	r22, 0x07	; 7
+     520:	42 e0       	ldi	r20, 0x02	; 2
+     522:	0e 94 b0 00 	call	0x160	; 0x160 <DIO_pinConfiguration>
+					/* Switch on the form we want the signal get out after each compare match */
+					switch(wave)
+     526:	c2 30       	cpi	r28, 0x02	; 2
+     528:	39 f1       	breq	.+78     	; 0x578 <TIMER_WAVEGEN_NPWM+0x8a>
+     52a:	c3 30       	cpi	r28, 0x03	; 3
+     52c:	81 f0       	breq	.+32     	; 0x54e <TIMER_WAVEGEN_NPWM+0x60>
+     52e:	c1 30       	cpi	r28, 0x01	; 1
+     530:	79 f7       	brne	.-34     	; 0x510 <TIMER_WAVEGEN_NPWM+0x22>
+					{
+						case NON:
+						/* This is The Normal State when the COM00 and COM01 is cleared */
+						break;
+						case Toggle_PB_InCM:
+							 RESET_Bit(TCCR2, COM21);
+     532:	85 b5       	in	r24, 0x25	; 37
+     534:	8f 7d       	andi	r24, 0xDF	; 223
+     536:	85 bd       	out	0x25, r24	; 37
+							 SET_Bit(TCCR2, COM20);
+     538:	85 b5       	in	r24, 0x25	; 37
+     53a:	80 61       	ori	r24, 0x10	; 16
+     53c:	85 bd       	out	0x25, r24	; 37
+						break;
+     53e:	e8 cf       	rjmp	.-48     	; 0x510 <TIMER_WAVEGEN_NPWM+0x22>
+					case Toggle_PB_InCM:
+						 RESET_Bit(TCCR0, COM01);
+						 SET_Bit(TCCR0, COM00);
+					break;
+					case Clear_PB_InCM:
+						 SET_Bit(TCCR0, COM01);
+     540:	83 b7       	in	r24, 0x33	; 51
+     542:	80 62       	ori	r24, 0x20	; 32
+     544:	83 bf       	out	0x33, r24	; 51
+						 RESET_Bit(TCCR0, COM00);
+     546:	83 b7       	in	r24, 0x33	; 51
+     548:	8f 7e       	andi	r24, 0xEF	; 239
+     54a:	83 bf       	out	0x33, r24	; 51
+					break;
+     54c:	e1 cf       	rjmp	.-62     	; 0x510 <TIMER_WAVEGEN_NPWM+0x22>
+						case Clear_PB_InCM:
+							 SET_Bit(TCCR2, COM21);
+							 RESET_Bit(TCCR2, COM20);
+						break;
+						case Set_PB_InCM:
+							SET_Bit(TCCR2, COM21);
+     54e:	85 b5       	in	r24, 0x25	; 37
+     550:	80 62       	ori	r24, 0x20	; 32
+     552:	85 bd       	out	0x25, r24	; 37
+							SET_Bit(TCCR2, COM20);
+     554:	85 b5       	in	r24, 0x25	; 37
+     556:	80 61       	ori	r24, 0x10	; 16
+     558:	85 bd       	out	0x25, r24	; 37
+							break;
+     55a:	da cf       	rjmp	.-76     	; 0x510 <TIMER_WAVEGEN_NPWM+0x22>
+					case Clear_PB_InCM:
+						 SET_Bit(TCCR0, COM01);
+						 RESET_Bit(TCCR0, COM00);
+					break;
+					case Set_PB_InCM:
+						SET_Bit(TCCR0, COM01);
+     55c:	83 b7       	in	r24, 0x33	; 51
+     55e:	80 62       	ori	r24, 0x20	; 32
+     560:	83 bf       	out	0x33, r24	; 51
+						SET_Bit(TCCR0, COM00);
+     562:	83 b7       	in	r24, 0x33	; 51
+     564:	80 61       	ori	r24, 0x10	; 16
+     566:	83 bf       	out	0x33, r24	; 51
+						break;
+     568:	d3 cf       	rjmp	.-90     	; 0x510 <TIMER_WAVEGEN_NPWM+0x22>
+				{
+					case NON:
+					/* This is The Normal State when the COM00 and COM01 is cleared */
+					break;
+					case Toggle_PB_InCM:
+						 RESET_Bit(TCCR0, COM01);
+     56a:	83 b7       	in	r24, 0x33	; 51
+     56c:	8f 7d       	andi	r24, 0xDF	; 223
+     56e:	83 bf       	out	0x33, r24	; 51
+						 SET_Bit(TCCR0, COM00);
+     570:	83 b7       	in	r24, 0x33	; 51
+     572:	80 61       	ori	r24, 0x10	; 16
+     574:	83 bf       	out	0x33, r24	; 51
+					break;
+     576:	cc cf       	rjmp	.-104    	; 0x510 <TIMER_WAVEGEN_NPWM+0x22>
+						case Toggle_PB_InCM:
+							 RESET_Bit(TCCR2, COM21);
+							 SET_Bit(TCCR2, COM20);
+						break;
+						case Clear_PB_InCM:
+							 SET_Bit(TCCR2, COM21);
+     578:	85 b5       	in	r24, 0x25	; 37
+     57a:	80 62       	ori	r24, 0x20	; 32
+     57c:	85 bd       	out	0x25, r24	; 37
+							 RESET_Bit(TCCR2, COM20);
+     57e:	85 b5       	in	r24, 0x25	; 37
+     580:	8f 7e       	andi	r24, 0xEF	; 239
+     582:	85 bd       	out	0x25, r24	; 37
+						break;
+     584:	c5 cf       	rjmp	.-118    	; 0x510 <TIMER_WAVEGEN_NPWM+0x22>
+
+00000586 <TIMER_WAVEGEN_FASTPWM>:
+			break;
+		}
+	
+	}	
+	void TIMER_WAVEGEN_FASTPWM(TIMER_DATATYPE t, Wave_Gen_OP wave, unsigned char Top_Value)
+	{
+     586:	cf 93       	push	r28
+     588:	c4 2f       	mov	r28, r20
+		switch(t.timer_Number)
+     58a:	66 23       	and	r22, r22
+     58c:	a9 f4       	brne	.+42     	; 0x5b8 <TIMER_WAVEGEN_FASTPWM+0x32>
+				  *
+				  * Note: That this value decide the value of the duty cycle (the ratio of ON time ) by Top_Value/ 256 
+				  * if the user choose the inverting mode this result become the OFF time ratio 
+				  * and if decide non inverting mode this ratio become the ON time ratio 
+				  */
+				OCR0 = Top_Value;
+     58e:	2c bf       	out	0x3c, r18	; 60
+		
+				/* at the first we set up the pin of the wave output in the Mc as output state */
+				DIO_pinConfiguration(GPIOB,PIN3, Output);
+     590:	86 e3       	ldi	r24, 0x36	; 54
+     592:	90 e0       	ldi	r25, 0x00	; 0
+     594:	63 e0       	ldi	r22, 0x03	; 3
+     596:	42 e0       	ldi	r20, 0x02	; 2
+     598:	0e 94 b0 00 	call	0x160	; 0x160 <DIO_pinConfiguration>
+		
+				/* Note 
+					* the case of COM00 , COM01 is decimal 1 is reserved ( Not use ) 
+					*/
+				switch(wave)
+     59c:	c4 30       	cpi	r28, 0x04	; 4
+     59e:	19 f1       	breq	.+70     	; 0x5e6 <TIMER_WAVEGEN_FASTPWM+0x60>
+     5a0:	c5 30       	cpi	r28, 0x05	; 5
+     5a2:	11 f0       	breq	.+4      	; 0x5a8 <TIMER_WAVEGEN_FASTPWM+0x22>
+     5a4:	cc 23       	and	r28, r28
+     5a6:	31 f4       	brne	.+12     	; 0x5b4 <TIMER_WAVEGEN_FASTPWM+0x2e>
+					case NON:
+							/* This IS the normal mode OC0 IS disconnected when the COM00 and COM01 is cleared  */
+				 
+					case NonInverting_FPWM:
+							/* This mode when the signal on the OC0 is cleared when happen Compare match with the value on OCR0 and Set when TCCR0  reach bottom (Overflow) */
+							RESET_Bit(TCCR0, COM00);
+     5a8:	83 b7       	in	r24, 0x33	; 51
+     5aa:	8f 7e       	andi	r24, 0xEF	; 239
+     5ac:	83 bf       	out	0x33, r24	; 51
+							SET_Bit(TCCR0, COM01);
+     5ae:	83 b7       	in	r24, 0x33	; 51
+     5b0:	80 62       	ori	r24, 0x20	; 32
+     5b2:	83 bf       	out	0x33, r24	; 51
+			default :
+			break;
+		}
+		
+		
+	}	
+     5b4:	cf 91       	pop	r28
+     5b6:	08 95       	ret
+		}
+	
+	}	
+	void TIMER_WAVEGEN_FASTPWM(TIMER_DATATYPE t, Wave_Gen_OP wave, unsigned char Top_Value)
+	{
+		switch(t.timer_Number)
+     5b8:	61 30       	cpi	r22, 0x01	; 1
+     5ba:	e1 f7       	brne	.-8      	; 0x5b4 <TIMER_WAVEGEN_FASTPWM+0x2e>
+				  *
+				  * Note: That this value decide the value of the duty cycle (the ratio of ON time ) by Top_Value/ 256 
+				  * if the user choose the inverting mode this result become the OFF time ratio 
+				  * and if decide non inverting mode this ratio become the ON time ratio 
+				  */
+				OCR2 = Top_Value;
+     5bc:	23 bd       	out	0x23, r18	; 35
+		
+				/* at the first we set up the pin of the wave output in the Mc as output state */
+				DIO_pinConfiguration(GPIOD,PIN7, Output);
+     5be:	80 e3       	ldi	r24, 0x30	; 48
+     5c0:	90 e0       	ldi	r25, 0x00	; 0
+     5c2:	67 e0       	ldi	r22, 0x07	; 7
+     5c4:	42 e0       	ldi	r20, 0x02	; 2
+     5c6:	0e 94 b0 00 	call	0x160	; 0x160 <DIO_pinConfiguration>
+		
+				/* Note 
+					* the case of COM20 , COM21 is decimal 1 is reserved ( Not use ) 
+					*/
+				switch(wave)
+     5ca:	c4 30       	cpi	r28, 0x04	; 4
+     5cc:	a1 f0       	breq	.+40     	; 0x5f6 <TIMER_WAVEGEN_FASTPWM+0x70>
+     5ce:	c5 30       	cpi	r28, 0x05	; 5
+     5d0:	11 f0       	breq	.+4      	; 0x5d6 <TIMER_WAVEGEN_FASTPWM+0x50>
+     5d2:	cc 23       	and	r28, r28
+     5d4:	79 f7       	brne	.-34     	; 0x5b4 <TIMER_WAVEGEN_FASTPWM+0x2e>
+					case NON:
+							/* This IS the normal mode OC0 IS disconnected when the COM00 and COM01 is cleared  */
+				 
+					case NonInverting_FPWM:
+							/* This mode when the signal on the OC0 is cleared when happen Compare match with the value on OCR0 and Set when TCCR0  reach bottom (Overflow) */
+							RESET_Bit(TCCR2, COM20);
+     5d6:	85 b5       	in	r24, 0x25	; 37
+     5d8:	8f 7e       	andi	r24, 0xEF	; 239
+     5da:	85 bd       	out	0x25, r24	; 37
+							SET_Bit(TCCR2, COM21);
+     5dc:	85 b5       	in	r24, 0x25	; 37
+     5de:	80 62       	ori	r24, 0x20	; 32
+     5e0:	85 bd       	out	0x25, r24	; 37
+			default :
+			break;
+		}
+		
+		
+	}	
+     5e2:	cf 91       	pop	r28
+     5e4:	08 95       	ret
+							RESET_Bit(TCCR0, COM00);
+							SET_Bit(TCCR0, COM01);
+					break;
+					case Inverting_FPWM:
+							/* This mode when the signal on the OC0 is set when happen Compare match with the value on OCR0 and Cleared when TCCR0  reach bottom (Overflow) */
+							SET_Bit(TCCR0, COM00);
+     5e6:	83 b7       	in	r24, 0x33	; 51
+     5e8:	80 61       	ori	r24, 0x10	; 16
+     5ea:	83 bf       	out	0x33, r24	; 51
+							SET_Bit(TCCR0, COM01);
+     5ec:	83 b7       	in	r24, 0x33	; 51
+     5ee:	80 62       	ori	r24, 0x20	; 32
+     5f0:	83 bf       	out	0x33, r24	; 51
+			default :
+			break;
+		}
+		
+		
+	}	
+     5f2:	cf 91       	pop	r28
+     5f4:	08 95       	ret
+							RESET_Bit(TCCR2, COM20);
+							SET_Bit(TCCR2, COM21);
+					break;
+					case Inverting_FPWM:
+							/* This mode when the signal on the OC0 is set when happen Compare match with the value on OCR0 and Cleared when TCCR0  reach bottom (Overflow) */
+							SET_Bit(TCCR2, COM20);
+     5f6:	85 b5       	in	r24, 0x25	; 37
+     5f8:	80 61       	ori	r24, 0x10	; 16
+     5fa:	85 bd       	out	0x25, r24	; 37
+							SET_Bit(TCCR2, COM21);
+     5fc:	85 b5       	in	r24, 0x25	; 37
+     5fe:	80 62       	ori	r24, 0x20	; 32
+     600:	85 bd       	out	0x25, r24	; 37
+			default :
+			break;
+		}
+		
+		
+	}	
+     602:	cf 91       	pop	r28
+     604:	08 95       	ret
+
+00000606 <TIMER_WAVEGEN_PHACECORRECTPWM>:
+	
+	
+	void TIMER_WAVEGEN_PHACECORRECTPWM(TIMER_DATATYPE t, Wave_Gen_OP wave, unsigned char Top_Value)
+	{
+     606:	cf 93       	push	r28
+     608:	c4 2f       	mov	r28, r20
+		switch(t.timer_Number)
+     60a:	66 23       	and	r22, r22
+     60c:	a9 f4       	brne	.+42     	; 0x638 <TIMER_WAVEGEN_PHACECORRECTPWM+0x32>
+				 *
+				 * Note: That this value decide the value of the duty cycle (the ratio of ON time ) by Top_Value/ 256 
+				 * if the user choose Set OC0 at up counting and Clear at down counting  mode this result become the OFF time ratio 
+				 * and if decide Clear OC0 at up counting and Set at down counting  mode this ratio become the ON time ratio 
+				 */
+				OCR0 = Top_Value;
+     60e:	2c bf       	out	0x3c, r18	; 60
+		
+				/* at the first we set up the pin of the wave output in the Mc as output state */
+				DIO_pinConfiguration(GPIOB,PIN3, Output);
+     610:	86 e3       	ldi	r24, 0x36	; 54
+     612:	90 e0       	ldi	r25, 0x00	; 0
+     614:	63 e0       	ldi	r22, 0x03	; 3
+     616:	42 e0       	ldi	r20, 0x02	; 2
+     618:	0e 94 b0 00 	call	0x160	; 0x160 <DIO_pinConfiguration>
+		
+				/* Note 
+				 * the case of COM00 , COM01 is decimal 1 is reserved ( Not use ) 
+				 */
+				switch(wave)
+     61c:	c6 30       	cpi	r28, 0x06	; 6
+     61e:	21 f0       	breq	.+8      	; 0x628 <TIMER_WAVEGEN_PHACECORRECTPWM+0x22>
+     620:	c7 30       	cpi	r28, 0x07	; 7
+     622:	49 f1       	breq	.+82     	; 0x676 <TIMER_WAVEGEN_PHACECORRECTPWM+0x70>
+     624:	cc 23       	and	r28, r28
+     626:	31 f4       	brne	.+12     	; 0x634 <TIMER_WAVEGEN_PHACECORRECTPWM+0x2e>
+					case NON:
+					/* This IS the normal mode OC0 IS disconnected when the COM00 and COM01 is cleared  */
+			
+					case ClearUp_SetDowen_PCPWM:
+					/* This mode operation is the signal on the OC0 is clear when happen Compare match with the value on OCR0 at the up counting of the TCNT0 and Set when happen compare match at the down counting of the TCNT0 */
+					RESET_Bit(TCCR0, COM00);
+     628:	83 b7       	in	r24, 0x33	; 51
+     62a:	8f 7e       	andi	r24, 0xEF	; 239
+     62c:	83 bf       	out	0x33, r24	; 51
+					SET_Bit(TCCR0, COM01);
+     62e:	83 b7       	in	r24, 0x33	; 51
+     630:	80 62       	ori	r24, 0x20	; 32
+     632:	83 bf       	out	0x33, r24	; 51
+			break;
+			default: 
+			
+			break;
+		}		
+	}	
+     634:	cf 91       	pop	r28
+     636:	08 95       	ret
+	}	
+	
+	
+	void TIMER_WAVEGEN_PHACECORRECTPWM(TIMER_DATATYPE t, Wave_Gen_OP wave, unsigned char Top_Value)
+	{
+		switch(t.timer_Number)
+     638:	61 30       	cpi	r22, 0x01	; 1
+     63a:	e1 f7       	brne	.-8      	; 0x634 <TIMER_WAVEGEN_PHACECORRECTPWM+0x2e>
+				 *
+				 * Note: That this value decide the value of the duty cycle (the ratio of ON time ) by Top_Value/ 256 
+				 * if the user choose Set OC2 at up counting and Clear at down counting  mode this result become the OFF time ratio 
+				 * and if decide Clear OC2 at up counting and Set at down counting  mode this ratio become the ON time ratio 
+				 */
+				OCR2 = Top_Value;
+     63c:	23 bd       	out	0x23, r18	; 35
+		
+				/* at the first we set up the pin of the wave output in the Mc as output state */
+				DIO_pinConfiguration(GPIOD,PIN7, Output);
+     63e:	80 e3       	ldi	r24, 0x30	; 48
+     640:	90 e0       	ldi	r25, 0x00	; 0
+     642:	67 e0       	ldi	r22, 0x07	; 7
+     644:	42 e0       	ldi	r20, 0x02	; 2
+     646:	0e 94 b0 00 	call	0x160	; 0x160 <DIO_pinConfiguration>
+		
+				/* Note 
+				 * the case of COM20 , COM21 is decimal 1 is reserved ( Not use ) 
+				 */
+				switch(wave)
+     64a:	c6 30       	cpi	r28, 0x06	; 6
+     64c:	21 f0       	breq	.+8      	; 0x656 <TIMER_WAVEGEN_PHACECORRECTPWM+0x50>
+     64e:	c7 30       	cpi	r28, 0x07	; 7
+     650:	51 f0       	breq	.+20     	; 0x666 <TIMER_WAVEGEN_PHACECORRECTPWM+0x60>
+     652:	cc 23       	and	r28, r28
+     654:	79 f7       	brne	.-34     	; 0x634 <TIMER_WAVEGEN_PHACECORRECTPWM+0x2e>
+					case NON:
+					/* This IS the normal mode OC2 IS disconnected when the COM20 and COM21 is cleared  */
+			
+					case ClearUp_SetDowen_PCPWM:
+					/* This mode operation is the signal on the OC2 is clear when happen Compare match with the value on OCR2 at the up counting of the TCNT0 and Set when happen compare match at the down counting of the TCNT0 */
+					RESET_Bit(TCCR2, COM20);
+     656:	85 b5       	in	r24, 0x25	; 37
+     658:	8f 7e       	andi	r24, 0xEF	; 239
+     65a:	85 bd       	out	0x25, r24	; 37
+					SET_Bit(TCCR2, COM21);
+     65c:	85 b5       	in	r24, 0x25	; 37
+     65e:	80 62       	ori	r24, 0x20	; 32
+     660:	85 bd       	out	0x25, r24	; 37
+			break;
+			default: 
+			
+			break;
+		}		
+	}	
+     662:	cf 91       	pop	r28
+     664:	08 95       	ret
+					RESET_Bit(TCCR2, COM20);
+					SET_Bit(TCCR2, COM21);
+					break;
+					case SetUp_ClearDowen_PCPWM:
+					/* This mode operation is the signal on the OC2 is set when happen Compare match with the value on OCR2 at the up counting of the TCNT0 and clear when happen compare match at the down counting of the TCNT0 */
+					SET_Bit(TCCR2, COM20);
+     666:	85 b5       	in	r24, 0x25	; 37
+     668:	80 61       	ori	r24, 0x10	; 16
+     66a:	85 bd       	out	0x25, r24	; 37
+					SET_Bit(TCCR2, COM21);
+     66c:	85 b5       	in	r24, 0x25	; 37
+     66e:	80 62       	ori	r24, 0x20	; 32
+     670:	85 bd       	out	0x25, r24	; 37
+			break;
+			default: 
+			
+			break;
+		}		
+	}	
+     672:	cf 91       	pop	r28
+     674:	08 95       	ret
+					RESET_Bit(TCCR0, COM00);
+					SET_Bit(TCCR0, COM01);
+					break;
+					case SetUp_ClearDowen_PCPWM:
+					/* This mode operation is the signal on the OC0 is set when happen Compare match with the value on OCR0 at the up counting of the TCNT0 and clear when happen compare match at the down counting of the TCNT0 */
+					SET_Bit(TCCR0, COM00);
+     676:	83 b7       	in	r24, 0x33	; 51
+     678:	80 61       	ori	r24, 0x10	; 16
+     67a:	83 bf       	out	0x33, r24	; 51
+					SET_Bit(TCCR0, COM01);
+     67c:	83 b7       	in	r24, 0x33	; 51
+     67e:	80 62       	ori	r24, 0x20	; 32
+     680:	83 bf       	out	0x33, r24	; 51
+			break;
+			default: 
+			
+			break;
+		}		
+	}	
+     682:	cf 91       	pop	r28
+     684:	08 95       	ret
+
+00000686 <sensor_setup>:
+   #include <IndicatorSensor.h>
+   
+   
+   
+   void sensor_setup(indecationSensor_dataType sensor)
+   {
+     686:	28 2f       	mov	r18, r24
+	   /* Configuration The PinOf The Sensor As an Input Pull up Pin So It default Is LOW */
+	   DIO_pinConfiguration(sensor.sensorPORT, sensor.sensorPIN, InputFloat);
+     688:	cb 01       	movw	r24, r22
+     68a:	62 2f       	mov	r22, r18
+     68c:	40 e0       	ldi	r20, 0x00	; 0
+     68e:	0e 94 b0 00 	call	0x160	; 0x160 <DIO_pinConfiguration>
+   }
+     692:	08 95       	ret
+
+00000694 <sensor_operate>:
+   
+   
+   
+   DigitalValue sensor_operate(indecationSensor_dataType sensor)
+   {
+     694:	28 2f       	mov	r18, r24
+	   /* read The Pin State Refer To The Condition OfThe sensor If It Indicate Will return High Else Will Return LOW */ 
+	   return ( DIO_pinRead(sensor.sensorPORT, sensor.sensorPIN) );
+     696:	cb 01       	movw	r24, r22
+     698:	62 2f       	mov	r22, r18
+     69a:	0e 94 02 01 	call	0x204	; 0x204 <DIO_pinRead>
+     69e:	08 95       	ret
+
+000006a0 <Send_instruction>:
+  #define MAX_NWCHAR   (8)
+  
+    void Send_instruction(unsigned char instruction)
+	{
+		/* The RS And The RW Must Be RESET When Send Instruction To The LCD */
+		RESET_Bit(LCD_CONTROL_REG_OP, RS);
+     6a0:	d8 98       	cbi	0x1b, 0	; 27
+		RESET_Bit(LCD_CONTROL_REG_OP, RW);
+     6a2:	d9 98       	cbi	0x1b, 1	; 27
+	#else
+		//round up by default
+		__ticks_dc = (uint32_t)(ceil(fabs(__tmp)));
+	#endif
+
+	__builtin_avr_delay_cycles(__ticks_dc);
+     6a4:	ef e9       	ldi	r30, 0x9F	; 159
+     6a6:	ff e0       	ldi	r31, 0x0F	; 15
+     6a8:	31 97       	sbiw	r30, 0x01	; 1
+     6aa:	f1 f7       	brne	.-4      	; 0x6a8 <Send_instruction+0x8>
+     6ac:	00 c0       	rjmp	.+0      	; 0x6ae <Send_instruction+0xe>
+     6ae:	00 00       	nop
+		/* Delay of Address Set 60ns minimum This In The Ideal State */
+		_delay_ms(1);
+		
+		/* We WriteTo the LCD InThe Falling Of The Enable Pin */
+		/* Set The Enable Pin */
+		SET_Bit(LCD_CONTROL_REG_OP, E);
+     6b0:	da 9a       	sbi	0x1b, 2	; 27
+     6b2:	ef e9       	ldi	r30, 0x9F	; 159
+     6b4:	ff e0       	ldi	r31, 0x0F	; 15
+     6b6:	31 97       	sbiw	r30, 0x01	; 1
+     6b8:	f1 f7       	brne	.-4      	; 0x6b6 <Send_instruction+0x16>
+     6ba:	00 c0       	rjmp	.+0      	; 0x6bc <Send_instruction+0x1c>
+     6bc:	00 00       	nop
+		
+	   #else 
+	        /* At The First We Send The MSB 4-bit Of The Instruction So We handle If The User Connect LCD in The Upper Or Lower Pin Of The Port */
+	        #ifdef LCD_UPPER_DATA_PORT
+			       /* Setup The Data Port To hold The Data By Reset the Upper Pin */
+				   LCD_DATA_REG_OP &= 0x0F ; 
+     6be:	9b b3       	in	r25, 0x1b	; 27
+     6c0:	9f 70       	andi	r25, 0x0F	; 15
+     6c2:	9b bb       	out	0x1b, r25	; 27
+				   LCD_DATA_REG_OP |= (instruction & 0xF0);
+     6c4:	2b b3       	in	r18, 0x1b	; 27
+     6c6:	98 2f       	mov	r25, r24
+     6c8:	90 7f       	andi	r25, 0xF0	; 240
+     6ca:	92 2b       	or	r25, r18
+     6cc:	9b bb       	out	0x1b, r25	; 27
+     6ce:	ef e9       	ldi	r30, 0x9F	; 159
+     6d0:	ff e0       	ldi	r31, 0x0F	; 15
+     6d2:	31 97       	sbiw	r30, 0x01	; 1
+     6d4:	f1 f7       	brne	.-4      	; 0x6d2 <Send_instruction+0x32>
+     6d6:	00 c0       	rjmp	.+0      	; 0x6d8 <Send_instruction+0x38>
+     6d8:	00 00       	nop
+			
+			/* Data set-up time delay  Tdsw = 195 ns This In The Ideal State */
+			_delay_ms(1);
+			
+			/* disable LCD E=0 */
+			RESET_Bit(LCD_CONTROL_REG_OP,E);
+     6da:	da 98       	cbi	0x1b, 2	; 27
+     6dc:	ef e9       	ldi	r30, 0x9F	; 159
+     6de:	ff e0       	ldi	r31, 0x0F	; 15
+     6e0:	31 97       	sbiw	r30, 0x01	; 1
+     6e2:	f1 f7       	brne	.-4      	; 0x6e0 <Send_instruction+0x40>
+     6e4:	00 c0       	rjmp	.+0      	; 0x6e6 <Send_instruction+0x46>
+     6e6:	00 00       	nop
+			/* Data Hold delay Th = 10ns */
+			_delay_ms(1);
+		    
+			/* Reconfigure The E Pin To Prepare To Send The Next 4-bit LSB */
+		    SET_Bit(LCD_CONTROL_REG_OP, E);
+     6e8:	da 9a       	sbi	0x1b, 2	; 27
+     6ea:	ef e9       	ldi	r30, 0x9F	; 159
+     6ec:	ff e0       	ldi	r31, 0x0F	; 15
+     6ee:	31 97       	sbiw	r30, 0x01	; 1
+     6f0:	f1 f7       	brne	.-4      	; 0x6ee <Send_instruction+0x4e>
+     6f2:	00 c0       	rjmp	.+0      	; 0x6f4 <Send_instruction+0x54>
+     6f4:	00 00       	nop
+		    /* delay for processing PW min 450ns This In The Ideal State */
+		    _delay_ms(1);
+			
+			#ifdef LCD_UPPER_DATA_PORT
+			       /* Setup The Data Port To hold The Data By Reset the Upper Pin */
+			       LCD_DATA_REG_OP &= 0x0F ;
+     6f6:	9b b3       	in	r25, 0x1b	; 27
+     6f8:	9f 70       	andi	r25, 0x0F	; 15
+     6fa:	9b bb       	out	0x1b, r25	; 27
+			       LCD_DATA_REG_OP |= ((instruction << 4) & 0xF0);
+     6fc:	9b b3       	in	r25, 0x1b	; 27
+     6fe:	82 95       	swap	r24
+     700:	80 7f       	andi	r24, 0xF0	; 240
+     702:	89 2b       	or	r24, r25
+     704:	8b bb       	out	0x1b, r24	; 27
+     706:	8f e9       	ldi	r24, 0x9F	; 159
+     708:	9f e0       	ldi	r25, 0x0F	; 15
+     70a:	01 97       	sbiw	r24, 0x01	; 1
+     70c:	f1 f7       	brne	.-4      	; 0x70a <Send_instruction+0x6a>
+     70e:	00 c0       	rjmp	.+0      	; 0x710 <Send_instruction+0x70>
+     710:	00 00       	nop
+		     	   LCD_DATA_REG_OP |= (instruction & 0x0F);  
+            #endif
+			/* Data set-up time delay  Tdsw = 195 ns This In The Ideal State */
+			_delay_ms(1);
+			/* disable LCD E=0 */
+			RESET_Bit(LCD_CONTROL_REG_OP,E);
+     712:	da 98       	cbi	0x1b, 2	; 27
+     714:	ef e9       	ldi	r30, 0x9F	; 159
+     716:	ff e0       	ldi	r31, 0x0F	; 15
+     718:	31 97       	sbiw	r30, 0x01	; 1
+     71a:	f1 f7       	brne	.-4      	; 0x718 <Send_instruction+0x78>
+     71c:	00 c0       	rjmp	.+0      	; 0x71e <Send_instruction+0x7e>
+     71e:	00 00       	nop
+			/* Data Hold delay Th = 10ns This In The Ideal State*/
+			_delay_ms(1);
+			#endif
+	}	
+     720:	08 95       	ret
+
+00000722 <LCD_init>:
+		/* Set The Direction Of The 8 Data Bit As Output */
+		LCD_DATA_REG_DIR = 0xFF;
+		#else
+		#ifdef LCD_UPPER_DATA_PORT
+		/* Set The Direction Of The Higher 4 Data Bit As Output */
+		LCD_DATA_REG_DIR |= 0xF0;
+     722:	8a b3       	in	r24, 0x1a	; 26
+     724:	80 6f       	ori	r24, 0xF0	; 240
+     726:	8a bb       	out	0x1a, r24	; 26
+		#else
+		/* Set The Direction Of The Lower 4 Data Bit As Output */
+		LCD_DATA_REG_DIR |= 0x0F;
+		#endif
+		/* Setup The Control Pin As A Output Pin */
+		LCD_CONTROL_REG_DIR |= (1 << E) | (1 << RS) | (1 << RW);
+     728:	8a b3       	in	r24, 0x1a	; 26
+     72a:	87 60       	ori	r24, 0x07	; 7
+     72c:	8a bb       	out	0x1a, r24	; 26
+		
+		
+			 /* Set LCD to Use 4 bits Op */
+			 Send_instruction(RETURN_HOME);
+     72e:	82 e0       	ldi	r24, 0x02	; 2
+     730:	0e 94 50 03 	call	0x6a0	; 0x6a0 <Send_instruction>
+	   #endif
+	   Send_instruction(FUNCTION_SET);
+     734:	88 e2       	ldi	r24, 0x28	; 40
+     736:	0e 94 50 03 	call	0x6a0	; 0x6a0 <Send_instruction>
+	   Send_instruction(DISPLAY_ON);
+     73a:	8c e0       	ldi	r24, 0x0C	; 12
+     73c:	0e 94 50 03 	call	0x6a0	; 0x6a0 <Send_instruction>
+	   Send_instruction(CLEAR_DISPALY);
+     740:	81 e0       	ldi	r24, 0x01	; 1
+     742:	0e 94 50 03 	call	0x6a0	; 0x6a0 <Send_instruction>
+		
+	}
+     746:	08 95       	ret
+
+00000748 <LCD_Clear>:
+	
+			
+    void LCD_Clear(void)
+	{
+		/* Clear Instruction */
+		Send_instruction(CLEAR_DISPALY);
+     748:	81 e0       	ldi	r24, 0x01	; 1
+     74a:	0e 94 50 03 	call	0x6a0	; 0x6a0 <Send_instruction>
+	}	
+     74e:	08 95       	ret
+
+00000750 <LCD_DisplayChar>:
+	
+		
+    void LCD_DisplayChar(unsigned char Data)
+	{
+		/* The RS  Must Be RESET and The RW must be SET When Send Data To The LCD */
+		SET_Bit(LCD_CONTROL_REG_OP, RS);
+     750:	d8 9a       	sbi	0x1b, 0	; 27
+		RESET_Bit(LCD_CONTROL_REG_OP, RW);
+     752:	d9 98       	cbi	0x1b, 1	; 27
+     754:	ef e9       	ldi	r30, 0x9F	; 159
+     756:	ff e0       	ldi	r31, 0x0F	; 15
+     758:	31 97       	sbiw	r30, 0x01	; 1
+     75a:	f1 f7       	brne	.-4      	; 0x758 <LCD_DisplayChar+0x8>
+     75c:	00 c0       	rjmp	.+0      	; 0x75e <LCD_DisplayChar+0xe>
+     75e:	00 00       	nop
+		/* Delay of Address Set 60ns minimum This In The Ideal State */
+		_delay_ms(1);
+		/* We WriteTo the LCD InThe Falling Of The Enable Pin */
+		/* Set The Enable Pin */
+		SET_Bit(LCD_CONTROL_REG_OP, E);
+     760:	da 9a       	sbi	0x1b, 2	; 27
+     762:	ef e9       	ldi	r30, 0x9F	; 159
+     764:	ff e0       	ldi	r31, 0x0F	; 15
+     766:	31 97       	sbiw	r30, 0x01	; 1
+     768:	f1 f7       	brne	.-4      	; 0x766 <LCD_DisplayChar+0x16>
+     76a:	00 c0       	rjmp	.+0      	; 0x76c <LCD_DisplayChar+0x1c>
+     76c:	00 00       	nop
+		
+		#else
+		/* At The First We Send The MSB 4-bit Of The Instruction So We handle If The User Connect LCD in The Upper Or Lower Pin Of The Port */
+		#ifdef LCD_UPPER_DATA_PORT
+		/* Setup The Data Port To hold The Data By Reset the Upper Pin */
+		LCD_DATA_REG_OP &= 0x0F ;
+     76e:	9b b3       	in	r25, 0x1b	; 27
+     770:	9f 70       	andi	r25, 0x0F	; 15
+     772:	9b bb       	out	0x1b, r25	; 27
+		LCD_DATA_REG_OP |= (Data & 0xF0);
+     774:	2b b3       	in	r18, 0x1b	; 27
+     776:	98 2f       	mov	r25, r24
+     778:	90 7f       	andi	r25, 0xF0	; 240
+     77a:	92 2b       	or	r25, r18
+     77c:	9b bb       	out	0x1b, r25	; 27
+     77e:	ef e9       	ldi	r30, 0x9F	; 159
+     780:	ff e0       	ldi	r31, 0x0F	; 15
+     782:	31 97       	sbiw	r30, 0x01	; 1
+     784:	f1 f7       	brne	.-4      	; 0x782 <LCD_DisplayChar+0x32>
+     786:	00 c0       	rjmp	.+0      	; 0x788 <LCD_DisplayChar+0x38>
+     788:	00 00       	nop
+		
+		/* Data set-up time delay  Tdsw = 195 ns This In The Ideal State */
+		_delay_ms(1);
+		
+		/* disable LCD E=0 */
+		RESET_Bit(LCD_CONTROL_REG_OP,E);
+     78a:	da 98       	cbi	0x1b, 2	; 27
+     78c:	ef e9       	ldi	r30, 0x9F	; 159
+     78e:	ff e0       	ldi	r31, 0x0F	; 15
+     790:	31 97       	sbiw	r30, 0x01	; 1
+     792:	f1 f7       	brne	.-4      	; 0x790 <LCD_DisplayChar+0x40>
+     794:	00 c0       	rjmp	.+0      	; 0x796 <LCD_DisplayChar+0x46>
+     796:	00 00       	nop
+		/* Data Hold delay Th = 10ns */
+		_delay_ms(1);
+		
+		/* Reconfigure The E Pin To Prepare To Send The Next 4-bit LSB */
+		SET_Bit(LCD_CONTROL_REG_OP, E);
+     798:	da 9a       	sbi	0x1b, 2	; 27
+     79a:	ef e9       	ldi	r30, 0x9F	; 159
+     79c:	ff e0       	ldi	r31, 0x0F	; 15
+     79e:	31 97       	sbiw	r30, 0x01	; 1
+     7a0:	f1 f7       	brne	.-4      	; 0x79e <LCD_DisplayChar+0x4e>
+     7a2:	00 c0       	rjmp	.+0      	; 0x7a4 <LCD_DisplayChar+0x54>
+     7a4:	00 00       	nop
+		/* delay for processing PW min 450ns This In The Ideal State */
+		_delay_ms(1);
+		
+		#ifdef LCD_UPPER_DATA_PORT
+		/* Setup The Data Port To hold The Data By Reset the Upper Pin */
+		LCD_DATA_REG_OP &= 0x0F ;
+     7a6:	9b b3       	in	r25, 0x1b	; 27
+     7a8:	9f 70       	andi	r25, 0x0F	; 15
+     7aa:	9b bb       	out	0x1b, r25	; 27
+		LCD_DATA_REG_OP |= ((Data << 4) & 0xF0);
+     7ac:	9b b3       	in	r25, 0x1b	; 27
+     7ae:	82 95       	swap	r24
+     7b0:	80 7f       	andi	r24, 0xF0	; 240
+     7b2:	89 2b       	or	r24, r25
+     7b4:	8b bb       	out	0x1b, r24	; 27
+     7b6:	8f e9       	ldi	r24, 0x9F	; 159
+     7b8:	9f e0       	ldi	r25, 0x0F	; 15
+     7ba:	01 97       	sbiw	r24, 0x01	; 1
+     7bc:	f1 f7       	brne	.-4      	; 0x7ba <LCD_DisplayChar+0x6a>
+     7be:	00 c0       	rjmp	.+0      	; 0x7c0 <LCD_DisplayChar+0x70>
+     7c0:	00 00       	nop
+		LCD_DATA_REG_OP |= (Data & 0x0F);
+		#endif
+		/* Data set-up time delay  Tdsw = 195 ns This In The Ideal State */
+		_delay_ms(1);
+		/* disable LCD E=0 */
+		RESET_Bit(LCD_CONTROL_REG_OP,E);
+     7c2:	da 98       	cbi	0x1b, 2	; 27
+     7c4:	ef e9       	ldi	r30, 0x9F	; 159
+     7c6:	ff e0       	ldi	r31, 0x0F	; 15
+     7c8:	31 97       	sbiw	r30, 0x01	; 1
+     7ca:	f1 f7       	brne	.-4      	; 0x7c8 <LCD_DisplayChar+0x78>
+     7cc:	00 c0       	rjmp	.+0      	; 0x7ce <LCD_DisplayChar+0x7e>
+     7ce:	00 00       	nop
+		/* Data Hold delay Th = 10ns This In The Ideal State*/
+		_delay_ms(1);
+		#endif
+	}	
+     7d0:	08 95       	ret
+
+000007d2 <LCD_DisplayString>:
+	
+	
+		
+    void LCD_DisplayString(char * ptr)
+	{
+     7d2:	cf 93       	push	r28
+     7d4:	df 93       	push	r29
+     7d6:	ec 01       	movw	r28, r24
+		while(*ptr != '\0')
+     7d8:	88 81       	ld	r24, Y
+     7da:	88 23       	and	r24, r24
+     7dc:	31 f0       	breq	.+12     	; 0x7ea <LCD_DisplayString+0x18>
+		#endif
+	}	
+	
+	
+		
+    void LCD_DisplayString(char * ptr)
+     7de:	21 96       	adiw	r28, 0x01	; 1
+	{
+		while(*ptr != '\0')
+		{
+			LCD_DisplayChar(*ptr);
+     7e0:	0e 94 a8 03 	call	0x750	; 0x750 <LCD_DisplayChar>
+	
+	
+		
+    void LCD_DisplayString(char * ptr)
+	{
+		while(*ptr != '\0')
+     7e4:	89 91       	ld	r24, Y+
+     7e6:	88 23       	and	r24, r24
+     7e8:	d9 f7       	brne	.-10     	; 0x7e0 <LCD_DisplayString+0xe>
+		{
+			LCD_DisplayChar(*ptr);
+			ptr++;
+		}
+	}
+     7ea:	df 91       	pop	r29
+     7ec:	cf 91       	pop	r28
+     7ee:	08 95       	ret
+
+000007f0 <LCD_Select_RowCol>:
+	
+			
+    void LCD_Select_RowCol(unsigned char Row , unsigned char col)
+	{
+		char ADDRESS = 0x00;
+		switch(Row)
+     7f0:	81 30       	cpi	r24, 0x01	; 1
+     7f2:	a1 f0       	breq	.+40     	; 0x81c <LCD_Select_RowCol+0x2c>
+     7f4:	81 30       	cpi	r24, 0x01	; 1
+     7f6:	28 f4       	brcc	.+10     	; 0x802 <LCD_Select_RowCol+0x12>
+     7f8:	86 2f       	mov	r24, r22
+     7fa:	80 68       	ori	r24, 0x80	; 128
+			       ADDRESS= col | LCD_4TH_ROW;
+			       break;
+		}
+		/* Form The Data Sheet it must Set The Bit 7 Before Send The Address */
+		(ADDRESS) |= (1<<7);
+		Send_instruction(ADDRESS);
+     7fc:	0e 94 50 03 	call	0x6a0	; 0x6a0 <Send_instruction>
+	}
+     800:	08 95       	ret
+	
+			
+    void LCD_Select_RowCol(unsigned char Row , unsigned char col)
+	{
+		char ADDRESS = 0x00;
+		switch(Row)
+     802:	82 30       	cpi	r24, 0x02	; 2
+     804:	81 f0       	breq	.+32     	; 0x826 <LCD_Select_RowCol+0x36>
+     806:	83 30       	cpi	r24, 0x03	; 3
+     808:	21 f0       	breq	.+8      	; 0x812 <LCD_Select_RowCol+0x22>
+     80a:	80 e8       	ldi	r24, 0x80	; 128
+			       ADDRESS= col | LCD_4TH_ROW;
+			       break;
+		}
+		/* Form The Data Sheet it must Set The Bit 7 Before Send The Address */
+		(ADDRESS) |= (1<<7);
+		Send_instruction(ADDRESS);
+     80c:	0e 94 50 03 	call	0x6a0	; 0x6a0 <Send_instruction>
+	}
+     810:	08 95       	ret
+			      ADDRESS= col | LCD_2ND_ROW;
+			      break;
+			case 2:
+			       /* When Writing To LCD 1st Col The Base Address is 0x10 */
+			       ADDRESS= col | LCD_3RD_ROW;
+			       break;
+     812:	86 2f       	mov	r24, r22
+     814:	80 6d       	ori	r24, 0xD0	; 208
+			       ADDRESS= col | LCD_4TH_ROW;
+			       break;
+		}
+		/* Form The Data Sheet it must Set The Bit 7 Before Send The Address */
+		(ADDRESS) |= (1<<7);
+		Send_instruction(ADDRESS);
+     816:	0e 94 50 03 	call	0x6a0	; 0x6a0 <Send_instruction>
+	}
+     81a:	08 95       	ret
+		switch(Row)
+		{
+			case 0: 
+			       /* When Writing To LCD 1st Col The Base Address is 0x00 */
+			       ADDRESS= col | LCD_1ST_ROW;
+			       break;
+     81c:	86 2f       	mov	r24, r22
+     81e:	80 6c       	ori	r24, 0xC0	; 192
+			       ADDRESS= col | LCD_4TH_ROW;
+			       break;
+		}
+		/* Form The Data Sheet it must Set The Bit 7 Before Send The Address */
+		(ADDRESS) |= (1<<7);
+		Send_instruction(ADDRESS);
+     820:	0e 94 50 03 	call	0x6a0	; 0x6a0 <Send_instruction>
+	}
+     824:	08 95       	ret
+			       ADDRESS= col | LCD_1ST_ROW;
+			       break;
+			case 1:
+			      /* When Writing To LCD 1st Col The Base Address is 0x40 */
+			      ADDRESS= col | LCD_2ND_ROW;
+			      break;
+     826:	86 2f       	mov	r24, r22
+     828:	80 69       	ori	r24, 0x90	; 144
+			       ADDRESS= col | LCD_4TH_ROW;
+			       break;
+		}
+		/* Form The Data Sheet it must Set The Bit 7 Before Send The Address */
+		(ADDRESS) |= (1<<7);
+		Send_instruction(ADDRESS);
+     82a:	0e 94 50 03 	call	0x6a0	; 0x6a0 <Send_instruction>
+	}
+     82e:	08 95       	ret
+
+00000830 <LCD_DisplayInt>:
+			
+    void LCD_DisplayInt(long int data)
+	{
+     830:	0f 93       	push	r16
+     832:	1f 93       	push	r17
+     834:	cf 93       	push	r28
+     836:	df 93       	push	r29
+     838:	cd b7       	in	r28, 0x3d	; 61
+     83a:	de b7       	in	r29, 0x3e	; 62
+     83c:	65 97       	sbiw	r28, 0x15	; 21
+     83e:	0f b6       	in	r0, 0x3f	; 63
+     840:	f8 94       	cli
+     842:	de bf       	out	0x3e, r29	; 62
+     844:	0f be       	out	0x3f, r0	; 63
+     846:	cd bf       	out	0x3d, r28	; 61
+     848:	dc 01       	movw	r26, r24
+     84a:	cb 01       	movw	r24, r22
+		/* String to hold the ASCI result */
+		char Result[21];
+		/* 10 for decimal */
+		utoa(data,Result,10);
+     84c:	be 01       	movw	r22, r28
+     84e:	6f 5f       	subi	r22, 0xFF	; 255
+     850:	7f 4f       	sbci	r23, 0xFF	; 255
+     852:	4a e0       	ldi	r20, 0x0A	; 10
+     854:	50 e0       	ldi	r21, 0x00	; 0
+     856:	0e 94 c6 08 	call	0x118c	; 0x118c <utoa>
+	
+	
+		
+    void LCD_DisplayString(char * ptr)
+	{
+		while(*ptr != '\0')
+     85a:	89 81       	ldd	r24, Y+1	; 0x01
+     85c:	88 23       	and	r24, r24
+     85e:	51 f0       	breq	.+20     	; 0x874 <__stack+0x15>
+     860:	8e 01       	movw	r16, r28
+     862:	0e 5f       	subi	r16, 0xFE	; 254
+     864:	1f 4f       	sbci	r17, 0xFF	; 255
+		{
+			LCD_DisplayChar(*ptr);
+     866:	0e 94 a8 03 	call	0x750	; 0x750 <LCD_DisplayChar>
+	
+	
+		
+    void LCD_DisplayString(char * ptr)
+	{
+		while(*ptr != '\0')
+     86a:	f8 01       	movw	r30, r16
+     86c:	81 91       	ld	r24, Z+
+     86e:	8f 01       	movw	r16, r30
+     870:	88 23       	and	r24, r24
+     872:	c9 f7       	brne	.-14     	; 0x866 <__stack+0x7>
+		char Result[21];
+		/* 10 for decimal */
+		utoa(data,Result,10);
+		/* Display The Result */
+		LCD_DisplayString(Result);
+	} 
+     874:	65 96       	adiw	r28, 0x15	; 21
+     876:	0f b6       	in	r0, 0x3f	; 63
+     878:	f8 94       	cli
+     87a:	de bf       	out	0x3e, r29	; 62
+     87c:	0f be       	out	0x3f, r0	; 63
+     87e:	cd bf       	out	0x3d, r28	; 61
+     880:	df 91       	pop	r29
+     882:	cf 91       	pop	r28
+     884:	1f 91       	pop	r17
+     886:	0f 91       	pop	r16
+     888:	08 95       	ret
+
+0000088a <LCD_StoreCustomchar>:
+	
+	void LCD_StoreCustomchar(unsigned char*pattern,unsigned char CGRAM_index)
+	{
+     88a:	cf 93       	push	r28
+     88c:	df 93       	push	r29
+     88e:	ec 01       	movw	r28, r24
+		char ADDRESS = 0x00;
+		char index;
+		if (CGRAM_index < MAX_NWCHAR)
+     890:	68 30       	cpi	r22, 0x08	; 8
+     892:	f8 f4       	brcc	.+62     	; 0x8d2 <LCD_StoreCustomchar+0x48>
+		{
+			/* We Need To Move AC To Make it Point To The CGRAM at The Address Config By The User */
+			ADDRESS = CGRAM_index;
+			ADDRESS |= CGRAM_CONST; /* To Set The Bit Number 6 To point On The CGRAM Address Get From Datasheet */
+			Send_instruction(ADDRESS);
+     894:	86 2f       	mov	r24, r22
+     896:	80 64       	ori	r24, 0x40	; 64
+     898:	0e 94 50 03 	call	0x6a0	; 0x6a0 <Send_instruction>
+			/* Note That The AC increase Automatically After Write On The Address It Point To */
+			for (index = 0; index < 8; index++)
+			{
+				LCD_DisplayChar(pattern[index]);
+     89c:	88 81       	ld	r24, Y
+     89e:	0e 94 a8 03 	call	0x750	; 0x750 <LCD_DisplayChar>
+     8a2:	89 81       	ldd	r24, Y+1	; 0x01
+     8a4:	0e 94 a8 03 	call	0x750	; 0x750 <LCD_DisplayChar>
+     8a8:	8a 81       	ldd	r24, Y+2	; 0x02
+     8aa:	0e 94 a8 03 	call	0x750	; 0x750 <LCD_DisplayChar>
+     8ae:	8b 81       	ldd	r24, Y+3	; 0x03
+     8b0:	0e 94 a8 03 	call	0x750	; 0x750 <LCD_DisplayChar>
+     8b4:	8c 81       	ldd	r24, Y+4	; 0x04
+     8b6:	0e 94 a8 03 	call	0x750	; 0x750 <LCD_DisplayChar>
+     8ba:	8d 81       	ldd	r24, Y+5	; 0x05
+     8bc:	0e 94 a8 03 	call	0x750	; 0x750 <LCD_DisplayChar>
+     8c0:	8e 81       	ldd	r24, Y+6	; 0x06
+     8c2:	0e 94 a8 03 	call	0x750	; 0x750 <LCD_DisplayChar>
+     8c6:	8f 81       	ldd	r24, Y+7	; 0x07
+     8c8:	0e 94 a8 03 	call	0x750	; 0x750 <LCD_DisplayChar>
+			}
+			/* We Need To Return The AC to point To The DDRAM */
+			Send_instruction(RETURN_HOME);
+     8cc:	82 e0       	ldi	r24, 0x02	; 2
+     8ce:	0e 94 50 03 	call	0x6a0	; 0x6a0 <Send_instruction>
+		}
+	}   
+     8d2:	df 91       	pop	r29
+     8d4:	cf 91       	pop	r28
+     8d6:	08 95       	ret
+
+000008d8 <ErrorIndication>:
+		 case invalidArgument:
+		      break;
+		default:
+		       break;
+	 }
+ }
+     8d8:	08 95       	ret
+
+000008da <PIR_setup>:
+ 
+ 
+ 
+ void PIR_setup(PIR_dataType PIR)
+ {
+     8da:	cf 93       	push	r28
+     8dc:	df 93       	push	r29
+     8de:	00 d0       	rcall	.+0      	; 0x8e0 <PIR_setup+0x6>
+     8e0:	0f 92       	push	r0
+     8e2:	cd b7       	in	r28, 0x3d	; 61
+     8e4:	de b7       	in	r29, 0x3e	; 62
+     8e6:	69 83       	std	Y+1, r22	; 0x01
+     8e8:	7a 83       	std	Y+2, r23	; 0x02
+     8ea:	68 2f       	mov	r22, r24
+     8ec:	8b 83       	std	Y+3, r24	; 0x03
+	 /* Configuration The Pin Of The Sensor As an Input Float  Pin So It default Is LOW */
+	 DIO_pinConfiguration(PIR.PIRport, PIR.PIRpin, InputFloat);
+     8ee:	89 81       	ldd	r24, Y+1	; 0x01
+     8f0:	9a 81       	ldd	r25, Y+2	; 0x02
+     8f2:	40 e0       	ldi	r20, 0x00	; 0
+     8f4:	0e 94 b0 00 	call	0x160	; 0x160 <DIO_pinConfiguration>
+ }
+     8f8:	0f 90       	pop	r0
+     8fa:	0f 90       	pop	r0
+     8fc:	0f 90       	pop	r0
+     8fe:	df 91       	pop	r29
+     900:	cf 91       	pop	r28
+     902:	08 95       	ret
+
+00000904 <PIR_operate>:
+ 
+ 
+ 
+ DigitalValue PIR_operate (PIR_dataType PIR)
+ {
+     904:	cf 93       	push	r28
+     906:	df 93       	push	r29
+     908:	00 d0       	rcall	.+0      	; 0x90a <PIR_operate+0x6>
+     90a:	0f 92       	push	r0
+     90c:	cd b7       	in	r28, 0x3d	; 61
+     90e:	de b7       	in	r29, 0x3e	; 62
+     910:	69 83       	std	Y+1, r22	; 0x01
+     912:	7a 83       	std	Y+2, r23	; 0x02
+     914:	68 2f       	mov	r22, r24
+     916:	8b 83       	std	Y+3, r24	; 0x03
+	 /* read The Pin State Refer To The Condition Of The sensor If It Indicate Will return High Else Will Return Low */
+	 return ( DIO_pinRead(PIR.PIRport, PIR.PIRpin) );	
+     918:	89 81       	ldd	r24, Y+1	; 0x01
+     91a:	9a 81       	ldd	r25, Y+2	; 0x02
+     91c:	0e 94 02 01 	call	0x204	; 0x204 <DIO_pinRead>
+ }
+     920:	0f 90       	pop	r0
+     922:	0f 90       	pop	r0
+     924:	0f 90       	pop	r0
+     926:	df 91       	pop	r29
+     928:	cf 91       	pop	r28
+     92a:	08 95       	ret
+
+0000092c <SERVO_WRITE>:
+     void SERVO_WRITE(double t, unsigned char servo_name)
+	 {
+		 
+		 
+		 /* Select the mode fast PWM as ICR1 top decimal 14*/
+		 SET_Bit(TCCR1A,WGM11);
+     92c:	2f b5       	in	r18, 0x2f	; 47
+     92e:	22 60       	ori	r18, 0x02	; 2
+     930:	2f bd       	out	0x2f, r18	; 47
+		 SET_Bit(TCCR1B,WGM12);
+     932:	2e b5       	in	r18, 0x2e	; 46
+     934:	28 60       	ori	r18, 0x08	; 8
+     936:	2e bd       	out	0x2e, r18	; 46
+		 SET_Bit(TCCR1B,WGM13);
+     938:	2e b5       	in	r18, 0x2e	; 46
+     93a:	20 61       	ori	r18, 0x10	; 16
+     93c:	2e bd       	out	0x2e, r18	; 46
+		 
+		 /* LOAD The Value of the ICR1  */
+		 
+		 /* Store this value on the ICR1 that we make it the timer Top value so when it reach this value that mean that the 20msec is end the timer get overflow */
+		 ICR1 = Counts_20msecSignal_Num;
+     93e:	28 e8       	ldi	r18, 0x88	; 136
+     940:	33 e1       	ldi	r19, 0x13	; 19
+     942:	37 bd       	out	0x27, r19	; 39
+     944:	26 bd       	out	0x26, r18	; 38
+		 
+		 /* Set the timer clock as 64 is a prescaler that to avoid make the value of the number float to take more accuracy value */
+		 SET_Bit(TCCR1B,CS10);
+     946:	2e b5       	in	r18, 0x2e	; 46
+     948:	21 60       	ori	r18, 0x01	; 1
+     94a:	2e bd       	out	0x2e, r18	; 46
+		 SET_Bit(TCCR1B,CS11);
+     94c:	2e b5       	in	r18, 0x2e	; 46
+     94e:	22 60       	ori	r18, 0x02	; 2
+     950:	2e bd       	out	0x2e, r18	; 46
+		
+		 switch(servo_name)
+     952:	41 34       	cpi	r20, 0x41	; 65
+     954:	e9 f0       	breq	.+58     	; 0x990 <SERVO_WRITE+0x64>
+     956:	42 34       	cpi	r20, 0x42	; 66
+     958:	09 f0       	breq	.+2      	; 0x95c <SERVO_WRITE+0x30>
+     95a:	08 95       	ret
+					DIO_pinConfiguration(GPIOD, PIN5, Output);
+					_delay_us(10);
+			 break;
+			 case 'B':
+			       /* The value of the 1msec counts to define the ON time of output signal to decide the place of the Servo*/
+			       OCR1B = t * Counts_1msec_Num;
+     95c:	20 e0       	ldi	r18, 0x00	; 0
+     95e:	30 e0       	ldi	r19, 0x00	; 0
+     960:	4a e7       	ldi	r20, 0x7A	; 122
+     962:	53 e4       	ldi	r21, 0x43	; 67
+     964:	0e 94 3b 08 	call	0x1076	; 0x1076 <__mulsf3>
+     968:	0e 94 a9 07 	call	0xf52	; 0xf52 <__fixunssfsi>
+     96c:	dc 01       	movw	r26, r24
+     96e:	cb 01       	movw	r24, r22
+     970:	99 bd       	out	0x29, r25	; 41
+     972:	88 bd       	out	0x28, r24	; 40
+			       
+			       /* Work at the non inverting Mode */
+			       SET_Bit(TCCR1A, COM1B1);
+     974:	8f b5       	in	r24, 0x2f	; 47
+     976:	80 62       	ori	r24, 0x20	; 32
+     978:	8f bd       	out	0x2f, r24	; 47
+				   
+				   /* Set The OC1A as an Output */
+				   DIO_pinConfiguration(GPIOD, PIN4, Output);
+     97a:	80 e3       	ldi	r24, 0x30	; 48
+     97c:	90 e0       	ldi	r25, 0x00	; 0
+     97e:	64 e0       	ldi	r22, 0x04	; 4
+     980:	42 e0       	ldi	r20, 0x02	; 2
+     982:	0e 94 b0 00 	call	0x160	; 0x160 <DIO_pinConfiguration>
+	#else
+		//round up by default
+		__ticks_dc = (uint32_t)(ceil(fabs(__tmp)));
+	#endif
+
+	__builtin_avr_delay_cycles(__ticks_dc);
+     986:	85 e3       	ldi	r24, 0x35	; 53
+     988:	8a 95       	dec	r24
+     98a:	f1 f7       	brne	.-4      	; 0x988 <SERVO_WRITE+0x5c>
+     98c:	00 00       	nop
+     98e:	08 95       	ret
+		
+		 switch(servo_name)
+		 {
+			 case 'A':
+			       /* The value of the 1msec counts to define the ON time of output signal to decide the place of the Servo*/
+			       OCR1A = t * Counts_1msec_Num;
+     990:	20 e0       	ldi	r18, 0x00	; 0
+     992:	30 e0       	ldi	r19, 0x00	; 0
+     994:	4a e7       	ldi	r20, 0x7A	; 122
+     996:	53 e4       	ldi	r21, 0x43	; 67
+     998:	0e 94 3b 08 	call	0x1076	; 0x1076 <__mulsf3>
+     99c:	0e 94 a9 07 	call	0xf52	; 0xf52 <__fixunssfsi>
+     9a0:	dc 01       	movw	r26, r24
+     9a2:	cb 01       	movw	r24, r22
+     9a4:	9b bd       	out	0x2b, r25	; 43
+     9a6:	8a bd       	out	0x2a, r24	; 42
+				   
+				    /* Work at the non inverting Mode */
+				    SET_Bit(TCCR1A, COM1A1);
+     9a8:	8f b5       	in	r24, 0x2f	; 47
+     9aa:	80 68       	ori	r24, 0x80	; 128
+     9ac:	8f bd       	out	0x2f, r24	; 47
+					/* Set The OC1A as an Output */
+					DIO_pinConfiguration(GPIOD, PIN5, Output);
+     9ae:	80 e3       	ldi	r24, 0x30	; 48
+     9b0:	90 e0       	ldi	r25, 0x00	; 0
+     9b2:	65 e0       	ldi	r22, 0x05	; 5
+     9b4:	42 e0       	ldi	r20, 0x02	; 2
+     9b6:	0e 94 b0 00 	call	0x160	; 0x160 <DIO_pinConfiguration>
+     9ba:	85 e3       	ldi	r24, 0x35	; 53
+     9bc:	8a 95       	dec	r24
+     9be:	f1 f7       	brne	.-4      	; 0x9bc <SERVO_WRITE+0x90>
+     9c0:	00 00       	nop
+     9c2:	08 95       	ret
+
+000009c4 <interrupt_Function2>:
+	  }
+  }
+  static void interrupt_Function2(void)
+  {
+	  unsigned short time_ON;
+	  if (flag_2 == 0)
+     9c4:	80 91 0a 01 	lds	r24, 0x010A
+     9c8:	88 23       	and	r24, r24
+     9ca:	29 f1       	breq	.+74     	; 0xa16 <interrupt_Function2+0x52>
+	  {
+		  TIMER_INTIATE(t_counter2);
+		  EXTINT_InterruptInit(EXINT_INT1, EXINT_FallingEdge);
+		  flag_2 = 1;
+	  }
+	  else if(flag_2 == 1)
+     9cc:	80 91 0a 01 	lds	r24, 0x010A
+     9d0:	81 30       	cpi	r24, 0x01	; 1
+     9d2:	09 f0       	breq	.+2      	; 0x9d6 <interrupt_Function2+0x12>
+     9d4:	08 95       	ret
+	  {
+		  TCCR2 = 0;
+     9d6:	15 bc       	out	0x25, r1	; 37
+		  if (READ_Bit(TIFR,TOV2) == 1)
+     9d8:	08 b6       	in	r0, 0x38	; 56
+     9da:	06 fc       	sbrc	r0, 6
+     9dc:	2e c0       	rjmp	.+92     	; 0xa3a <interrupt_Function2+0x76>
+			  /* CLear the flag Manually by Write a One */
+			  SET_Bit(TIFR,TOV2);
+		  }
+		  else
+		  {
+			  Object_distance2 = TCNT2 * 1.1072;
+     9de:	64 b5       	in	r22, 0x24	; 36
+     9e0:	70 e0       	ldi	r23, 0x00	; 0
+     9e2:	80 e0       	ldi	r24, 0x00	; 0
+     9e4:	90 e0       	ldi	r25, 0x00	; 0
+     9e6:	0e 94 d7 07 	call	0xfae	; 0xfae <__floatsisf>
+     9ea:	2b eb       	ldi	r18, 0xBB	; 187
+     9ec:	38 eb       	ldi	r19, 0xB8	; 184
+     9ee:	4d e8       	ldi	r20, 0x8D	; 141
+     9f0:	5f e3       	ldi	r21, 0x3F	; 63
+     9f2:	0e 94 3b 08 	call	0x1076	; 0x1076 <__mulsf3>
+     9f6:	0e 94 a4 07 	call	0xf48	; 0xf48 <__fixsfsi>
+     9fa:	dc 01       	movw	r26, r24
+     9fc:	cb 01       	movw	r24, r22
+     9fe:	90 93 0f 01 	sts	0x010F, r25
+     a02:	80 93 0e 01 	sts	0x010E, r24
+		  }
+		  EXTINT_InterruptInit(EXINT_INT1, EXINT_RisingEdge);
+     a06:	81 e0       	ldi	r24, 0x01	; 1
+     a08:	63 e0       	ldi	r22, 0x03	; 3
+     a0a:	0e 94 71 01 	call	0x2e2	; 0x2e2 <EXTINT_InterruptInit>
+		  flag_2 = 0;
+     a0e:	10 92 0a 01 	sts	0x010A, r1
+		  TCNT2 = 0;
+     a12:	14 bc       	out	0x24, r1	; 36
+     a14:	08 95       	ret
+  static void interrupt_Function2(void)
+  {
+	  unsigned short time_ON;
+	  if (flag_2 == 0)
+	  {
+		  TIMER_INTIATE(t_counter2);
+     a16:	60 91 75 00 	lds	r22, 0x0075
+     a1a:	70 91 76 00 	lds	r23, 0x0076
+     a1e:	80 91 77 00 	lds	r24, 0x0077
+     a22:	90 91 78 00 	lds	r25, 0x0078
+     a26:	0e 94 d7 01 	call	0x3ae	; 0x3ae <TIMER_INTIATE>
+		  EXTINT_InterruptInit(EXINT_INT1, EXINT_FallingEdge);
+     a2a:	81 e0       	ldi	r24, 0x01	; 1
+     a2c:	62 e0       	ldi	r22, 0x02	; 2
+     a2e:	0e 94 71 01 	call	0x2e2	; 0x2e2 <EXTINT_InterruptInit>
+		  flag_2 = 1;
+     a32:	81 e0       	ldi	r24, 0x01	; 1
+     a34:	80 93 0a 01 	sts	0x010A, r24
+     a38:	08 95       	ret
+	  {
+		  TCCR2 = 0;
+		  if (READ_Bit(TIFR,TOV2) == 1)
+		  {
+			  /* To solve the Problem of the Overflow the counter before get the maximum distance */
+			  Object_distance2 = (TCNT2 + 255) * 1.1072;
+     a3a:	64 b5       	in	r22, 0x24	; 36
+     a3c:	70 e0       	ldi	r23, 0x00	; 0
+     a3e:	61 50       	subi	r22, 0x01	; 1
+     a40:	7f 4f       	sbci	r23, 0xFF	; 255
+     a42:	88 27       	eor	r24, r24
+     a44:	77 fd       	sbrc	r23, 7
+     a46:	80 95       	com	r24
+     a48:	98 2f       	mov	r25, r24
+     a4a:	0e 94 d7 07 	call	0xfae	; 0xfae <__floatsisf>
+     a4e:	2b eb       	ldi	r18, 0xBB	; 187
+     a50:	38 eb       	ldi	r19, 0xB8	; 184
+     a52:	4d e8       	ldi	r20, 0x8D	; 141
+     a54:	5f e3       	ldi	r21, 0x3F	; 63
+     a56:	0e 94 3b 08 	call	0x1076	; 0x1076 <__mulsf3>
+     a5a:	0e 94 a4 07 	call	0xf48	; 0xf48 <__fixsfsi>
+     a5e:	dc 01       	movw	r26, r24
+     a60:	cb 01       	movw	r24, r22
+     a62:	90 93 0f 01 	sts	0x010F, r25
+     a66:	80 93 0e 01 	sts	0x010E, r24
+			  /* CLear the flag Manually by Write a One */
+			  SET_Bit(TIFR,TOV2);
+     a6a:	88 b7       	in	r24, 0x38	; 56
+     a6c:	80 64       	ori	r24, 0x40	; 64
+     a6e:	88 bf       	out	0x38, r24	; 56
+     a70:	ca cf       	rjmp	.-108    	; 0xa06 <interrupt_Function2+0x42>
+
+00000a72 <interrupt_Function>:
+    short Object_distance2;
+  
+  static void interrupt_Function(void)
+  {
+	  unsigned short time_ON;
+	  if (flag_1 == 0)
+     a72:	80 91 0b 01 	lds	r24, 0x010B
+     a76:	88 23       	and	r24, r24
+     a78:	29 f1       	breq	.+74     	; 0xac4 <interrupt_Function+0x52>
+	  {
+		  TIMER_INTIATE(t_counter1);
+		 EXTINT_InterruptInit(EXINT_INT0, EXINT_FallingEdge);
+		  flag_1 = 1;
+	  }
+	  else if(flag_1 == 1)
+     a7a:	80 91 0b 01 	lds	r24, 0x010B
+     a7e:	81 30       	cpi	r24, 0x01	; 1
+     a80:	09 f0       	breq	.+2      	; 0xa84 <interrupt_Function+0x12>
+     a82:	08 95       	ret
+	  {
+		  TCCR0 = 0; 
+     a84:	13 be       	out	0x33, r1	; 51
+		  if (READ_Bit(TIFR,TOV0) == 1)
+     a86:	08 b6       	in	r0, 0x38	; 56
+     a88:	00 fc       	sbrc	r0, 0
+     a8a:	2e c0       	rjmp	.+92     	; 0xae8 <interrupt_Function+0x76>
+			  /* CLear the flag Manually by Write a One */
+			  SET_Bit(TIFR,TOV0);
+		  }
+		  else
+		  {
+			  Object_distance1 = TCNT0 * 1.1072;
+     a8c:	62 b7       	in	r22, 0x32	; 50
+     a8e:	70 e0       	ldi	r23, 0x00	; 0
+     a90:	80 e0       	ldi	r24, 0x00	; 0
+     a92:	90 e0       	ldi	r25, 0x00	; 0
+     a94:	0e 94 d7 07 	call	0xfae	; 0xfae <__floatsisf>
+     a98:	2b eb       	ldi	r18, 0xBB	; 187
+     a9a:	38 eb       	ldi	r19, 0xB8	; 184
+     a9c:	4d e8       	ldi	r20, 0x8D	; 141
+     a9e:	5f e3       	ldi	r21, 0x3F	; 63
+     aa0:	0e 94 3b 08 	call	0x1076	; 0x1076 <__mulsf3>
+     aa4:	0e 94 a4 07 	call	0xf48	; 0xf48 <__fixsfsi>
+     aa8:	dc 01       	movw	r26, r24
+     aaa:	cb 01       	movw	r24, r22
+     aac:	90 93 0d 01 	sts	0x010D, r25
+     ab0:	80 93 0c 01 	sts	0x010C, r24
+		  }
+		  EXTINT_InterruptInit(EXINT_INT0, EXINT_RisingEdge);	
+     ab4:	80 e0       	ldi	r24, 0x00	; 0
+     ab6:	63 e0       	ldi	r22, 0x03	; 3
+     ab8:	0e 94 71 01 	call	0x2e2	; 0x2e2 <EXTINT_InterruptInit>
+		  flag_1 = 0;
+     abc:	10 92 0b 01 	sts	0x010B, r1
+		  TCNT0 = 0;
+     ac0:	12 be       	out	0x32, r1	; 50
+     ac2:	08 95       	ret
+  static void interrupt_Function(void)
+  {
+	  unsigned short time_ON;
+	  if (flag_1 == 0)
+	  {
+		  TIMER_INTIATE(t_counter1);
+     ac4:	60 91 79 00 	lds	r22, 0x0079
+     ac8:	70 91 7a 00 	lds	r23, 0x007A
+     acc:	80 91 7b 00 	lds	r24, 0x007B
+     ad0:	90 91 7c 00 	lds	r25, 0x007C
+     ad4:	0e 94 d7 01 	call	0x3ae	; 0x3ae <TIMER_INTIATE>
+		 EXTINT_InterruptInit(EXINT_INT0, EXINT_FallingEdge);
+     ad8:	80 e0       	ldi	r24, 0x00	; 0
+     ada:	62 e0       	ldi	r22, 0x02	; 2
+     adc:	0e 94 71 01 	call	0x2e2	; 0x2e2 <EXTINT_InterruptInit>
+		  flag_1 = 1;
+     ae0:	81 e0       	ldi	r24, 0x01	; 1
+     ae2:	80 93 0b 01 	sts	0x010B, r24
+     ae6:	08 95       	ret
+	  {
+		  TCCR0 = 0; 
+		  if (READ_Bit(TIFR,TOV0) == 1)
+		  {
+			  /* To solve the Problem of the Overflow the counter before get the maximum distance */
+			  Object_distance1 = (TCNT0 + 255) * 1.1072;
+     ae8:	62 b7       	in	r22, 0x32	; 50
+     aea:	70 e0       	ldi	r23, 0x00	; 0
+     aec:	61 50       	subi	r22, 0x01	; 1
+     aee:	7f 4f       	sbci	r23, 0xFF	; 255
+     af0:	88 27       	eor	r24, r24
+     af2:	77 fd       	sbrc	r23, 7
+     af4:	80 95       	com	r24
+     af6:	98 2f       	mov	r25, r24
+     af8:	0e 94 d7 07 	call	0xfae	; 0xfae <__floatsisf>
+     afc:	2b eb       	ldi	r18, 0xBB	; 187
+     afe:	38 eb       	ldi	r19, 0xB8	; 184
+     b00:	4d e8       	ldi	r20, 0x8D	; 141
+     b02:	5f e3       	ldi	r21, 0x3F	; 63
+     b04:	0e 94 3b 08 	call	0x1076	; 0x1076 <__mulsf3>
+     b08:	0e 94 a4 07 	call	0xf48	; 0xf48 <__fixsfsi>
+     b0c:	dc 01       	movw	r26, r24
+     b0e:	cb 01       	movw	r24, r22
+     b10:	90 93 0d 01 	sts	0x010D, r25
+     b14:	80 93 0c 01 	sts	0x010C, r24
+			  /* CLear the flag Manually by Write a One */
+			  SET_Bit(TIFR,TOV0);
+     b18:	88 b7       	in	r24, 0x38	; 56
+     b1a:	81 60       	ori	r24, 0x01	; 1
+     b1c:	88 bf       	out	0x38, r24	; 56
+     b1e:	ca cf       	rjmp	.-108    	; 0xab4 <interrupt_Function+0x42>
+
+00000b20 <ULTRASONIC_Setup>:
+		  
+	  }
+  }
+  
+     void ULTRASONIC_Setup(ULTRASONIC_DATATYPE U)
+	 {
+     b20:	1f 93       	push	r17
+     b22:	cf 93       	push	r28
+     b24:	df 93       	push	r29
+     b26:	26 2f       	mov	r18, r22
+     b28:	68 2f       	mov	r22, r24
+     b2a:	19 2f       	mov	r17, r25
+     b2c:	d2 2f       	mov	r29, r18
+     b2e:	c7 2f       	mov	r28, r23
+		 /* Make the trigger pin output  */
+		 DIO_pinConfiguration(U.ultrasonic_port, U.ultrasonic_Trig, Output);
+     b30:	82 2f       	mov	r24, r18
+     b32:	97 2f       	mov	r25, r23
+     b34:	42 e0       	ldi	r20, 0x02	; 2
+     b36:	0e 94 b0 00 	call	0x160	; 0x160 <DIO_pinConfiguration>
+		 
+		 /* Make the Echo Pin input Note that it must be on of the External interrupt Pin PB2, PD2, PD3 */
+		 DIO_pinConfiguration(U.ultrasonic_port, U.ultrasonic_Echo, InputFloat);
+     b3a:	8d 2f       	mov	r24, r29
+     b3c:	9c 2f       	mov	r25, r28
+     b3e:	61 2f       	mov	r22, r17
+     b40:	40 e0       	ldi	r20, 0x00	; 0
+     b42:	0e 94 b0 00 	call	0x160	; 0x160 <DIO_pinConfiguration>
+     b46:	8f ec       	ldi	r24, 0xCF	; 207
+     b48:	97 e0       	ldi	r25, 0x07	; 7
+     b4a:	01 97       	sbiw	r24, 0x01	; 1
+     b4c:	f1 f7       	brne	.-4      	; 0xb4a <ULTRASONIC_Setup+0x2a>
+     b4e:	00 c0       	rjmp	.+0      	; 0xb50 <ULTRASONIC_Setup+0x30>
+     b50:	00 00       	nop
+		 
+		 _delay_us(500);
+		 /* Setup the interrupt pin depend on the user Selection (We Work at INT0, INT1 until handle INT2 ) */
+		 switch(U.ultrasonic_Echo)
+     b52:	12 30       	cpi	r17, 0x02	; 2
+     b54:	99 f0       	breq	.+38     	; 0xb7c <ULTRASONIC_Setup+0x5c>
+     b56:	13 30       	cpi	r17, 0x03	; 3
+     b58:	51 f4       	brne	.+20     	; 0xb6e <ULTRASONIC_Setup+0x4e>
+				  /* set the ISR Function depend on the user external interrupt choose */
+				  EXTINT0_ISR = interrupt_Function;
+			 break;
+			 case PIN3 :
+			      /* in this case we Setup the External interrupt Source number 1 */
+			      EXTINT_InterruptInit(EXINT_INT1, EXINT_RisingEdge);
+     b5a:	81 e0       	ldi	r24, 0x01	; 1
+     b5c:	63 e0       	ldi	r22, 0x03	; 3
+     b5e:	0e 94 71 01 	call	0x2e2	; 0x2e2 <EXTINT_InterruptInit>
+				  /* set the ISR Function depend on the user external interrupt choose */
+				  EXTINT1_ISR = interrupt_Function2;
+     b62:	82 ee       	ldi	r24, 0xE2	; 226
+     b64:	94 e0       	ldi	r25, 0x04	; 4
+     b66:	90 93 07 01 	sts	0x0107, r25
+     b6a:	80 93 06 01 	sts	0x0106, r24
+			 /* Handle the error if the user select an Wrong pin to work as Echo pin */
+			 break;
+		 }
+		 	
+		 /* Enable the Global Interrupt */
+		 SREG |= (1 << 7);		 
+     b6e:	8f b7       	in	r24, 0x3f	; 63
+     b70:	80 68       	ori	r24, 0x80	; 128
+     b72:	8f bf       	out	0x3f, r24	; 63
+	 }		 
+     b74:	df 91       	pop	r29
+     b76:	cf 91       	pop	r28
+     b78:	1f 91       	pop	r17
+     b7a:	08 95       	ret
+		 /* Setup the interrupt pin depend on the user Selection (We Work at INT0, INT1 until handle INT2 ) */
+		 switch(U.ultrasonic_Echo)
+		 {
+			 case PIN2 :
+			      /* in this case we Setup the External interrupt Source number 0 */
+				  EXTINT_InterruptInit(EXINT_INT0, EXINT_RisingEdge);
+     b7c:	80 e0       	ldi	r24, 0x00	; 0
+     b7e:	63 e0       	ldi	r22, 0x03	; 3
+     b80:	0e 94 71 01 	call	0x2e2	; 0x2e2 <EXTINT_InterruptInit>
+				  /* set the ISR Function depend on the user external interrupt choose */
+				  EXTINT0_ISR = interrupt_Function;
+     b84:	89 e3       	ldi	r24, 0x39	; 57
+     b86:	95 e0       	ldi	r25, 0x05	; 5
+     b88:	90 93 09 01 	sts	0x0109, r25
+     b8c:	80 93 08 01 	sts	0x0108, r24
+			 /* Handle the error if the user select an Wrong pin to work as Echo pin */
+			 break;
+		 }
+		 	
+		 /* Enable the Global Interrupt */
+		 SREG |= (1 << 7);		 
+     b90:	8f b7       	in	r24, 0x3f	; 63
+     b92:	80 68       	ori	r24, 0x80	; 128
+     b94:	8f bf       	out	0x3f, r24	; 63
+	 }		 
+     b96:	df 91       	pop	r29
+     b98:	cf 91       	pop	r28
+     b9a:	1f 91       	pop	r17
+     b9c:	08 95       	ret
+
+00000b9e <ULTRASONIC_OPERATE>:
+     unsigned short ULTRASONIC_OPERATE (ULTRASONIC_DATATYPE U)
+	 {
+     b9e:	0f 93       	push	r16
+     ba0:	1f 93       	push	r17
+     ba2:	cf 93       	push	r28
+     ba4:	df 93       	push	r29
+     ba6:	18 2f       	mov	r17, r24
+     ba8:	09 2f       	mov	r16, r25
+		 unsigned short distance = 0x00;
+     baa:	d6 2f       	mov	r29, r22
+     bac:	c7 2f       	mov	r28, r23
+		 /* start with send the trigger signal */
+		 DIO_pinWrite(U.ultrasonic_port,U.ultrasonic_Trig, HIGH);
+     bae:	86 2f       	mov	r24, r22
+     bb0:	97 2f       	mov	r25, r23
+     bb2:	61 2f       	mov	r22, r17
+     bb4:	41 e0       	ldi	r20, 0x01	; 1
+     bb6:	0e 94 e6 00 	call	0x1cc	; 0x1cc <DIO_pinWrite>
+     bba:	80 e5       	ldi	r24, 0x50	; 80
+     bbc:	8a 95       	dec	r24
+     bbe:	f1 f7       	brne	.-4      	; 0xbbc <ULTRASONIC_OPERATE+0x1e>
+		 /* Make The pulse time ON is 10Usec */
+		 _delay_us(15);
+		 /* Return it to LOW again to be one pulse */
+		  DIO_pinWrite(U.ultrasonic_port,U.ultrasonic_Trig, LOW);
+     bc0:	8d 2f       	mov	r24, r29
+     bc2:	9c 2f       	mov	r25, r28
+     bc4:	61 2f       	mov	r22, r17
+     bc6:	40 e0       	ldi	r20, 0x00	; 0
+     bc8:	0e 94 e6 00 	call	0x1cc	; 0x1cc <DIO_pinWrite>
+		  switch(U.ultrasonic_Echo)
+     bcc:	02 30       	cpi	r16, 0x02	; 2
+     bce:	49 f0       	breq	.+18     	; 0xbe2 <ULTRASONIC_OPERATE+0x44>
+     bd0:	03 30       	cpi	r16, 0x03	; 3
+     bd2:	81 f0       	breq	.+32     	; 0xbf4 <ULTRASONIC_OPERATE+0x56>
+		 /* Enable the Global Interrupt */
+		 SREG |= (1 << 7);		 
+	 }		 
+     unsigned short ULTRASONIC_OPERATE (ULTRASONIC_DATATYPE U)
+	 {
+		 unsigned short distance = 0x00;
+     bd4:	80 e0       	ldi	r24, 0x00	; 0
+     bd6:	90 e0       	ldi	r25, 0x00	; 0
+			  break;
+			  default:
+			  break;
+		  }
+		  return distance;
+	 }
+     bd8:	df 91       	pop	r29
+     bda:	cf 91       	pop	r28
+     bdc:	1f 91       	pop	r17
+     bde:	0f 91       	pop	r16
+     be0:	08 95       	ret
+		 /* Return it to LOW again to be one pulse */
+		  DIO_pinWrite(U.ultrasonic_port,U.ultrasonic_Trig, LOW);
+		  switch(U.ultrasonic_Echo)
+		  {
+			  case PIN2:
+			  distance = Object_distance1 ;
+     be2:	80 91 0c 01 	lds	r24, 0x010C
+     be6:	90 91 0d 01 	lds	r25, 0x010D
+			  break;
+			  default:
+			  break;
+		  }
+		  return distance;
+	 }
+     bea:	df 91       	pop	r29
+     bec:	cf 91       	pop	r28
+     bee:	1f 91       	pop	r17
+     bf0:	0f 91       	pop	r16
+     bf2:	08 95       	ret
+		  {
+			  case PIN2:
+			  distance = Object_distance1 ;
+			  break;
+			  case PIN3:
+			  distance = Object_distance2;
+     bf4:	80 91 0e 01 	lds	r24, 0x010E
+     bf8:	90 91 0f 01 	lds	r25, 0x010F
+			  break;
+			  default:
+			  break;
+		  }
+		  return distance;
+	 }
+     bfc:	df 91       	pop	r29
+     bfe:	cf 91       	pop	r28
+     c00:	1f 91       	pop	r17
+     c02:	0f 91       	pop	r16
+     c04:	08 95       	ret
+
+00000c06 <Garage_System_Setup>:
+  unsigned char Cars_Number ;
+  short d;
+  void Garage_System_Setup()
+  {
+	  /* Set up and initiate the LCD */
+	  LCD_init();
+     c06:	0e 94 91 03 	call	0x722	; 0x722 <LCD_init>
+	  
+	  /* Set up and initiate the IR Sensor  */
+	  PIR_setup(parcking_palace1);
+     c0a:	60 91 00 01 	lds	r22, 0x0100
+     c0e:	70 91 01 01 	lds	r23, 0x0101
+     c12:	80 91 02 01 	lds	r24, 0x0102
+     c16:	0e 94 6d 04 	call	0x8da	; 0x8da <PIR_setup>
+	  PIR_setup(parcking_palace2);
+     c1a:	60 91 fd 00 	lds	r22, 0x00FD
+     c1e:	70 91 fe 00 	lds	r23, 0x00FE
+     c22:	80 91 ff 00 	lds	r24, 0x00FF
+     c26:	0e 94 6d 04 	call	0x8da	; 0x8da <PIR_setup>
+	  PIR_setup(parcking_palace3);
+     c2a:	60 91 fa 00 	lds	r22, 0x00FA
+     c2e:	70 91 fb 00 	lds	r23, 0x00FB
+     c32:	80 91 fc 00 	lds	r24, 0x00FC
+     c36:	0e 94 6d 04 	call	0x8da	; 0x8da <PIR_setup>
+	  
+	  /* Set up and initiate the Ultrsonic Sensor */
+	  ULTRASONIC_Setup(Enter_Gate);
+     c3a:	60 91 f6 00 	lds	r22, 0x00F6
+     c3e:	70 91 f7 00 	lds	r23, 0x00F7
+     c42:	80 91 f8 00 	lds	r24, 0x00F8
+     c46:	90 91 f9 00 	lds	r25, 0x00F9
+     c4a:	0e 94 90 05 	call	0xb20	; 0xb20 <ULTRASONIC_Setup>
+	  ULTRASONIC_Setup(Exit_Gate);
+     c4e:	60 91 f2 00 	lds	r22, 0x00F2
+     c52:	70 91 f3 00 	lds	r23, 0x00F3
+     c56:	80 91 f4 00 	lds	r24, 0x00F4
+     c5a:	90 91 f5 00 	lds	r25, 0x00F5
+     c5e:	0e 94 90 05 	call	0xb20	; 0xb20 <ULTRASONIC_Setup>
+	  /* Set the Servo at a Zero position . A refer to the Enter gate servo, B refer to the Exist gate servo*/
+	  SERVO_WRITE(1.5,'A');
+     c62:	60 e0       	ldi	r22, 0x00	; 0
+     c64:	70 e0       	ldi	r23, 0x00	; 0
+     c66:	80 ec       	ldi	r24, 0xC0	; 192
+     c68:	9f e3       	ldi	r25, 0x3F	; 63
+     c6a:	41 e4       	ldi	r20, 0x41	; 65
+     c6c:	0e 94 96 04 	call	0x92c	; 0x92c <SERVO_WRITE>
+	  SERVO_WRITE(1.5,'B');
+     c70:	60 e0       	ldi	r22, 0x00	; 0
+     c72:	70 e0       	ldi	r23, 0x00	; 0
+     c74:	80 ec       	ldi	r24, 0xC0	; 192
+     c76:	9f e3       	ldi	r25, 0x3F	; 63
+     c78:	42 e4       	ldi	r20, 0x42	; 66
+     c7a:	0e 94 96 04 	call	0x92c	; 0x92c <SERVO_WRITE>
+  }
+     c7e:	08 95       	ret
+
+00000c80 <Garage_System_OPERATE>:
+  
+  
+  void Garage_System_OPERATE()
+  {
+	  /***************************** Default screen if there is no car want to enter ***********************************************/
+	   if (ULTRASONIC_OPERATE(Enter_Gate) > Car_Exsit_distance && Cars_Number < 3)
+     c80:	60 91 f6 00 	lds	r22, 0x00F6
+     c84:	70 91 f7 00 	lds	r23, 0x00F7
+     c88:	80 91 f8 00 	lds	r24, 0x00F8
+     c8c:	90 91 f9 00 	lds	r25, 0x00F9
+     c90:	0e 94 cf 05 	call	0xb9e	; 0xb9e <ULTRASONIC_OPERATE>
+     c94:	89 3c       	cpi	r24, 0xC9	; 201
+     c96:	91 05       	cpc	r25, r1
+     c98:	18 f1       	brcs	.+70     	; 0xce0 <Garage_System_OPERATE+0x60>
+     c9a:	80 91 10 01 	lds	r24, 0x0110
+     c9e:	83 30       	cpi	r24, 0x03	; 3
+     ca0:	08 f4       	brcc	.+2      	; 0xca4 <Garage_System_OPERATE+0x24>
+     ca2:	e0 c0       	rjmp	.+448    	; 0xe64 <Garage_System_OPERATE+0x1e4>
+			   LCD_Select_RowCol(1,0);
+			   LCD_DisplayString("  24Hr/7weeks   ");
+		   }			   
+	   }
+ /************************************** display screen if the garage is full **************************************************************/
+	   else if ( Cars_Number == 3 )
+     ca4:	83 30       	cpi	r24, 0x03	; 3
+     ca6:	01 f1       	breq	.+64     	; 0xce8 <Garage_System_OPERATE+0x68>
+		  }			  
+	   }
+	   
+ /******************************************************* display screen the garage is not full and there is car close to the Enter gate ******************/
+ 
+	 else if (ULTRASONIC_OPERATE(Enter_Gate)  > 10 && ULTRASONIC_OPERATE(Enter_Gate) <= Car_Exsit_distance && Cars_Number < 3)
+     ca8:	60 91 f6 00 	lds	r22, 0x00F6
+     cac:	70 91 f7 00 	lds	r23, 0x00F7
+     cb0:	80 91 f8 00 	lds	r24, 0x00F8
+     cb4:	90 91 f9 00 	lds	r25, 0x00F9
+     cb8:	0e 94 cf 05 	call	0xb9e	; 0xb9e <ULTRASONIC_OPERATE>
+     cbc:	8b 30       	cpi	r24, 0x0B	; 11
+     cbe:	91 05       	cpc	r25, r1
+     cc0:	08 f0       	brcs	.+2      	; 0xcc4 <Garage_System_OPERATE+0x44>
+     cc2:	86 c0       	rjmp	.+268    	; 0xdd0 <Garage_System_OPERATE+0x150>
+			SERVO_WRITE(1.5, 'A'); 
+	  }
+	  
+ /************************************************ Car Close From the Exist Gate *********************************************************************/	
+  
+	  if (ULTRASONIC_OPERATE(Exit_Gate)  > 10 && ULTRASONIC_OPERATE(Exit_Gate) <= Car_Exsit_distance)
+     cc4:	60 91 f2 00 	lds	r22, 0x00F2
+     cc8:	70 91 f3 00 	lds	r23, 0x00F3
+     ccc:	80 91 f4 00 	lds	r24, 0x00F4
+     cd0:	90 91 f5 00 	lds	r25, 0x00F5
+     cd4:	0e 94 cf 05 	call	0xb9e	; 0xb9e <ULTRASONIC_OPERATE>
+     cd8:	8b 30       	cpi	r24, 0x0B	; 11
+     cda:	91 05       	cpc	r25, r1
+     cdc:	e8 f5       	brcc	.+122    	; 0xd58 <Garage_System_OPERATE+0xd8>
+     cde:	08 95       	ret
+	   if (ULTRASONIC_OPERATE(Enter_Gate) > Car_Exsit_distance && Cars_Number < 3)
+	   {
+		   /* We can not use delay because that will effect on the timer and the ultrasonic . A refer to the Enter gate servo */
+		   //SERVO_WRITE(1.5, 'A');
+		   LCD_Clear();
+		   while(ULTRASONIC_OPERATE(Enter_Gate) > Car_Exsit_distance && Cars_Number < 3 && ULTRASONIC_OPERATE(Exit_Gate) > Car_Exsit_distance)
+     ce0:	80 91 10 01 	lds	r24, 0x0110
+			   LCD_Select_RowCol(1,0);
+			   LCD_DisplayString("  24Hr/7weeks   ");
+		   }			   
+	   }
+ /************************************** display screen if the garage is full **************************************************************/
+	   else if ( Cars_Number == 3 )
+     ce4:	83 30       	cpi	r24, 0x03	; 3
+     ce6:	01 f7       	brne	.-64     	; 0xca8 <Garage_System_OPERATE+0x28>
+	   {
+		   /* this condition to not harm the closer cars to the gate */
+		   if (ULTRASONIC_OPERATE(Enter_Gate) >= Car_Exsit_distance)
+     ce8:	60 91 f6 00 	lds	r22, 0x00F6
+     cec:	70 91 f7 00 	lds	r23, 0x00F7
+     cf0:	80 91 f8 00 	lds	r24, 0x00F8
+     cf4:	90 91 f9 00 	lds	r25, 0x00F9
+     cf8:	0e 94 cf 05 	call	0xb9e	; 0xb9e <ULTRASONIC_OPERATE>
+     cfc:	88 3c       	cpi	r24, 0xC8	; 200
+     cfe:	91 05       	cpc	r25, r1
+     d00:	08 f0       	brcs	.+2      	; 0xd04 <Garage_System_OPERATE+0x84>
+     d02:	e0 c0       	rjmp	.+448    	; 0xec4 <Garage_System_OPERATE+0x244>
+		   {
+			   /* to make sure to Close the gate. A refer to the Enter gate servo */
+			   SERVO_WRITE(1.5, 'A');
+		   }
+		   LCD_Clear();
+     d04:	0e 94 a4 03 	call	0x748	; 0x748 <LCD_Clear>
+		  while(ULTRASONIC_OPERATE(Enter_Gate) >= Car_Exsit_distance && ULTRASONIC_OPERATE(Exit_Gate) > Car_Exsit_distance)
+     d08:	19 c0       	rjmp	.+50     	; 0xd3c <Garage_System_OPERATE+0xbc>
+     d0a:	60 91 f2 00 	lds	r22, 0x00F2
+     d0e:	70 91 f3 00 	lds	r23, 0x00F3
+     d12:	80 91 f4 00 	lds	r24, 0x00F4
+     d16:	90 91 f5 00 	lds	r25, 0x00F5
+     d1a:	0e 94 cf 05 	call	0xb9e	; 0xb9e <ULTRASONIC_OPERATE>
+     d1e:	89 3c       	cpi	r24, 0xC9	; 201
+     d20:	91 05       	cpc	r25, r1
+     d22:	80 f2       	brcs	.-96     	; 0xcc4 <Garage_System_OPERATE+0x44>
+		  {
+			   LCD_DisplayString("   Sorry!!   ");
+     d24:	8b e9       	ldi	r24, 0x9B	; 155
+     d26:	90 e0       	ldi	r25, 0x00	; 0
+     d28:	0e 94 e9 03 	call	0x7d2	; 0x7d2 <LCD_DisplayString>
+			   LCD_Select_RowCol(1,0);
+     d2c:	81 e0       	ldi	r24, 0x01	; 1
+     d2e:	60 e0       	ldi	r22, 0x00	; 0
+     d30:	0e 94 f8 03 	call	0x7f0	; 0x7f0 <LCD_Select_RowCol>
+			   LCD_DisplayString("Garage Full    ");
+     d34:	89 ea       	ldi	r24, 0xA9	; 169
+     d36:	90 e0       	ldi	r25, 0x00	; 0
+     d38:	0e 94 e9 03 	call	0x7d2	; 0x7d2 <LCD_DisplayString>
+		   {
+			   /* to make sure to Close the gate. A refer to the Enter gate servo */
+			   SERVO_WRITE(1.5, 'A');
+		   }
+		   LCD_Clear();
+		  while(ULTRASONIC_OPERATE(Enter_Gate) >= Car_Exsit_distance && ULTRASONIC_OPERATE(Exit_Gate) > Car_Exsit_distance)
+     d3c:	60 91 f6 00 	lds	r22, 0x00F6
+     d40:	70 91 f7 00 	lds	r23, 0x00F7
+     d44:	80 91 f8 00 	lds	r24, 0x00F8
+     d48:	90 91 f9 00 	lds	r25, 0x00F9
+     d4c:	0e 94 cf 05 	call	0xb9e	; 0xb9e <ULTRASONIC_OPERATE>
+     d50:	88 3c       	cpi	r24, 0xC8	; 200
+     d52:	91 05       	cpc	r25, r1
+     d54:	d0 f6       	brcc	.-76     	; 0xd0a <Garage_System_OPERATE+0x8a>
+     d56:	b6 cf       	rjmp	.-148    	; 0xcc4 <Garage_System_OPERATE+0x44>
+			SERVO_WRITE(1.5, 'A'); 
+	  }
+	  
+ /************************************************ Car Close From the Exist Gate *********************************************************************/	
+  
+	  if (ULTRASONIC_OPERATE(Exit_Gate)  > 10 && ULTRASONIC_OPERATE(Exit_Gate) <= Car_Exsit_distance)
+     d58:	60 91 f2 00 	lds	r22, 0x00F2
+     d5c:	70 91 f3 00 	lds	r23, 0x00F3
+     d60:	80 91 f4 00 	lds	r24, 0x00F4
+     d64:	90 91 f5 00 	lds	r25, 0x00F5
+     d68:	0e 94 cf 05 	call	0xb9e	; 0xb9e <ULTRASONIC_OPERATE>
+     d6c:	89 3c       	cpi	r24, 0xC9	; 201
+     d6e:	91 05       	cpc	r25, r1
+     d70:	a8 f0       	brcs	.+42     	; 0xd9c <Garage_System_OPERATE+0x11c>
+     d72:	b0 c0       	rjmp	.+352    	; 0xed4 <Garage_System_OPERATE+0x254>
+	  {
+		  while(ULTRASONIC_OPERATE(Exit_Gate)  > 10 && ULTRASONIC_OPERATE(Exit_Gate) <= Car_Exsit_distance)
+     d74:	60 91 f2 00 	lds	r22, 0x00F2
+     d78:	70 91 f3 00 	lds	r23, 0x00F3
+     d7c:	80 91 f4 00 	lds	r24, 0x00F4
+     d80:	90 91 f5 00 	lds	r25, 0x00F5
+     d84:	0e 94 cf 05 	call	0xb9e	; 0xb9e <ULTRASONIC_OPERATE>
+     d88:	89 3c       	cpi	r24, 0xC9	; 201
+     d8a:	91 05       	cpc	r25, r1
+     d8c:	a0 f4       	brcc	.+40     	; 0xdb6 <Garage_System_OPERATE+0x136>
+		  {
+			  /* open the Servo in angle -90 degree. B refer to the Exit gate servo */
+			  SERVO_WRITE(1,'B');
+     d8e:	60 e0       	ldi	r22, 0x00	; 0
+     d90:	70 e0       	ldi	r23, 0x00	; 0
+     d92:	80 e8       	ldi	r24, 0x80	; 128
+     d94:	9f e3       	ldi	r25, 0x3F	; 63
+     d96:	42 e4       	ldi	r20, 0x42	; 66
+     d98:	0e 94 96 04 	call	0x92c	; 0x92c <SERVO_WRITE>
+	  
+ /************************************************ Car Close From the Exist Gate *********************************************************************/	
+  
+	  if (ULTRASONIC_OPERATE(Exit_Gate)  > 10 && ULTRASONIC_OPERATE(Exit_Gate) <= Car_Exsit_distance)
+	  {
+		  while(ULTRASONIC_OPERATE(Exit_Gate)  > 10 && ULTRASONIC_OPERATE(Exit_Gate) <= Car_Exsit_distance)
+     d9c:	60 91 f2 00 	lds	r22, 0x00F2
+     da0:	70 91 f3 00 	lds	r23, 0x00F3
+     da4:	80 91 f4 00 	lds	r24, 0x00F4
+     da8:	90 91 f5 00 	lds	r25, 0x00F5
+     dac:	0e 94 cf 05 	call	0xb9e	; 0xb9e <ULTRASONIC_OPERATE>
+     db0:	8b 30       	cpi	r24, 0x0B	; 11
+     db2:	91 05       	cpc	r25, r1
+     db4:	f8 f6       	brcc	.-66     	; 0xd74 <Garage_System_OPERATE+0xf4>
+			  /* open the Servo in angle -90 degree. B refer to the Exit gate servo */
+			  SERVO_WRITE(1,'B');
+		  }	
+		  
+		  /* Decrease the number of car in the Garage */
+		  Cars_Number--;
+     db6:	80 91 10 01 	lds	r24, 0x0110
+     dba:	81 50       	subi	r24, 0x01	; 1
+     dbc:	80 93 10 01 	sts	0x0110, r24
+		  
+		  /* Close the Exist gate after make sure that the car is far from the ultrasonic range */
+		  SERVO_WRITE(1.5,'B');	  
+     dc0:	60 e0       	ldi	r22, 0x00	; 0
+     dc2:	70 e0       	ldi	r23, 0x00	; 0
+     dc4:	80 ec       	ldi	r24, 0xC0	; 192
+     dc6:	9f e3       	ldi	r25, 0x3F	; 63
+     dc8:	42 e4       	ldi	r20, 0x42	; 66
+     dca:	0e 94 96 04 	call	0x92c	; 0x92c <SERVO_WRITE>
+     dce:	08 95       	ret
+		  }			  
+	   }
+	   
+ /******************************************************* display screen the garage is not full and there is car close to the Enter gate ******************/
+ 
+	 else if (ULTRASONIC_OPERATE(Enter_Gate)  > 10 && ULTRASONIC_OPERATE(Enter_Gate) <= Car_Exsit_distance && Cars_Number < 3)
+     dd0:	60 91 f6 00 	lds	r22, 0x00F6
+     dd4:	70 91 f7 00 	lds	r23, 0x00F7
+     dd8:	80 91 f8 00 	lds	r24, 0x00F8
+     ddc:	90 91 f9 00 	lds	r25, 0x00F9
+     de0:	0e 94 cf 05 	call	0xb9e	; 0xb9e <ULTRASONIC_OPERATE>
+     de4:	89 3c       	cpi	r24, 0xC9	; 201
+     de6:	91 05       	cpc	r25, r1
+     de8:	08 f0       	brcs	.+2      	; 0xdec <Garage_System_OPERATE+0x16c>
+     dea:	6c cf       	rjmp	.-296    	; 0xcc4 <Garage_System_OPERATE+0x44>
+     dec:	80 91 10 01 	lds	r24, 0x0110
+     df0:	83 30       	cpi	r24, 0x03	; 3
+     df2:	08 f0       	brcs	.+2      	; 0xdf6 <Garage_System_OPERATE+0x176>
+     df4:	67 cf       	rjmp	.-306    	; 0xcc4 <Garage_System_OPERATE+0x44>
+		  {
+			/* open the Servo in angle 90 degree. A refer to the Enter gate servo */
+			SERVO_WRITE(2,'A');
+     df6:	60 e0       	ldi	r22, 0x00	; 0
+     df8:	70 e0       	ldi	r23, 0x00	; 0
+     dfa:	80 e0       	ldi	r24, 0x00	; 0
+     dfc:	90 e4       	ldi	r25, 0x40	; 64
+     dfe:	41 e4       	ldi	r20, 0x41	; 65
+     e00:	0e 94 96 04 	call	0x92c	; 0x92c <SERVO_WRITE>
+			  
+			/* keep display on the LCD guide the driver to the packing place */
+			while(ULTRASONIC_OPERATE(Enter_Gate) > 10 && ULTRASONIC_OPERATE(Enter_Gate) <= Car_Exsit_distance)
+     e04:	60 91 f6 00 	lds	r22, 0x00F6
+     e08:	70 91 f7 00 	lds	r23, 0x00F7
+     e0c:	80 91 f8 00 	lds	r24, 0x00F8
+     e10:	90 91 f9 00 	lds	r25, 0x00F9
+     e14:	0e 94 cf 05 	call	0xb9e	; 0xb9e <ULTRASONIC_OPERATE>
+     e18:	8b 30       	cpi	r24, 0x0B	; 11
+     e1a:	91 05       	cpc	r25, r1
+     e1c:	08 f4       	brcc	.+2      	; 0xe20 <Garage_System_OPERATE+0x1a0>
+     e1e:	82 c0       	rjmp	.+260    	; 0xf24 <Garage_System_OPERATE+0x2a4>
+     e20:	60 91 f6 00 	lds	r22, 0x00F6
+     e24:	70 91 f7 00 	lds	r23, 0x00F7
+     e28:	80 91 f8 00 	lds	r24, 0x00F8
+     e2c:	90 91 f9 00 	lds	r25, 0x00F9
+     e30:	0e 94 cf 05 	call	0xb9e	; 0xb9e <ULTRASONIC_OPERATE>
+     e34:	89 3c       	cpi	r24, 0xC9	; 201
+     e36:	91 05       	cpc	r25, r1
+     e38:	08 f0       	brcs	.+2      	; 0xe3c <Garage_System_OPERATE+0x1bc>
+     e3a:	74 c0       	rjmp	.+232    	; 0xf24 <Garage_System_OPERATE+0x2a4>
+			{
+				if (PIR_operate(parcking_palace1) == LOW)
+     e3c:	60 91 00 01 	lds	r22, 0x0100
+     e40:	70 91 01 01 	lds	r23, 0x0101
+     e44:	80 91 02 01 	lds	r24, 0x0102
+     e48:	0e 94 82 04 	call	0x904	; 0x904 <PIR_operate>
+     e4c:	88 23       	and	r24, r24
+     e4e:	09 f0       	breq	.+2      	; 0xe52 <Garage_System_OPERATE+0x1d2>
+     e50:	42 c0       	rjmp	.+132    	; 0xed6 <Garage_System_OPERATE+0x256>
+				{
+					/* Wait until the driver reach it is place */
+					LCD_Select_RowCol(1,0);
+     e52:	81 e0       	ldi	r24, 0x01	; 1
+     e54:	60 e0       	ldi	r22, 0x00	; 0
+     e56:	0e 94 f8 03 	call	0x7f0	; 0x7f0 <LCD_Select_RowCol>
+					LCD_DisplayString("please go to P1   ");
+     e5a:	89 eb       	ldi	r24, 0xB9	; 185
+     e5c:	90 e0       	ldi	r25, 0x00	; 0
+     e5e:	0e 94 e9 03 	call	0x7d2	; 0x7d2 <LCD_DisplayString>
+     e62:	d0 cf       	rjmp	.-96     	; 0xe04 <Garage_System_OPERATE+0x184>
+	  /***************************** Default screen if there is no car want to enter ***********************************************/
+	   if (ULTRASONIC_OPERATE(Enter_Gate) > Car_Exsit_distance && Cars_Number < 3)
+	   {
+		   /* We can not use delay because that will effect on the timer and the ultrasonic . A refer to the Enter gate servo */
+		   //SERVO_WRITE(1.5, 'A');
+		   LCD_Clear();
+     e64:	0e 94 a4 03 	call	0x748	; 0x748 <LCD_Clear>
+		   while(ULTRASONIC_OPERATE(Enter_Gate) > Car_Exsit_distance && Cars_Number < 3 && ULTRASONIC_OPERATE(Exit_Gate) > Car_Exsit_distance)
+     e68:	1f c0       	rjmp	.+62     	; 0xea8 <Garage_System_OPERATE+0x228>
+     e6a:	80 91 10 01 	lds	r24, 0x0110
+     e6e:	83 30       	cpi	r24, 0x03	; 3
+     e70:	08 f0       	brcs	.+2      	; 0xe74 <Garage_System_OPERATE+0x1f4>
+     e72:	28 cf       	rjmp	.-432    	; 0xcc4 <Garage_System_OPERATE+0x44>
+     e74:	60 91 f2 00 	lds	r22, 0x00F2
+     e78:	70 91 f3 00 	lds	r23, 0x00F3
+     e7c:	80 91 f4 00 	lds	r24, 0x00F4
+     e80:	90 91 f5 00 	lds	r25, 0x00F5
+     e84:	0e 94 cf 05 	call	0xb9e	; 0xb9e <ULTRASONIC_OPERATE>
+     e88:	89 3c       	cpi	r24, 0xC9	; 201
+     e8a:	91 05       	cpc	r25, r1
+     e8c:	08 f4       	brcc	.+2      	; 0xe90 <Garage_System_OPERATE+0x210>
+     e8e:	1a cf       	rjmp	.-460    	; 0xcc4 <Garage_System_OPERATE+0x44>
+		   {
+			   LCD_DisplayString(" Welcome ^_^");
+     e90:	8d e7       	ldi	r24, 0x7D	; 125
+     e92:	90 e0       	ldi	r25, 0x00	; 0
+     e94:	0e 94 e9 03 	call	0x7d2	; 0x7d2 <LCD_DisplayString>
+			   LCD_Select_RowCol(1,0);
+     e98:	81 e0       	ldi	r24, 0x01	; 1
+     e9a:	60 e0       	ldi	r22, 0x00	; 0
+     e9c:	0e 94 f8 03 	call	0x7f0	; 0x7f0 <LCD_Select_RowCol>
+			   LCD_DisplayString("  24Hr/7weeks   ");
+     ea0:	8a e8       	ldi	r24, 0x8A	; 138
+     ea2:	90 e0       	ldi	r25, 0x00	; 0
+     ea4:	0e 94 e9 03 	call	0x7d2	; 0x7d2 <LCD_DisplayString>
+	   if (ULTRASONIC_OPERATE(Enter_Gate) > Car_Exsit_distance && Cars_Number < 3)
+	   {
+		   /* We can not use delay because that will effect on the timer and the ultrasonic . A refer to the Enter gate servo */
+		   //SERVO_WRITE(1.5, 'A');
+		   LCD_Clear();
+		   while(ULTRASONIC_OPERATE(Enter_Gate) > Car_Exsit_distance && Cars_Number < 3 && ULTRASONIC_OPERATE(Exit_Gate) > Car_Exsit_distance)
+     ea8:	60 91 f6 00 	lds	r22, 0x00F6
+     eac:	70 91 f7 00 	lds	r23, 0x00F7
+     eb0:	80 91 f8 00 	lds	r24, 0x00F8
+     eb4:	90 91 f9 00 	lds	r25, 0x00F9
+     eb8:	0e 94 cf 05 	call	0xb9e	; 0xb9e <ULTRASONIC_OPERATE>
+     ebc:	89 3c       	cpi	r24, 0xC9	; 201
+     ebe:	91 05       	cpc	r25, r1
+     ec0:	a0 f6       	brcc	.-88     	; 0xe6a <Garage_System_OPERATE+0x1ea>
+     ec2:	00 cf       	rjmp	.-512    	; 0xcc4 <Garage_System_OPERATE+0x44>
+	   {
+		   /* this condition to not harm the closer cars to the gate */
+		   if (ULTRASONIC_OPERATE(Enter_Gate) >= Car_Exsit_distance)
+		   {
+			   /* to make sure to Close the gate. A refer to the Enter gate servo */
+			   SERVO_WRITE(1.5, 'A');
+     ec4:	60 e0       	ldi	r22, 0x00	; 0
+     ec6:	70 e0       	ldi	r23, 0x00	; 0
+     ec8:	80 ec       	ldi	r24, 0xC0	; 192
+     eca:	9f e3       	ldi	r25, 0x3F	; 63
+     ecc:	41 e4       	ldi	r20, 0x41	; 65
+     ece:	0e 94 96 04 	call	0x92c	; 0x92c <SERVO_WRITE>
+     ed2:	18 cf       	rjmp	.-464    	; 0xd04 <Garage_System_OPERATE+0x84>
+     ed4:	08 95       	ret
+				{
+					/* Wait until the driver reach it is place */
+					LCD_Select_RowCol(1,0);
+					LCD_DisplayString("please go to P1   ");
+				}
+				else if (PIR_operate(parcking_palace2) == LOW)
+     ed6:	60 91 fd 00 	lds	r22, 0x00FD
+     eda:	70 91 fe 00 	lds	r23, 0x00FE
+     ede:	80 91 ff 00 	lds	r24, 0x00FF
+     ee2:	0e 94 82 04 	call	0x904	; 0x904 <PIR_operate>
+     ee6:	88 23       	and	r24, r24
+     ee8:	49 f4       	brne	.+18     	; 0xefc <Garage_System_OPERATE+0x27c>
+				{
+					/* Wait until the driver reach it is place */
+					LCD_Select_RowCol(1,0);
+     eea:	81 e0       	ldi	r24, 0x01	; 1
+     eec:	60 e0       	ldi	r22, 0x00	; 0
+     eee:	0e 94 f8 03 	call	0x7f0	; 0x7f0 <LCD_Select_RowCol>
+					LCD_DisplayString("please go to P2   ");
+     ef2:	8c ec       	ldi	r24, 0xCC	; 204
+     ef4:	90 e0       	ldi	r25, 0x00	; 0
+     ef6:	0e 94 e9 03 	call	0x7d2	; 0x7d2 <LCD_DisplayString>
+     efa:	84 cf       	rjmp	.-248    	; 0xe04 <Garage_System_OPERATE+0x184>
+				}
+				else if (PIR_operate(parcking_palace3) == LOW)
+     efc:	60 91 fa 00 	lds	r22, 0x00FA
+     f00:	70 91 fb 00 	lds	r23, 0x00FB
+     f04:	80 91 fc 00 	lds	r24, 0x00FC
+     f08:	0e 94 82 04 	call	0x904	; 0x904 <PIR_operate>
+     f0c:	88 23       	and	r24, r24
+     f0e:	09 f0       	breq	.+2      	; 0xf12 <Garage_System_OPERATE+0x292>
+     f10:	79 cf       	rjmp	.-270    	; 0xe04 <Garage_System_OPERATE+0x184>
+				{
+					/* Wait until the driver reach it is place */
+					LCD_Select_RowCol(1,0);
+     f12:	81 e0       	ldi	r24, 0x01	; 1
+     f14:	60 e0       	ldi	r22, 0x00	; 0
+     f16:	0e 94 f8 03 	call	0x7f0	; 0x7f0 <LCD_Select_RowCol>
+					LCD_DisplayString("please go to P3   ");
+     f1a:	8f ed       	ldi	r24, 0xDF	; 223
+     f1c:	90 e0       	ldi	r25, 0x00	; 0
+     f1e:	0e 94 e9 03 	call	0x7d2	; 0x7d2 <LCD_DisplayString>
+     f22:	70 cf       	rjmp	.-288    	; 0xe04 <Garage_System_OPERATE+0x184>
+				}
+			}			
+			   
+		  	/* increase the number of counter car in the Garage */
+		  	Cars_Number++; 
+     f24:	80 91 10 01 	lds	r24, 0x0110
+     f28:	8f 5f       	subi	r24, 0xFF	; 255
+     f2a:	80 93 10 01 	sts	0x0110, r24
+			  
+			/* We can not use delay because that will effect on the timer and the ultrasonic reading so after make sure that car is far from the ultrasonic range close the Enter gate */
+			SERVO_WRITE(1.5, 'A'); 
+     f2e:	60 e0       	ldi	r22, 0x00	; 0
+     f30:	70 e0       	ldi	r23, 0x00	; 0
+     f32:	80 ec       	ldi	r24, 0xC0	; 192
+     f34:	9f e3       	ldi	r25, 0x3F	; 63
+     f36:	41 e4       	ldi	r20, 0x41	; 65
+     f38:	0e 94 96 04 	call	0x92c	; 0x92c <SERVO_WRITE>
+     f3c:	c3 ce       	rjmp	.-634    	; 0xcc4 <Garage_System_OPERATE+0x44>
+
+00000f3e <main>:
+
+#include "Garage_System.h"
+
+int main(void)
+{
+	Garage_System_Setup();
+     f3e:	0e 94 03 06 	call	0xc06	; 0xc06 <Garage_System_Setup>
+    while(1)
+    {
+        Garage_System_OPERATE();
+     f42:	0e 94 40 06 	call	0xc80	; 0xc80 <Garage_System_OPERATE>
+     f46:	fd cf       	rjmp	.-6      	; 0xf42 <main+0x4>
+
+00000f48 <__fixsfsi>:
+     f48:	04 d0       	rcall	.+8      	; 0xf52 <__fixunssfsi>
+     f4a:	68 94       	set
+     f4c:	b1 11       	cpse	r27, r1
+     f4e:	8d c0       	rjmp	.+282    	; 0x106a <__fp_szero>
+     f50:	08 95       	ret
+
+00000f52 <__fixunssfsi>:
+     f52:	70 d0       	rcall	.+224    	; 0x1034 <__fp_splitA>
+     f54:	88 f0       	brcs	.+34     	; 0xf78 <__fixunssfsi+0x26>
+     f56:	9f 57       	subi	r25, 0x7F	; 127
+     f58:	90 f0       	brcs	.+36     	; 0xf7e <__fixunssfsi+0x2c>
+     f5a:	b9 2f       	mov	r27, r25
+     f5c:	99 27       	eor	r25, r25
+     f5e:	b7 51       	subi	r27, 0x17	; 23
+     f60:	a0 f0       	brcs	.+40     	; 0xf8a <__fixunssfsi+0x38>
+     f62:	d1 f0       	breq	.+52     	; 0xf98 <__fixunssfsi+0x46>
+     f64:	66 0f       	add	r22, r22
+     f66:	77 1f       	adc	r23, r23
+     f68:	88 1f       	adc	r24, r24
+     f6a:	99 1f       	adc	r25, r25
+     f6c:	1a f0       	brmi	.+6      	; 0xf74 <__fixunssfsi+0x22>
+     f6e:	ba 95       	dec	r27
+     f70:	c9 f7       	brne	.-14     	; 0xf64 <__fixunssfsi+0x12>
+     f72:	12 c0       	rjmp	.+36     	; 0xf98 <__fixunssfsi+0x46>
+     f74:	b1 30       	cpi	r27, 0x01	; 1
+     f76:	81 f0       	breq	.+32     	; 0xf98 <__fixunssfsi+0x46>
+     f78:	77 d0       	rcall	.+238    	; 0x1068 <__fp_zero>
+     f7a:	b1 e0       	ldi	r27, 0x01	; 1
+     f7c:	08 95       	ret
+     f7e:	74 c0       	rjmp	.+232    	; 0x1068 <__fp_zero>
+     f80:	67 2f       	mov	r22, r23
+     f82:	78 2f       	mov	r23, r24
+     f84:	88 27       	eor	r24, r24
+     f86:	b8 5f       	subi	r27, 0xF8	; 248
+     f88:	39 f0       	breq	.+14     	; 0xf98 <__fixunssfsi+0x46>
+     f8a:	b9 3f       	cpi	r27, 0xF9	; 249
+     f8c:	cc f3       	brlt	.-14     	; 0xf80 <__fixunssfsi+0x2e>
+     f8e:	86 95       	lsr	r24
+     f90:	77 95       	ror	r23
+     f92:	67 95       	ror	r22
+     f94:	b3 95       	inc	r27
+     f96:	d9 f7       	brne	.-10     	; 0xf8e <__fixunssfsi+0x3c>
+     f98:	3e f4       	brtc	.+14     	; 0xfa8 <__fixunssfsi+0x56>
+     f9a:	90 95       	com	r25
+     f9c:	80 95       	com	r24
+     f9e:	70 95       	com	r23
+     fa0:	61 95       	neg	r22
+     fa2:	7f 4f       	sbci	r23, 0xFF	; 255
+     fa4:	8f 4f       	sbci	r24, 0xFF	; 255
+     fa6:	9f 4f       	sbci	r25, 0xFF	; 255
+     fa8:	08 95       	ret
+
+00000faa <__floatunsisf>:
+     faa:	e8 94       	clt
+     fac:	09 c0       	rjmp	.+18     	; 0xfc0 <__floatsisf+0x12>
+
+00000fae <__floatsisf>:
+     fae:	97 fb       	bst	r25, 7
+     fb0:	3e f4       	brtc	.+14     	; 0xfc0 <__floatsisf+0x12>
+     fb2:	90 95       	com	r25
+     fb4:	80 95       	com	r24
+     fb6:	70 95       	com	r23
+     fb8:	61 95       	neg	r22
+     fba:	7f 4f       	sbci	r23, 0xFF	; 255
+     fbc:	8f 4f       	sbci	r24, 0xFF	; 255
+     fbe:	9f 4f       	sbci	r25, 0xFF	; 255
+     fc0:	99 23       	and	r25, r25
+     fc2:	a9 f0       	breq	.+42     	; 0xfee <__floatsisf+0x40>
+     fc4:	f9 2f       	mov	r31, r25
+     fc6:	96 e9       	ldi	r25, 0x96	; 150
+     fc8:	bb 27       	eor	r27, r27
+     fca:	93 95       	inc	r25
+     fcc:	f6 95       	lsr	r31
+     fce:	87 95       	ror	r24
+     fd0:	77 95       	ror	r23
+     fd2:	67 95       	ror	r22
+     fd4:	b7 95       	ror	r27
+     fd6:	f1 11       	cpse	r31, r1
+     fd8:	f8 cf       	rjmp	.-16     	; 0xfca <__floatsisf+0x1c>
+     fda:	fa f4       	brpl	.+62     	; 0x101a <__floatsisf+0x6c>
+     fdc:	bb 0f       	add	r27, r27
+     fde:	11 f4       	brne	.+4      	; 0xfe4 <__floatsisf+0x36>
+     fe0:	60 ff       	sbrs	r22, 0
+     fe2:	1b c0       	rjmp	.+54     	; 0x101a <__floatsisf+0x6c>
+     fe4:	6f 5f       	subi	r22, 0xFF	; 255
+     fe6:	7f 4f       	sbci	r23, 0xFF	; 255
+     fe8:	8f 4f       	sbci	r24, 0xFF	; 255
+     fea:	9f 4f       	sbci	r25, 0xFF	; 255
+     fec:	16 c0       	rjmp	.+44     	; 0x101a <__floatsisf+0x6c>
+     fee:	88 23       	and	r24, r24
+     ff0:	11 f0       	breq	.+4      	; 0xff6 <__floatsisf+0x48>
+     ff2:	96 e9       	ldi	r25, 0x96	; 150
+     ff4:	11 c0       	rjmp	.+34     	; 0x1018 <__floatsisf+0x6a>
+     ff6:	77 23       	and	r23, r23
+     ff8:	21 f0       	breq	.+8      	; 0x1002 <__floatsisf+0x54>
+     ffa:	9e e8       	ldi	r25, 0x8E	; 142
+     ffc:	87 2f       	mov	r24, r23
+     ffe:	76 2f       	mov	r23, r22
+    1000:	05 c0       	rjmp	.+10     	; 0x100c <__floatsisf+0x5e>
+    1002:	66 23       	and	r22, r22
+    1004:	71 f0       	breq	.+28     	; 0x1022 <__floatsisf+0x74>
+    1006:	96 e8       	ldi	r25, 0x86	; 134
+    1008:	86 2f       	mov	r24, r22
+    100a:	70 e0       	ldi	r23, 0x00	; 0
+    100c:	60 e0       	ldi	r22, 0x00	; 0
+    100e:	2a f0       	brmi	.+10     	; 0x101a <__floatsisf+0x6c>
+    1010:	9a 95       	dec	r25
+    1012:	66 0f       	add	r22, r22
+    1014:	77 1f       	adc	r23, r23
+    1016:	88 1f       	adc	r24, r24
+    1018:	da f7       	brpl	.-10     	; 0x1010 <__floatsisf+0x62>
+    101a:	88 0f       	add	r24, r24
+    101c:	96 95       	lsr	r25
+    101e:	87 95       	ror	r24
+    1020:	97 f9       	bld	r25, 7
+    1022:	08 95       	ret
+
+00001024 <__fp_split3>:
+    1024:	57 fd       	sbrc	r21, 7
+    1026:	90 58       	subi	r25, 0x80	; 128
+    1028:	44 0f       	add	r20, r20
+    102a:	55 1f       	adc	r21, r21
+    102c:	59 f0       	breq	.+22     	; 0x1044 <__fp_splitA+0x10>
+    102e:	5f 3f       	cpi	r21, 0xFF	; 255
+    1030:	71 f0       	breq	.+28     	; 0x104e <__fp_splitA+0x1a>
+    1032:	47 95       	ror	r20
+
+00001034 <__fp_splitA>:
+    1034:	88 0f       	add	r24, r24
+    1036:	97 fb       	bst	r25, 7
+    1038:	99 1f       	adc	r25, r25
+    103a:	61 f0       	breq	.+24     	; 0x1054 <__fp_splitA+0x20>
+    103c:	9f 3f       	cpi	r25, 0xFF	; 255
+    103e:	79 f0       	breq	.+30     	; 0x105e <__fp_splitA+0x2a>
+    1040:	87 95       	ror	r24
+    1042:	08 95       	ret
+    1044:	12 16       	cp	r1, r18
+    1046:	13 06       	cpc	r1, r19
+    1048:	14 06       	cpc	r1, r20
+    104a:	55 1f       	adc	r21, r21
+    104c:	f2 cf       	rjmp	.-28     	; 0x1032 <__fp_split3+0xe>
+    104e:	46 95       	lsr	r20
+    1050:	f1 df       	rcall	.-30     	; 0x1034 <__fp_splitA>
+    1052:	08 c0       	rjmp	.+16     	; 0x1064 <__fp_splitA+0x30>
+    1054:	16 16       	cp	r1, r22
+    1056:	17 06       	cpc	r1, r23
+    1058:	18 06       	cpc	r1, r24
+    105a:	99 1f       	adc	r25, r25
+    105c:	f1 cf       	rjmp	.-30     	; 0x1040 <__fp_splitA+0xc>
+    105e:	86 95       	lsr	r24
+    1060:	71 05       	cpc	r23, r1
+    1062:	61 05       	cpc	r22, r1
+    1064:	08 94       	sec
+    1066:	08 95       	ret
+
+00001068 <__fp_zero>:
+    1068:	e8 94       	clt
+
+0000106a <__fp_szero>:
+    106a:	bb 27       	eor	r27, r27
+    106c:	66 27       	eor	r22, r22
+    106e:	77 27       	eor	r23, r23
+    1070:	cb 01       	movw	r24, r22
+    1072:	97 f9       	bld	r25, 7
+    1074:	08 95       	ret
+
+00001076 <__mulsf3>:
+    1076:	0b d0       	rcall	.+22     	; 0x108e <__mulsf3x>
+    1078:	78 c0       	rjmp	.+240    	; 0x116a <__fp_round>
+    107a:	69 d0       	rcall	.+210    	; 0x114e <__fp_pscA>
+    107c:	28 f0       	brcs	.+10     	; 0x1088 <__mulsf3+0x12>
+    107e:	6e d0       	rcall	.+220    	; 0x115c <__fp_pscB>
+    1080:	18 f0       	brcs	.+6      	; 0x1088 <__mulsf3+0x12>
+    1082:	95 23       	and	r25, r21
+    1084:	09 f0       	breq	.+2      	; 0x1088 <__mulsf3+0x12>
+    1086:	5a c0       	rjmp	.+180    	; 0x113c <__fp_inf>
+    1088:	5f c0       	rjmp	.+190    	; 0x1148 <__fp_nan>
+    108a:	11 24       	eor	r1, r1
+    108c:	ee cf       	rjmp	.-36     	; 0x106a <__fp_szero>
+
+0000108e <__mulsf3x>:
+    108e:	ca df       	rcall	.-108    	; 0x1024 <__fp_split3>
+    1090:	a0 f3       	brcs	.-24     	; 0x107a <__mulsf3+0x4>
+
+00001092 <__mulsf3_pse>:
+    1092:	95 9f       	mul	r25, r21
+    1094:	d1 f3       	breq	.-12     	; 0x108a <__mulsf3+0x14>
+    1096:	95 0f       	add	r25, r21
+    1098:	50 e0       	ldi	r21, 0x00	; 0
+    109a:	55 1f       	adc	r21, r21
+    109c:	62 9f       	mul	r22, r18
+    109e:	f0 01       	movw	r30, r0
+    10a0:	72 9f       	mul	r23, r18
+    10a2:	bb 27       	eor	r27, r27
+    10a4:	f0 0d       	add	r31, r0
+    10a6:	b1 1d       	adc	r27, r1
+    10a8:	63 9f       	mul	r22, r19
+    10aa:	aa 27       	eor	r26, r26
+    10ac:	f0 0d       	add	r31, r0
+    10ae:	b1 1d       	adc	r27, r1
+    10b0:	aa 1f       	adc	r26, r26
+    10b2:	64 9f       	mul	r22, r20
+    10b4:	66 27       	eor	r22, r22
+    10b6:	b0 0d       	add	r27, r0
+    10b8:	a1 1d       	adc	r26, r1
+    10ba:	66 1f       	adc	r22, r22
+    10bc:	82 9f       	mul	r24, r18
+    10be:	22 27       	eor	r18, r18
+    10c0:	b0 0d       	add	r27, r0
+    10c2:	a1 1d       	adc	r26, r1
+    10c4:	62 1f       	adc	r22, r18
+    10c6:	73 9f       	mul	r23, r19
+    10c8:	b0 0d       	add	r27, r0
+    10ca:	a1 1d       	adc	r26, r1
+    10cc:	62 1f       	adc	r22, r18
+    10ce:	83 9f       	mul	r24, r19
+    10d0:	a0 0d       	add	r26, r0
+    10d2:	61 1d       	adc	r22, r1
+    10d4:	22 1f       	adc	r18, r18
+    10d6:	74 9f       	mul	r23, r20
+    10d8:	33 27       	eor	r19, r19
+    10da:	a0 0d       	add	r26, r0
+    10dc:	61 1d       	adc	r22, r1
+    10de:	23 1f       	adc	r18, r19
+    10e0:	84 9f       	mul	r24, r20
+    10e2:	60 0d       	add	r22, r0
+    10e4:	21 1d       	adc	r18, r1
+    10e6:	82 2f       	mov	r24, r18
+    10e8:	76 2f       	mov	r23, r22
+    10ea:	6a 2f       	mov	r22, r26
+    10ec:	11 24       	eor	r1, r1
+    10ee:	9f 57       	subi	r25, 0x7F	; 127
+    10f0:	50 40       	sbci	r21, 0x00	; 0
+    10f2:	8a f0       	brmi	.+34     	; 0x1116 <__mulsf3_pse+0x84>
+    10f4:	e1 f0       	breq	.+56     	; 0x112e <__mulsf3_pse+0x9c>
+    10f6:	88 23       	and	r24, r24
+    10f8:	4a f0       	brmi	.+18     	; 0x110c <__mulsf3_pse+0x7a>
+    10fa:	ee 0f       	add	r30, r30
+    10fc:	ff 1f       	adc	r31, r31
+    10fe:	bb 1f       	adc	r27, r27
+    1100:	66 1f       	adc	r22, r22
+    1102:	77 1f       	adc	r23, r23
+    1104:	88 1f       	adc	r24, r24
+    1106:	91 50       	subi	r25, 0x01	; 1
+    1108:	50 40       	sbci	r21, 0x00	; 0
+    110a:	a9 f7       	brne	.-22     	; 0x10f6 <__mulsf3_pse+0x64>
+    110c:	9e 3f       	cpi	r25, 0xFE	; 254
+    110e:	51 05       	cpc	r21, r1
+    1110:	70 f0       	brcs	.+28     	; 0x112e <__mulsf3_pse+0x9c>
+    1112:	14 c0       	rjmp	.+40     	; 0x113c <__fp_inf>
+    1114:	aa cf       	rjmp	.-172    	; 0x106a <__fp_szero>
+    1116:	5f 3f       	cpi	r21, 0xFF	; 255
+    1118:	ec f3       	brlt	.-6      	; 0x1114 <__mulsf3_pse+0x82>
+    111a:	98 3e       	cpi	r25, 0xE8	; 232
+    111c:	dc f3       	brlt	.-10     	; 0x1114 <__mulsf3_pse+0x82>
+    111e:	86 95       	lsr	r24
+    1120:	77 95       	ror	r23
+    1122:	67 95       	ror	r22
+    1124:	b7 95       	ror	r27
+    1126:	f7 95       	ror	r31
+    1128:	e7 95       	ror	r30
+    112a:	9f 5f       	subi	r25, 0xFF	; 255
+    112c:	c1 f7       	brne	.-16     	; 0x111e <__mulsf3_pse+0x8c>
+    112e:	fe 2b       	or	r31, r30
+    1130:	88 0f       	add	r24, r24
+    1132:	91 1d       	adc	r25, r1
+    1134:	96 95       	lsr	r25
+    1136:	87 95       	ror	r24
+    1138:	97 f9       	bld	r25, 7
+    113a:	08 95       	ret
+
+0000113c <__fp_inf>:
+    113c:	97 f9       	bld	r25, 7
+    113e:	9f 67       	ori	r25, 0x7F	; 127
+    1140:	80 e8       	ldi	r24, 0x80	; 128
+    1142:	70 e0       	ldi	r23, 0x00	; 0
+    1144:	60 e0       	ldi	r22, 0x00	; 0
+    1146:	08 95       	ret
+
+00001148 <__fp_nan>:
+    1148:	9f ef       	ldi	r25, 0xFF	; 255
+    114a:	80 ec       	ldi	r24, 0xC0	; 192
+    114c:	08 95       	ret
+
+0000114e <__fp_pscA>:
+    114e:	00 24       	eor	r0, r0
+    1150:	0a 94       	dec	r0
+    1152:	16 16       	cp	r1, r22
+    1154:	17 06       	cpc	r1, r23
+    1156:	18 06       	cpc	r1, r24
+    1158:	09 06       	cpc	r0, r25
+    115a:	08 95       	ret
+
+0000115c <__fp_pscB>:
+    115c:	00 24       	eor	r0, r0
+    115e:	0a 94       	dec	r0
+    1160:	12 16       	cp	r1, r18
+    1162:	13 06       	cpc	r1, r19
+    1164:	14 06       	cpc	r1, r20
+    1166:	05 06       	cpc	r0, r21
+    1168:	08 95       	ret
+
+0000116a <__fp_round>:
+    116a:	09 2e       	mov	r0, r25
+    116c:	03 94       	inc	r0
+    116e:	00 0c       	add	r0, r0
+    1170:	11 f4       	brne	.+4      	; 0x1176 <__fp_round+0xc>
+    1172:	88 23       	and	r24, r24
+    1174:	52 f0       	brmi	.+20     	; 0x118a <__fp_round+0x20>
+    1176:	bb 0f       	add	r27, r27
+    1178:	40 f4       	brcc	.+16     	; 0x118a <__fp_round+0x20>
+    117a:	bf 2b       	or	r27, r31
+    117c:	11 f4       	brne	.+4      	; 0x1182 <__fp_round+0x18>
+    117e:	60 ff       	sbrs	r22, 0
+    1180:	04 c0       	rjmp	.+8      	; 0x118a <__fp_round+0x20>
+    1182:	6f 5f       	subi	r22, 0xFF	; 255
+    1184:	7f 4f       	sbci	r23, 0xFF	; 255
+    1186:	8f 4f       	sbci	r24, 0xFF	; 255
+    1188:	9f 4f       	sbci	r25, 0xFF	; 255
+    118a:	08 95       	ret
+
+0000118c <utoa>:
+    118c:	fb 01       	movw	r30, r22
+    118e:	9f 01       	movw	r18, r30
+    1190:	42 30       	cpi	r20, 0x02	; 2
+    1192:	74 f0       	brlt	.+28     	; 0x11b0 <utoa+0x24>
+    1194:	45 32       	cpi	r20, 0x25	; 37
+    1196:	64 f4       	brge	.+24     	; 0x11b0 <utoa+0x24>
+    1198:	64 2f       	mov	r22, r20
+    119a:	77 27       	eor	r23, r23
+    119c:	0e 94 ec 08 	call	0x11d8	; 0x11d8 <__udivmodhi4>
+    11a0:	80 5d       	subi	r24, 0xD0	; 208
+    11a2:	8a 33       	cpi	r24, 0x3A	; 58
+    11a4:	0c f0       	brlt	.+2      	; 0x11a8 <utoa+0x1c>
+    11a6:	89 5d       	subi	r24, 0xD9	; 217
+    11a8:	81 93       	st	Z+, r24
+    11aa:	cb 01       	movw	r24, r22
+    11ac:	00 97       	sbiw	r24, 0x00	; 0
+    11ae:	a1 f7       	brne	.-24     	; 0x1198 <utoa+0xc>
+    11b0:	10 82       	st	Z, r1
+    11b2:	c9 01       	movw	r24, r18
+    11b4:	0c 94 dc 08 	jmp	0x11b8	; 0x11b8 <strrev>
+
+000011b8 <strrev>:
+    11b8:	dc 01       	movw	r26, r24
+    11ba:	fc 01       	movw	r30, r24
+    11bc:	67 2f       	mov	r22, r23
+    11be:	71 91       	ld	r23, Z+
+    11c0:	77 23       	and	r23, r23
+    11c2:	e1 f7       	brne	.-8      	; 0x11bc <strrev+0x4>
+    11c4:	32 97       	sbiw	r30, 0x02	; 2
+    11c6:	04 c0       	rjmp	.+8      	; 0x11d0 <strrev+0x18>
+    11c8:	7c 91       	ld	r23, X
+    11ca:	6d 93       	st	X+, r22
+    11cc:	70 83       	st	Z, r23
+    11ce:	62 91       	ld	r22, -Z
+    11d0:	ae 17       	cp	r26, r30
+    11d2:	bf 07       	cpc	r27, r31
+    11d4:	c8 f3       	brcs	.-14     	; 0x11c8 <strrev+0x10>
+    11d6:	08 95       	ret
+
+000011d8 <__udivmodhi4>:
+    11d8:	aa 1b       	sub	r26, r26
+    11da:	bb 1b       	sub	r27, r27
+    11dc:	51 e1       	ldi	r21, 0x11	; 17
+    11de:	07 c0       	rjmp	.+14     	; 0x11ee <__udivmodhi4_ep>
+
+000011e0 <__udivmodhi4_loop>:
+    11e0:	aa 1f       	adc	r26, r26
+    11e2:	bb 1f       	adc	r27, r27
+    11e4:	a6 17       	cp	r26, r22
+    11e6:	b7 07       	cpc	r27, r23
+    11e8:	10 f0       	brcs	.+4      	; 0x11ee <__udivmodhi4_ep>
+    11ea:	a6 1b       	sub	r26, r22
+    11ec:	b7 0b       	sbc	r27, r23
+
+000011ee <__udivmodhi4_ep>:
+    11ee:	88 1f       	adc	r24, r24
+    11f0:	99 1f       	adc	r25, r25
+    11f2:	5a 95       	dec	r21
+    11f4:	a9 f7       	brne	.-22     	; 0x11e0 <__udivmodhi4_loop>
+    11f6:	80 95       	com	r24
+    11f8:	90 95       	com	r25
+    11fa:	bc 01       	movw	r22, r24
+    11fc:	cd 01       	movw	r24, r26
+    11fe:	08 95       	ret
+
+00001200 <_exit>:
+    1200:	f8 94       	cli
+
+00001202 <__stop_program>:
+    1202:	ff cf       	rjmp	.-2      	; 0x1202 <__stop_program>
